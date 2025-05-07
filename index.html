@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="57x57" href="./assets/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="./assets/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./assets/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="./assets/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./assets/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="./assets/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="./assets/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="./assets/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="./assets/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="./assets/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./assets/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="./assets/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!-- CSS -->
+    <link rel="stylesheet" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="./assets/css/index.css">
+    <link rel="stylesheet" href="./assets/css/responsize-header.css">
+    <!-- Font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+        rel="stylesheet">
+    <title>One Food</title>
+</head>
+
+<body>
+    <header id="header">
+        <div class="container">
+            <!-- PC -->
+            <div class="header--container pc">
+                <!-- Logo -->
+                <a href="./index.html">
+                    <figure class="header--logo">
+                        <img src="./assets/img/logo.svg" alt="One Food Logo">
+                        <p class="logo--title">ne Food</p>
+                    </figure>
+                </a>
+                <!-- nav -->
+                <nav class="header--nav">
+                    <ul class="nav--ul">
+                        <li><a href="./index.html" class="nav--link">Trang chủ</a></li>
+                        <li><a href="./menu.html" class="nav--link">Thực đơn</a></li>
+                        <li><a href="./about.html" class="nav--link">Về chúng tôi</a></li>
+                        <li><a href="./contact.html" class="nav--link">Liên hệ</a></li>
+                    </ul>
+                </nav>
+                <!-- Actions -->
+                <div class="actions">
+                    <div class="header__search">
+                        <div class="btn btn--search" onclick="handdleSearch()" aria-label="Tìm kiếm">
+                            <svg width=20px xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                <path fill="#ffffff"
+                                    d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
+                            </svg>
+
+                        </div>
+                        <div class="dropdown-content" id="header__search">
+                            <img src="./assets/img/arrow-up.png" alt="" class="arrow-up">
+                            <div class="search--container">
+                                <div class="search-input">
+                                    <input class="input-text" type="text" name="search" id="search-input"
+                                        placeholder="Tìm kiếm món ăn ..." aria-label="Tìm kiếm món ăn">
+                                    <div class="container--fill" onclick="handleFill()" aria-label="Lọc món ăn"
+                                        aria-expanded="false" aria-controls="filter-ui">
+                                        <img src="./assets/img/filter-solid.svg" alt="Biểu tượng lọc"
+                                            class="img-filter">
+                                        <span class="filter--title">Lọc</span>
+                                    </div>
+                                </div>
+                                <!-- Giao diện lọc -->
+                                <div class="filter-ui" id="filter-ui">
+                                    <div class="list--filter">
+                                        <label class="custom-checkbox">
+                                            <input type="checkbox" name="filter" value="spicy">
+                                            <span class="checkmark"></span>
+                                            Món cay
+                                        </label>
+                                        <label class="custom-checkbox">
+                                            <input type="checkbox" name="filter" value="vegan">
+                                            <span class="checkmark"></span>
+                                            Món chay
+                                        </label>
+                                        <label class="custom-checkbox">
+                                            <input type="checkbox" name="filter" value="vegan">
+                                            <span class="checkmark"></span>
+                                            Món lẩu
+                                        </label>
+                                        <label class="custom-checkbox">
+                                            <input type="checkbox" name="filter" value="vegan">
+                                            <span class="checkmark"></span>
+                                            Món mặn
+                                        </label>
+                                        <label class="custom-checkbox">
+                                            <input type="checkbox" name="filter" value="vegan">
+                                            <span class="checkmark"></span>
+                                            Tráng miệng
+                                        </label>
+                                        <label class="custom-checkbox">
+                                            <input type="checkbox" name="filter" value="vegan">
+                                            <span class="checkmark"></span>
+                                            Nước uống
+                                        </label>
+                                    </div>
+                                    <button class="btn btn--apply-filter">Áp dụng</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <a href="#!" class="btn btn--signup">Đăng nhập</a>
+                </div>
+            </div>
+            <!-- MObile & Tablet -->
+            <div class="header--container mobile-tablet">
+
+                <!-- nav -->
+                <div>
+                    <label class="container-tab" for="action-nav">
+                        <img src="./assets/icons/icon-tab.svg" alt="">
+                    </label>
+                    <input type="checkbox" name="" id="action-nav" class="action-nav" hidden>
+                    <label for="action-nav" class="overload"></label>
+                    <div class="menu-draw">
+                        <nav class="header--nav">
+                            <ul class="nav--ul nav--ul--mobile">
+                                <label for="action-nav" style="padding: 8px 8px 8px 0px;">
+                                    <img src="./assets/icons/arrow-left.svg" alt="">
+                                </label>
+                                <li><a href="./index.html" class="nav--link nav--link-mb ">Trang chủ</a></li>
+                                <li><a href="./menu.html" class="nav--link nav--link-mb">Thực đơn</a></li>
+                                <li><a href="./about.html" class="nav--link nav--link-mb">Về chúng tôi</a></li>
+                                <li><a href="./contact.html" class="nav--link nav--link-mb">Liên hệ</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <!-- Logo -->
+                <a href="./index.html">
+                    <figure class="header--logo">
+                        <img src="./assets/img/logo.svg" alt="One Food Logo">
+                        <p class="logo--title">ne Food</p>
+                    </figure>
+                </a>
+                <!-- Actions -->
+                <div class="actions">
+                    <div class="header__search">
+                        <div class="btn btn--search" onclick="handdleSearch()" aria-label="Tìm kiếm">
+                            <svg width=20px xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                <path fill="#ffffff"
+                                    d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
+                            </svg>
+
+                        </div>
+                        <div class="dropdown-content" id="header__search-mobile">
+                            <img src="./assets/img/arrow-up.png" alt="" class="arrow-up">
+                            <div class="search--container">
+                                <div class="search-input">
+                                    <input class="input-text" type="text" name="search" id="search-input"
+                                        placeholder="Tìm kiếm món ăn ..." aria-label="Tìm kiếm món ăn">
+                                    <div class="container--fill" onclick="handleFill()" aria-label="Lọc món ăn"
+                                        aria-expanded="false" aria-controls="filter-ui">
+                                        <img src="./assets/img/filter-solid.svg" alt="Biểu tượng lọc"
+                                            class="img-filter">
+                                        <span class="filter--title">Lọc</span>
+                                    </div>
+                                </div>
+                                <!-- Giao diện lọc -->
+                                <div class="filter-ui" id="filter-ui-mb">
+                                    <div class="list--filter">
+                                        <label class="custom-checkbox">
+                                            <input type="checkbox" name="filter" value="spicy">
+                                            <span class="checkmark"></span>
+                                            Món cay
+                                        </label>
+                                        <label class="custom-checkbox">
+                                            <input type="checkbox" name="filter" value="vegan">
+                                            <span class="checkmark"></span>
+                                            Món chay
+                                        </label>
+                                        <label class="custom-checkbox">
+                                            <input type="checkbox" name="filter" value="vegan">
+                                            <span class="checkmark"></span>
+                                            Món lẩu
+                                        </label>
+                                        <label class="custom-checkbox">
+                                            <input type="checkbox" name="filter" value="vegan">
+                                            <span class="checkmark"></span>
+                                            Món mặn
+                                        </label>
+                                        <label class="custom-checkbox">
+                                            <input type="checkbox" name="filter" value="vegan">
+                                            <span class="checkmark"></span>
+                                            Tráng miệng
+                                        </label>
+                                        <label class="custom-checkbox">
+                                            <input type="checkbox" name="filter" value="vegan">
+                                            <span class="checkmark"></span>
+                                            Nước uống
+                                        </label>
+                                    </div>
+                                    <button class="btn btn--apply-filter">Áp dụng</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <a href="#!" class="btn btn--signup">Đăng nhập</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- <script>
+        load("#header", "./template/header.html")
+    </script> -->
+
+    <!-- <footer id="footer"></footer>
+    <script>
+        load("#footer", "./src/template/footer-login.html")
+    </script> -->
+    <script src="./assets/js/index.js"></script>
+</body>
+
+</html>
