@@ -26,12 +26,19 @@
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/index.css">
     <link rel="stylesheet" href="./assets/css/responsize-header.css">
+    <link rel="stylesheet" href="./assets/css/reponsize-index.css">
     <!-- Font  -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
         rel="stylesheet">
+    <!-- Atisition -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/animate.css" />
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <script src="./assets/js/style.js"></script>
     <title>One Food</title>
 </head>
 
@@ -124,7 +131,6 @@
             </div>
             <!-- MObile & Tablet -->
             <div class="header--container mobile-tablet">
-
                 <!-- nav -->
                 <div>
                     <label class="container-tab" for="action-nav">
@@ -222,15 +228,177 @@
             </div>
         </div>
     </header>
-    <!-- <script>
-        load("#header", "./template/header.html")
-    </script> -->
+    <main>
+        <!-- Hero -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero--container">
+                    <div class="hero--left">
+                        <p class="hero--left_title animate__animated animate__backInRight">Xin chào, khách hàng,</p>
+                        <h1 class="hero--left_title animate__animated animate__backInRight">chúng tôi không nấu ăn,
+                            chúng tôi tạo ra cảm xúc của bạn!</h1>
+                        <p class="hero--left_derc animate__animated animate__backInLeft">Bạn muốn chúng tôi có. Thực
+                            phẩm, đồ uống và nhiều thứ khác có sẵn để
+                            giao và nhận.</p>
+                        <a href="#menu-section" class="nav--link btn--thucdon animate__animated animate__backInLeft">Thực đơn của chúng tôi</a>
+                    </div>
+                    <div class="hero--right  animate__rotate__infinite">
+                        <figure class="hero--img">
+                            <img src="./assets/img/img-silebar.png" alt="">
+                        </figure>
+                    </div>
+                </div>
+                <div class="hero--bottom" data-aos="fade-up" data-aos-duration="1000">
+                    <img src="./assets/img/img-bg.png" alt="" class="hero--bottom-img">
+                    <div class="hero--list">
+                        <div class="card-text">
+                            <h3>GIAO HÀNG NHANH</h3>
+                            <p>Cho tất cả đơn hàng</p>
+                        </div>
+                        <div class="card-text">
+                            <h3>SẢN PHẨM AN TOÀN</h3>
+                            <p>Cam kết chất lượng</p>
+                        </div>
+                        <div class="card-text">
+                            <h3>HOÀN LẠI TIỀN</h3>
+                            <p>Nếu không hài lòng</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+        <!-- Out Menu -->
+        <section class="outMenu">
+            <div class="container">
+                <div class="outMenu--container">
+                    <div class="outMenu--top" id="menu-section">
+                        <h2 class="outMenu--top_title">Khám phá thực đơn của chúng tôi</h2>
+                    </div>
+                </div>
+                <div class="outMenu--list" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1000">
+                    <div class="outMenu--item">
+                        <img src="./assets/img/cha-que-chay.png" alt="Chả quế chay" class="food-card__image">
+                        <div class="food-card__content">
+                            <h3 class="food-card__title">Chả quế chay</h3>
+                            <p class="food-card__price">699.000 đ</p>
+                            <button class="food-card__order-btn">ĐẶT MÓN</button>
+                        </div>
+                    </div>
+                    <!-- item 2 -->
+                    <div class="outMenu--item">
+                        <img src="./assets/img/chan-gio-chien-gion-mam-thai.jpeg" alt="Chân giò chiên mắm"
+                            class="food-card__image">
+                        <div class="food-card__content">
+                            <h3 class="food-card__title">Chân giò chiên mắm thái</h3>
+                            <p class="food-card__price">499.000 đ</p>
+                            <button class="food-card__order-btn">ĐẶT MÓN</button>
+                        </div>
+                    </div>
+                    <!-- item 3 -->
+                    <div class="outMenu--item">
+                        <img src="./assets/img/nem-chay.png" alt="Nem chay" class="food-card__image">
+                        <div class="food-card__content">
+                            <h3 class="food-card__title">Nem chay</h3>
+                            <p class="food-card__price">199.000 đ</p>
+                            <button class="food-card__order-btn">ĐẶT MÓN</button>
+                        </div>
+                    </div>
+                    <!-- Item 4 -->
+                    <div class="outMenu--item">
+                        <img src="./assets/img/set_bun_ca.jpg" alt="Bún cá" class="food-card__image">
+                        <div class="food-card__content">
+                            <h3 class="food-card__title">Bún cá</h3>
+                            <p class="food-card__price">199.000 đ</p>
+                            <button class="food-card__order-btn">ĐẶT MÓN</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="outMenu--list" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="500">
+                    <div class="outMenu--item">
+                        <img src="./assets/img/cha-que-chay.png" alt="Chả quế chay" class="food-card__image">
+                        <div class="food-card__content">
+                            <h3 class="food-card__title">Chả quế chay</h3>
+                            <p class="food-card__price">699.000 đ</p>
+                            <button class="food-card__order-btn">ĐẶT MÓN</button>
+                        </div>
+                    </div>
+                    <!-- item 2 -->
+                    <div class="outMenu--item">
+                        <img src="./assets/img/chan-gio-chien-gion-mam-thai.jpeg" alt="Chân giò chiên mắm"
+                            class="food-card__image">
+                        <div class="food-card__content">
+                            <h3 class="food-card__title">Chân giò chiên mắm thái</h3>
+                            <p class="food-card__price">499.000 đ</p>
+                            <button class="food-card__order-btn">ĐẶT MÓN</button>
+                        </div>
+                    </div>
+                    <!-- item 3 -->
+                    <div class="outMenu--item">
+                        <img src="./assets/img/nem-chay.png" alt="Nem chay" class="food-card__image">
+                        <div class="food-card__content">
+                            <h3 class="food-card__title">Nem chay</h3>
+                            <p class="food-card__price">199.000 đ</p>
+                            <button class="food-card__order-btn">ĐẶT MÓN</button>
+                        </div>
+                    </div>
+                    <!-- Item 4 -->
+                    <div class="outMenu--item">
+                        <img src="./assets/img/set_bun_ca.jpg" alt="Bún cá" class="food-card__image">
+                        <div class="food-card__content">
+                            <h3 class="food-card__title">Bún cá</h3>
+                            <p class="food-card__price">199.000 đ</p>
+                            <button class="food-card__order-btn">ĐẶT MÓN</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="outMenu--actions">
+                    <a href="#!" class="btn btn--outMenu">
+                        Xem thêm
+                        <svg class="img--outMenu-action" width="25" height="25" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4.25 12.2754L19.25 12.2754" stroke="white" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M10.2998 18.299L4.2498 12.275L10.2998 6.25" stroke="white" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
 
-    <!-- <footer id="footer"></footer>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section class="subride" data-aos="zoom-in-down">
+            <div class="container">
+                <div class="subride--container">
+                    <div class="hero--bottom">
+                        <img src="./assets/img/img-bg.png" alt="" class="hero--bottom-img">
+                        <div class="hero--list subride--info">
+                            <div class="newsletter-content">
+                                <div class="left-info">
+                                    <h2 class="newsletter-title">Đăng ký nhận tin</h2>
+                                    <p class="newsletter-description">Nhận thông tin mới nhất từ chúng tôi</p>
+                                </div>
+                                <div class="newsletter-form">
+                                    <input type="email" class="newsletter-input" placeholder="Enter your email address"
+                                        required>
+                                    <button class="newsletter-btn">→</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer id="footer"></footer>
     <script>
-        load("#footer", "./src/template/footer-login.html")
-    </script> -->
+        load("#footer", "./template/footer.html")
+    </script>
     <script src="./assets/js/index.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 </body>
 
 </html>

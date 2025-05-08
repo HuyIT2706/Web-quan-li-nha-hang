@@ -1,0 +1,111 @@
+/* PC */
+@media screen and (min-width: 992.98px) {
+    /* PC giữ layout gốc, không cần chỉnh nhiều */
+}
+
+/* Tablet & Mobile */
+@media screen and (max-width: 991.98px) {
+    .hero--left{
+        width: 100%;
+    }
+    .header--container.pc {
+        display: none !important;
+    }
+    .header--container.mobile-tablet {
+        display: flex !important;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 0;
+    }
+    .hero--container {
+        flex-direction: column;
+        gap: 24px;
+        padding-top: 24px;
+    }
+    .hero--left_title {
+        width: 100%;
+        font-size: 2.6rem;
+    }
+    .hero--img {
+        width: 100%;
+        height: auto;
+        max-width: 320px;
+        margin: 0 auto;
+    }
+    .hero--bottom {
+        padding-top: 60px;
+    }
+    .hero--list {
+        flex-direction: column;
+        gap: 24px;
+        margin-top: -40px;
+    }
+    .outMenu--list {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+    .newsletter-content {
+        flex-direction: column;
+        gap: 24px;
+        padding: 12px;
+    }
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+        row-gap: 24px;
+        column-gap: 12px;
+        padding: 24px 0 0 0;
+    }
+}
+
+/* Tablet */
+@media screen and (min-width: 768.98px) and (max-width: 991.98px) {
+    .hero--list{
+        flex-direction: row;
+        margin-top: -70px;
+    }
+    .newsletter-content{
+        flex-direction: row;
+        margin-top: -30px;
+    }
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+    }
+    .outMenu--list {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Mobile */
+@media screen and (max-width: 767.98px) {
+    
+    .hero--left_title {
+        font-size: 2rem;
+    }
+    .hero--img {
+        max-width: 220px;
+    }
+    .hero--bottom {
+        padding-top: 32px;
+    }
+    .hero--list {
+        gap: 12px;
+        margin-top: -20px;
+    }
+    .outMenu--list {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .newsletter-content {
+        gap: 12px;
+        padding: 8px;
+    }
+    .footer-container {
+        grid-template-columns: 1fr;
+        row-gap: 16px;
+        padding: 12px 0 0 0;
+    }
+    .footer-col {
+        min-width: unset;
+    }
+} 
