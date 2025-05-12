@@ -1,6 +1,9 @@
 /* PC */
 @media screen and (min-width: 992.98px) {
-    /* PC giữ layout gốc, không cần chỉnh nhiều */
+    .img-mobile{
+        display: none;
+    }
+    
 }
 
 /* Tablet & Mobile */
@@ -74,11 +77,22 @@
     .outMenu--list {
         grid-template-columns: 1fr 1fr;
     }
+    .img-mobile{
+        display: none;
+    }
 }
 
 /* Mobile */
 @media screen and (max-width: 767.98px) {
-    
+    .img--pc{
+        display: none;
+    }
+    .title--mobile{
+        width: 165px;
+    }
+    .order-modal__footer{
+        flex-direction: column;
+    }
     .hero--left_title {
         font-size: 2rem;
     }
@@ -89,8 +103,9 @@
         padding-top: 32px;
     }
     .hero--list {
-        gap: 12px;
-        margin-top: -20px;
+        gap: 50px;
+        margin-top: -280px;
+        margin-bottom: 50px;
     }
     .outMenu--list {
         grid-template-columns: 1fr;
@@ -98,8 +113,79 @@
     }
     .newsletter-content {
         gap: 12px;
-        padding: 8px;
+        padding-top: 50px;
+        margin-top: 20px;
     }
+    .cart-dark-container {
+		padding: 12px 2vw;
+		max-width: 100vw;
+		min-width: unset;
+	}
+
+	.cart-dark-table,
+	.cart-dark-table thead,
+	.cart-dark-table tbody,
+	.cart-dark-table tr {
+		display: block;
+		width: 100%;
+	}
+
+	.cart-dark-table thead {
+		display: none;
+	}
+
+	.cart-dark-table tr {
+		background: #18181a;
+		border: 1px solid #29292c;
+		border-radius: 8px;
+		margin-bottom: 18px;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+		padding: 12px 0;
+	}
+
+	.cart-dark-table td {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		border: none;
+		padding: 10px 16px;
+		font-size: 1.4rem;
+		background: none;
+        gap: 10px;
+	}
+
+	.cart-dark-table td:first-child {
+		justify-content: flex-end;
+		padding-bottom: 0;
+	}
+
+	.cart-dark-remove {
+		margin-left: auto;
+		margin-bottom: 8px;
+	}
+
+	.cart-dark-food {
+		flex-direction: row;
+		gap: 12px;
+		margin-bottom: 8px;
+	}
+
+	.cart-dark-food img {
+		width: 60px;
+		height: 60px;
+	}
+	.cart-dark-table td[data-label]:before {
+		content: attr(data-label) ': ';
+		font-weight: 600;
+		color: var(--color-white);
+		min-width: 90px;
+		display: inline-block;
+		margin-right: 8px;
+        font-size: 1.6rem;
+	}
+	.cart-dark-qty {
+		margin-left: 8px;
+	}
     .footer-container {
         grid-template-columns: 1fr;
         row-gap: 16px;

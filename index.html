@@ -65,68 +65,18 @@
                 </nav>
                 <!-- Actions -->
                 <div class="actions">
-                    <div class="header__search">
-                        <div class="btn btn--search" onclick="handdleSearch()" aria-label="Tìm kiếm">
-                            <svg width=20px xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                                <path fill="#ffffff"
-                                    d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
+                    <div class="header__search" onclick="handleCart()">
+                        <div class="btn btn--search">
+                            <svg width=20px xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 576 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                                <path fill="#fafafa"
+                                    d="M0 24C0 10.7 10.7 0 24 0L69.5 0c22 0 41.5 12.8 50.6 32l411 0c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3l-288.5 0 5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5L488 336c13.3 0 24 10.7 24 24s-10.7 24-24 24l-288.3 0c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5L24 48C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" />
                             </svg>
-
                         </div>
-                        <div class="dropdown-content" id="header__search">
-                            <img src="./assets/img/arrow-up.png" alt="" class="arrow-up">
-                            <div class="search--container">
-                                <div class="search-input">
-                                    <input class="input-text" type="text" name="search" id="search-input"
-                                        placeholder="Tìm kiếm món ăn ..." aria-label="Tìm kiếm món ăn">
-                                    <div class="container--fill" onclick="handleFill()" aria-label="Lọc món ăn"
-                                        aria-expanded="false" aria-controls="filter-ui">
-                                        <img src="./assets/img/filter-solid.svg" alt="Biểu tượng lọc"
-                                            class="img-filter">
-                                        <span class="filter--title">Lọc</span>
-                                    </div>
-                                </div>
-                                <!-- Giao diện lọc -->
-                                <div class="filter-ui" id="filter-ui">
-                                    <div class="list--filter">
-                                        <label class="custom-checkbox">
-                                            <input type="checkbox" name="filter" value="spicy">
-                                            <span class="checkmark"></span>
-                                            Món cay
-                                        </label>
-                                        <label class="custom-checkbox">
-                                            <input type="checkbox" name="filter" value="vegan">
-                                            <span class="checkmark"></span>
-                                            Món chay
-                                        </label>
-                                        <label class="custom-checkbox">
-                                            <input type="checkbox" name="filter" value="vegan">
-                                            <span class="checkmark"></span>
-                                            Món lẩu
-                                        </label>
-                                        <label class="custom-checkbox">
-                                            <input type="checkbox" name="filter" value="vegan">
-                                            <span class="checkmark"></span>
-                                            Món mặn
-                                        </label>
-                                        <label class="custom-checkbox">
-                                            <input type="checkbox" name="filter" value="vegan">
-                                            <span class="checkmark"></span>
-                                            Tráng miệng
-                                        </label>
-                                        <label class="custom-checkbox">
-                                            <input type="checkbox" name="filter" value="vegan">
-                                            <span class="checkmark"></span>
-                                            Nước uống
-                                        </label>
-                                    </div>
-                                    <button class="btn btn--apply-filter">Áp dụng</button>
-                                </div>
-                            </div>
 
-                        </div>
+
                     </div>
-                    <a href="#!" class="btn btn--signup">Đăng nhập</a>
+                    <a href="./login.html" class="btn btn--signup">Đăng nhập</a>
                 </div>
             </div>
             <!-- MObile & Tablet -->
@@ -142,7 +92,7 @@
                         <nav class="header--nav">
                             <ul class="nav--ul nav--ul--mobile">
                                 <label for="action-nav" style="padding: 8px 8px 8px 0px;">
-                                    <img src="./assets/icons/arrow-left.svg" alt="">
+                                    <img src="./assets/icons/arrow-left.svg" alt="" style="cursor: pointer;">
                                 </label>
                                 <li><a href="./index.html" class="nav--link nav--link-mb ">Trang chủ</a></li>
                                 <li><a href="./menu.html" class="nav--link nav--link-mb">Thực đơn</a></li>
@@ -161,95 +111,53 @@
                 </a>
                 <!-- Actions -->
                 <div class="actions">
-                    <div class="header__search">
-                        <div class="btn btn--search" onclick="handdleSearch()" aria-label="Tìm kiếm">
-                            <svg width=20px xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                                <path fill="#ffffff"
-                                    d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
+                    <div class="header__search" onclick="handleCart()">
+                        <div class="btn btn--search" aria-label="Tìm kiếm">
+                            <svg width=20px xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 576 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                                <path fill="#fafafa"
+                                    d="M0 24C0 10.7 10.7 0 24 0L69.5 0c22 0 41.5 12.8 50.6 32l411 0c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3l-288.5 0 5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5L488 336c13.3 0 24 10.7 24 24s-10.7 24-24 24l-288.3 0c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5L24 48C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" />
                             </svg>
-
-                        </div>
-                        <div class="dropdown-content" id="header__search-mobile">
-                            <img src="./assets/img/arrow-up.png" alt="" class="arrow-up">
-                            <div class="search--container">
-                                <div class="search-input">
-                                    <input class="input-text" type="text" name="search" id="search-input"
-                                        placeholder="Tìm kiếm món ăn ..." aria-label="Tìm kiếm món ăn">
-                                    <div class="container--fill" onclick="handleFill()" aria-label="Lọc món ăn"
-                                        aria-expanded="false" aria-controls="filter-ui">
-                                        <img src="./assets/img/filter-solid.svg" alt="Biểu tượng lọc"
-                                            class="img-filter">
-                                        <span class="filter--title">Lọc</span>
-                                    </div>
-                                </div>
-                                <!-- Giao diện lọc -->
-                                <div class="filter-ui" id="filter-ui-mb">
-                                    <div class="list--filter">
-                                        <label class="custom-checkbox">
-                                            <input type="checkbox" name="filter" value="spicy">
-                                            <span class="checkmark"></span>
-                                            Món cay
-                                        </label>
-                                        <label class="custom-checkbox">
-                                            <input type="checkbox" name="filter" value="vegan">
-                                            <span class="checkmark"></span>
-                                            Món chay
-                                        </label>
-                                        <label class="custom-checkbox">
-                                            <input type="checkbox" name="filter" value="vegan">
-                                            <span class="checkmark"></span>
-                                            Món lẩu
-                                        </label>
-                                        <label class="custom-checkbox">
-                                            <input type="checkbox" name="filter" value="vegan">
-                                            <span class="checkmark"></span>
-                                            Món mặn
-                                        </label>
-                                        <label class="custom-checkbox">
-                                            <input type="checkbox" name="filter" value="vegan">
-                                            <span class="checkmark"></span>
-                                            Tráng miệng
-                                        </label>
-                                        <label class="custom-checkbox">
-                                            <input type="checkbox" name="filter" value="vegan">
-                                            <span class="checkmark"></span>
-                                            Nước uống
-                                        </label>
-                                    </div>
-                                    <button class="btn btn--apply-filter">Áp dụng</button>
-                                </div>
-                            </div>
-
                         </div>
                     </div>
-
-                    <a href="#!" class="btn btn--signup">Đăng nhập</a>
+                    <a href="./login.html" class="btn btn--signup">Đăng nhập</a>
                 </div>
             </div>
         </div>
     </header>
-    <main>
+    <main style="display: block;" id="home--container">
         <!-- Hero -->
         <section class="hero">
             <div class="container">
                 <div class="hero--container">
-                    <div class="hero--left">
-                        <p class="hero--left_title animate__animated animate__backInRight">Xin chào, khách hàng,</p>
-                        <h1 class="hero--left_title animate__animated animate__backInRight">chúng tôi không nấu ăn,
-                            chúng tôi tạo ra cảm xúc của bạn!</h1>
-                        <p class="hero--left_derc animate__animated animate__backInLeft">Bạn muốn chúng tôi có. Thực
-                            phẩm, đồ uống và nhiều thứ khác có sẵn để
-                            giao và nhận.</p>
-                        <a href="#menu-section" class="nav--link btn--thucdon animate__animated animate__backInLeft">Thực đơn của chúng tôi</a>
-                    </div>
-                    <div class="hero--right  animate__rotate__infinite">
-                        <figure class="hero--img">
-                            <img src="./assets/img/img-silebar.png" alt="">
-                        </figure>
+                    <div class="hero--right">
+                        <div class="slider-container">
+                            <div class="slider">
+                                <div class="slide">
+                                    <img src="./assets/img/banner-1.png" alt="Slide 1">
+                                </div>
+                                <div class="slide">
+                                    <img src="./assets/img/banner-2.png" alt="Slide 2">
+                                </div>
+                                <div class="slide">
+                                    <img src="./assets/img/banner-4.png" alt="Slide 3">
+                                </div>
+                                <div class="slide">
+                                    <img src="./assets/img/banner-5.png" alt="Slide 4">
+                                </div>
+                            </div>
+                            <div class="slider-dots">
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="hero--bottom" data-aos="fade-up" data-aos-duration="1000">
-                    <img src="./assets/img/img-bg.png" alt="" class="hero--bottom-img">
+                    <img src="./assets/img/img-bg.png" alt="" class="hero--bottom-img img--pc">
+                    <img src="./assets/img/img-bg-mb.png" alt="" class="hero--bottom-img img-mobile">
                     <div class="hero--list">
                         <div class="card-text">
                             <h3>GIAO HÀNG NHANH</h3>
@@ -265,7 +173,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
             </div>
         </section>
         <!-- Out Menu -->
@@ -362,7 +269,6 @@
                             <path d="M10.2998 18.299L4.2498 12.275L10.2998 6.25" stroke="white" stroke-width="1.5"
                                 stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
-
                     </a>
                 </div>
             </div>
@@ -371,7 +277,8 @@
             <div class="container">
                 <div class="subride--container">
                     <div class="hero--bottom">
-                        <img src="./assets/img/img-bg.png" alt="" class="hero--bottom-img">
+                        <img src="./assets/img/img-bg.png" alt="" class="hero--bottom-img img--pc">
+                        <img src="./assets/img/img-bg-mb.png" alt="" class="hero--bottom-img img-mobile">
                         <div class="hero--list subride--info">
                             <div class="newsletter-content">
                                 <div class="left-info">
@@ -389,7 +296,132 @@
                 </div>
             </div>
         </section>
+        <!-- Container Chi tiet -->
+        <div class="container--chitet" id="container-product">
+            <div class="order-modal__overlay" id="orderModalOverlay"></div>
+            <div class="order-modal" id="orderModal">
+                <button class="order-modal__close" id="orderModalClose" aria-label="Đóng">&times;</button>
+                <div class="order-modal__img-wrap">
+                    <img src="./assets/img/chan-gio-chien-gion-mam-thai.jpeg" alt="Ảnh món ăn" class="order-modal__img"
+                        id="orderModalImg">
+                </div>
+                <div class="order-modal__content">
+                    <div class="order-modal__info">
+                        <h2 class="order-modal__title" id="orderModalTitle">Chân giò chiên mắm</h2>
+                        <div class="order-modal__price" id="orderModalPrice">299.000</div>
+                        <div class="order-modal__desc" id="orderModalDesc">Chân giò lợn đen chọn loại ngon, tỉ lệ nạc mỡ
+                            đều
+                            đặn, bếp xâm bì cẩn thận và ướp thật ngon, chiên vàng giòn nổi bóng, khi ăn chấm mắm chua
+                            ngọt
+                            cay cay cực kỳ ngon miệng.</div>
+                    </div>
+                    <div class="order-modal__qty-row">
+                        <span class="order-quantity">Số lượng :</span>
+                        <div class="order-modal__qty">
+                            <button class="order-modal__qty-btn" id="orderModalMinus">-</button>
+                            <input type="number" id="orderModalQty" value="1" min="1">
+                            <button class="order-modal__qty-btn" id="orderModalPlus">+</button>
+                        </div>
+                    </div>
+                    <div class="order-modal__note-row">
+                        <p for="orderModalNote" class="order-quantity">Ghi chú : </p>
+                        <textarea id="orderModalNote" placeholder="Nhập thông tin cần lưu ý..."></textarea>
+                    </div>
+                    <div class="order-modal__footer">
+                        <div class="order-modal__total">Thành tiền:
+                            <span id="orderModalTotal">299.000</span>
+                        </div>
+                        <button class="order-modal__order-btn" id="orderModalOrderBtn">
+                            Đặt hàng ngay <i class="fas fa-shopping-basket"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
+    <!-- Cart Modal Dark UI -->
+    <section id="cartModalDark" style="display: none;">
+        <div class="container cart-dark-container">
+            <table class="cart-dark-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Món</th>
+                        <th>Đơn giá</th>
+                        <th>Số lượng</th>
+                        <th>Tổng tiền</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <button class="cart-dark-remove">
+                                <img src="./assets/icons/Delete.svg" alt="">
+                            </button>
+                        </td>
+                        <td class="cart-dark-food" data-label="Món">
+                            <img src="./assets/img/nem-chay.png" alt="Crispy chicken breasts">
+                            <span>Nem chay</span>
+                        </td>
+                        <td data-label="Đơn giá">199.000</td>
+                        <td data-label="Số lượng">
+                            <div class="cart-dark-qty">
+                                <button>-</button>
+                                <input type="number" value="1" min="1">
+                                <button>+</button>
+                            </div>
+                        </td>
+                        <td data-label="Tổng tiền">199.000</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button class="cart-dark-remove">
+                                <img src="./assets/icons/Delete.svg" alt="">
+                            </button>
+                        </td>
+                        <td class="cart-dark-food" data-label="Món">
+                            <img src="./assets/img/set_bun_ca.jpg" alt="Bún cá">
+                            <span>Bún cá</span>
+                        </td>
+                        <td data-label="Đơn giá">59.000</td>
+                        <td data-label="Số lượng">
+                            <div class="cart-dark-qty">
+                                <button>-</button>
+                                <input type="number" value="1" min="1">
+                                <button>+</button>
+                            </div>
+                        </td>
+                        <td data-label="Tổng tiền">59.000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="container">
+            <div class="totalproduct--main">
+                <div class="totalproduct--top">
+                    <p class="totalproduct--title">Total</p>
+                </div>
+                <div class="totalproduct--main_container">
+                    <div class="totalproduct--main-info">
+                        <p class="totalprodut--main_title">Số sản phẩm: </p>
+                        <span class="totalproduct--main-amout">9</span>
+                    </div>
+                    <div class="totalproduct--main-info">
+                        <p class="totalprodut--main_title">Phí vận chuyển: </p>
+                        <span class="totalproduct--main-amout">Miễn phí</span>
+                    </div>
+                    <div class="totalproduct--main-info">
+                        <p class="totalprodut--main_title">Tổng cộng: </p>
+                        <span class="totalproduct--main-amout">2.070.000 VND</span>
+                    </div>
+                </div>
+                <div class="totalproduct--actions">
+                    <button class="btn btn--shopping">Quay lại</button>
+                    <button class="btn btn--shopping">Đặt hàng</button>
+                </div>
+            </div>
+        </div>
+    </section>
     <footer id="footer"></footer>
     <script>
         load("#footer", "./template/footer.html")
@@ -399,6 +431,7 @@
     <script>
         AOS.init();
     </script>
+
 </body>
 
 </html>
