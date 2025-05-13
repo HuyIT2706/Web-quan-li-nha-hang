@@ -80,6 +80,16 @@
     .img-mobile{
         display: none;
     }
+    .order-detail-section {
+		padding: 16px;
+	}
+
+	.order-detail-flex {
+		gap: 16px;
+	}
+    .btn-submit_order{
+        font-size: 1.1rem;
+    }
 }
 
 /* Mobile */
@@ -87,6 +97,36 @@
     .img--pc{
         display: none;
     }
+    .order-detail-flex {
+		flex-direction: column;
+	}
+    .order-detail-section{
+        padding: 20px 10px;
+    }
+    .order-detail-section h2{
+        font-size: 2rem;
+    }
+    .order-detail-table th{
+        font-size: 1.2rem;
+        text-align: center;
+    }
+    .table-grid{
+        grid-template-columns: repeat(3,1fr);
+    }
+    .table{
+        padding: 18px 10px;
+    }
+    .btn--signup_mb{
+        padding: 25px;
+        cursor: pointer;
+    }
+    .order-detail-table td{
+        font-size: 1rem;
+        text-align: center;
+    }
+	.order-detail-summary {
+		margin-top: 20px;
+	}
     .title--mobile{
         width: 165px;
     }
