@@ -58,8 +58,8 @@
                 <nav class="header--nav">
                     <ul class="nav--ul">
                         <li><a href="./index.html" class="nav--link">Trang chủ</a></li>
-                        <li><a href="#!" class="nav--link" id="chooseMenuLink">Thực đơn</a></li>
-                        <li><a href="#tableModal" class="nav--link" id="chooseTableLink">Chọn bàn</a></li>
+                        <li><a href="javascript:void(0);" class="nav--link" id="chooseMenuLink">Thực đơn</a></li>
+                        <li><a href="javascript:void(0);" class="nav--link" id="chooseTableLink">Chọn bàn</a></li>
                         <li><a href="./contact.html" class="nav--link">Về chúng tôi</a></li>
                     </ul>
                 </nav>
@@ -84,13 +84,17 @@
                         <div class="account-dropdown">
                             <ul>
                                 <li class="account-dropdown__item">
-                                    <a href="#!" class="nav--info"><i class="fas fa-user"></i> Tài khoản của tôi</a>
+                                    <a href="javascript:void(0);" class="nav--info" onclick="handleInfo()"><i
+                                            class="fas fa-user"></i> Tài khoản của tôi</a>
+
                                 </li>
                                 <li class="account-dropdown__item">
-                                    <a href="#!" class="nav--info"> <i class="fas fa-shopping-bag"></i> Đơn hàng đã mua </a>
+                                    <a href="#!" class="nav--info"> <i class="fas fa-shopping-bag"></i> Đơn hàng đã mua
+                                    </a>
                                 </li>
                                 <li class="account-dropdown__item">
-                                    <a href="#!" class="nav--info"> <i class="fas fa-sign-out-alt"></i> Thoát tài khoản </a>
+                                    <a href="#!" class="nav--info"> <i class="fas fa-sign-out-alt"></i> Thoát tài khoản
+                                    </a>
                                 </li>
                             </ul>
                         </div>
@@ -113,9 +117,10 @@
                                     <img src="./assets/icons/arrow-left.svg" alt="" style="cursor: pointer;">
                                 </label>
                                 <li><a href="./index.html" class="nav--link nav--link-mb ">Trang chủ</a></li>
-                                <li><a href="#!" class="nav--link nav--link-mb" id="chooseMenuLinkMobile">Thực đơn</a>
+                                <li><a href="javascript:void(0);" class="nav--link nav--link-mb" id="chooseMenuLinkMobile">Thực đơn</a>
                                 </li>
-                                <li><a href="#tableModal" class="nav--link nav--link-mb" id="chooseTableLinkMobile">Chọn bàn</a></li>
+                                <li><a href="javascript:void(0);" class="nav--link nav--link-mb" id="chooseTableLinkMobile">Chọn
+                                        bàn</a></li>
                                 <li><a href="./contact.html" class="nav--link nav--link-mb">Về chúng tôi</a></li>
                             </ul>
                         </nav>
@@ -150,13 +155,16 @@
                         <div class="account-dropdown">
                             <ul>
                                 <li class="account-dropdown__item">
-                                    <a href="#!" class="nav--info"><i class="fas fa-user"></i> Tài khoản của tôi</a>
+                                    <a href="javascript: void(0);" class="nav--info" onclick="handleInfo()"><i
+                                            class="fas fa-user"></i> Tài khoản của tôi</a>
                                 </li>
                                 <li class="account-dropdown__item">
-                                    <a href="#!" class="nav--info"> <i class="fas fa-shopping-bag"></i> Đơn hàng đã mua </a>
+                                    <a href="#!" class="nav--info"> <i class="fas fa-shopping-bag"></i> Đơn hàng đã mua
+                                    </a>
                                 </li>
                                 <li class="account-dropdown__item">
-                                    <a href="#!" class="nav--info"> <i class="fas fa-sign-out-alt"></i> Thoát tài khoản </a>
+                                    <a href="#!" class="nav--info"> <i class="fas fa-sign-out-alt"></i> Thoát tài khoản
+                                    </a>
                                 </li>
                             </ul>
                         </div>
@@ -627,6 +635,32 @@
                     </div>
                 </div>
             </section>
+        </section>
+        <!-- Thông tin người dùng -->
+        <section>
+            <div class="container" id="container--info" style="display: none;">
+                <h2 class="info--title">Thông tin tài khoản của bạn</h2>
+
+                <form id="profile-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fullname">Họ và tên</label>
+                            <input type="text" id="fullname" name="fullname" value="" />
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Hạng</label>
+                            <input type="text" id="rank" name="rank" value="" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="rank">Số điện thoại</label>
+                        <input type="tel" id="phone" name="phone" value="" />
+                    </div>
+
+                    <button type="submit" class="save-btn">Lưu thay đổi</button>
+                </form>
+            </div>
         </section>
     </main>
     <footer id="footer"></footer>

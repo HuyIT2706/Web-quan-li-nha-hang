@@ -46,12 +46,15 @@ const filterMenu = document.getElementById("filter-menu");
 const heroTop = document.getElementById("hero-top");
 const heroMenu = document.getElementById("hero--bottom_menu");
 const containerInfo = document.getElementById("container--info");
+
 const handleCart = () => {
     homeContainer.style.display = "none";
     cartModalDark.style.display = "block";
     orderDetail.style.display = "none";
     filterMenu.style.display = "none";
     heroMenu.style.display = "none";
+    containerInfo.style.display = "none";
+
 
 
 };
@@ -73,7 +76,14 @@ const hadndleDatMua = () => {
     orderDetail.style.display = "block";
     cartModalDark.style.display = "none";
 }
-
+const handleInfo = () => {
+    homeContainer.style.display = "none";
+    filterMenu.style.display = "none";
+    heroMenu.style.display = "none";
+    cartModalDark.style.display = "none";
+    orderDetail.style.display = "none";
+    containerInfo.style.display = "block";
+}
 const tables = [
     { id: 1, name: "Bàn 1", status: "available" },
     { id: 2, name: "Bàn 2", status: "available" },
@@ -175,3 +185,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     closeChonban.onclick = () => modal.style.display = "none";
 });
+// info
+document.getElementById("profile-form")
+    .addEventListener("submit", function (event) {
+        event.preventDefault();
+        alert("Thông tin đã được lưu!");
+    });

@@ -116,6 +116,9 @@
     .table{
         padding: 18px 10px;
     }
+    .form-row{
+        flex-direction: column;
+    }
     .btn--signup_mb{
         padding: 25px;
         cursor: pointer;
