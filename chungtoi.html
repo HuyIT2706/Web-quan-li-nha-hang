@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+html_content = """<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -44,9 +44,6 @@
 
       <div class="about-img">
         <img src="assets/img/nha-hang-sang-trong-sai-gon-the-log-1024x682.jpg" alt="Restaurant image" />
-
-
-
       </div>
     </div>
   </section>
@@ -54,10 +51,54 @@
 
   <!-- ===== Footer Start ===== -->
   <footer class="footer">
-    <div class="container">
-      <p>&copy; 2025 Restaurant Management. All rights reserved.</p>
+    <div class="footer-container">
+      <div class="footer-col about">
+        <h3>VỀ ONE FOOD</h3>
+        <div class="footer-underline"></div>
+        <p>
+          One Food là thương hiệu thực phẩm hiện đại, đặt chất lượng và sức khỏe người tiêu dùng lên hàng đầu. Chúng tôi cam kết mang đến trải nghiệm ẩm thực an toàn, tiện lợi và phong phú.
+        </p>
+        <p>
+          Tầm nhìn của chúng tôi là trở thành đơn vị tiên phong trong ngành dịch vụ ẩm thực sạch tại Việt Nam.
+        </p>
+        <div class="footer-socials">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col contact">
+        <h3>LIÊN HỆ VỚI CHÚNG TÔI</h3>
+        <div class="footer-underline"></div>
+        <ul>
+          <li>
+            <span class="footer-icon"><i class="fas fa-map-marker-alt"></i></span>
+            <p>19T Tân Chánh Hiệp 18, Phường Tân Chánh Hiệp, Quận 12, TP Hồ Chí Minh</p>
+          </li>
+          <li>
+            <span class="footer-icon"><i class="fas fa-phone-alt"></i></span>
+            <p>0123 456 789 – 0987 654 321</p>
+          </li>
+          <li>
+            <span class="footer-icon"><i class="fas fa-envelope"></i></span>
+            <p>contact@onefood.vn</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer--bottom">
+      <p class="footer--bottom_banQuyen">©2025 One Food. All rights reserved.</p>
     </div>
   </footer>
   <!-- ===== Footer End ===== -->
 </body>
 </html>
+"""
+
+# Lưu file HTML ra thư mục /mnt/data để tải về
+output_path = Path("/mnt/data/about-us.html")
+output_path.write_text(html_content, encoding="utf-8")
+
+output_path.name

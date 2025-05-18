@@ -1,53 +1,88 @@
-<div class="container">
-  <div class="footer-container">
-    <div class="footer-col about">
-      <h3>VỀ CHÚNG TÔI</h3>
-      <div class="footer-underline"></div>
-      <p>One Food là thương hiệu được thành lập vào năm 2025 với tiêu chí đặt chất lượng sản phẩm lên hàng đầu.</p>
-      <div class="footer-socials">
-        <a href="#" class="footer-social"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="footer-social"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="footer-social"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#" class="footer-social"><i class="fab fa-whatsapp"></i></a>
-      </div>
-    </div>
-    <div class="footer-col links">
-      <h3>LIÊN KẾT</h3>
-      <div class="footer-underline"></div>
-      <ul>
-        <li><a href="#"><span>&#8594;</span> Về chúng tôi</a></li>
-        <li><a href="#"><span>&#8594;</span> Thực đơn</a></li>
-        <li><a href="#"><span>&#8594;</span> Điều khoản</a></li>
-        <li><a href="#"><span>&#8594;</span> Liên hệ</a></li>
-        <li><a href="#"><span>&#8594;</span> Tin tức</a></li>
-      </ul>
-    </div>
-    <div class="footer-col menu">
-      <h3>THỰC ĐƠN</h3>
-      <div class="footer-underline"></div>
-      <ul>
-        <li><a href="#"><span>&#8594;</span> Điểm tâm</a></li>
-        <li><a href="#"><span>&#8594;</span> Món chay</a></li>
-        <li><a href="#"><span>&#8594;</span> Món mặn</a></li>
-        <li><a href="#"><span>&#8594;</span> Nước uống</a></li>
-        <li><a href="#"><span>&#8594;</span> Tráng miệng</a></li>
-      </ul>
-    </div>
-    <div class="footer-col contact">
-      <h3>LIÊN HỆ</h3>
-      <div class="footer-underline"></div>
-      <ul>
-        <li><span class="footer-icon "><i class="fas fa-map-marker-alt"></i></span>
-          <p class="title--mobile">
-            19T Tân Chánh Hiệp 18, Phường Tân Chánh Hiệp, Quận 12, TP Hồ Chí Minh
-          </p> 
-        </li>
-        <li><span class="footer-icon"><i class="fas fa-phone-alt"></i></span>0123 456 789<br>0987 654 321</li>
-        <li><span class="footer-icon"><i class="fas fa-envelope"></i></span>abc@domain.com<br>infoabc@domain.com</li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer--bottom">
-    <p class="footer--bottom_banQuyen">©2025. All Rights Reserved</p>
-  </div>
-</div>
+footer_css = """
+.footer {
+  background-color: #f8f8f8;
+  padding: 40px 20px 20px;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-col {
+  flex: 1 1 250px;
+}
+
+.footer-col h3 {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.footer-underline {
+  width: 50px;
+  height: 3px;
+  background: #e67e22;
+  margin-bottom: 15px;
+}
+
+.footer p {
+  font-size: 1.4rem;
+  line-height: 1.6;
+}
+
+.footer-socials {
+  margin-top: 10px;
+}
+
+.footer-socials a {
+  margin-right: 10px;
+  font-size: 1.6rem;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.footer-socials a:hover {
+  color: #e67e22;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.footer-icon {
+  color: #e67e22;
+  font-size: 1.4rem;
+}
+
+.footer--bottom {
+  text-align: center;
+  padding-top: 20px;
+  font-size: 1.2rem;
+  color: #777;
+  border-top: 1px solid #ddd;
+  margin-top: 30px;
+}
+"""
+
+# Lưu CSS vào file
+css_output_path = Path("/mnt/data/footer.css")
+css_output_path.write_text(footer_css, encoding="utf-8")
+
+css_output_path.name
