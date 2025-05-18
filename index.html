@@ -11,7 +11,6 @@
     <link rel="apple-touch-icon" sizes="76x76" href="./assets/favicon/apple-icon-76x76.png">
     <link rel="apple-touch-icon" sizes="114x114" href="./assets/favicon/apple-icon-114x114.png">
     <link rel="apple-touch-icon" sizes="120x120" href="./assets/favicon/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="./assets/favicon/apple-icon-144x144.png">
     <link rel="apple-touch-icon" sizes="152x152" href="./assets/favicon/apple-icon-152x152.png">
     <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-icon-180x180.png">
     <link rel="icon" type="image/png" sizes="192x192" href="./assets/favicon/android-icon-192x192.png">
@@ -27,6 +26,7 @@
     <link rel="stylesheet" href="./assets/css/index.css">
     <link rel="stylesheet" href="./assets/css/responsize-header.css">
     <link rel="stylesheet" href="./assets/css/reponsize-index.css">
+    <link rel="stylesheet" href="./assets/css/toast.css">
     <!-- Font  -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -259,81 +259,8 @@
                             <h2 class="outMenu--top_title">Khám phá thực đơn của chúng tôi</h2>
                         </div>
                     </div>
-                    <div class="outMenu--list" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1000">
-                        <div class="outMenu--item">
-                            <img src="./assets/img/cha-que-chay.png" alt="Chả quế chay" class="food-card__image">
-                            <div class="food-card__content">
-                                <h3 class="food-card__title">Chả quế chay</h3>
-                                <p class="food-card__price">699.000 đ</p>
-                                <button class="food-card__order-btn">ĐẶT MÓN</button>
-                            </div>
-                        </div>
-                        <!-- item 2 -->
-                        <div class="outMenu--item">
-                            <img src="./assets/img/chan-gio-chien-gion-mam-thai.jpeg" alt="Chân giò chiên mắm"
-                                class="food-card__image">
-                            <div class="food-card__content">
-                                <h3 class="food-card__title">Chân giò chiên mắm thái</h3>
-                                <p class="food-card__price">499.000 đ</p>
-                                <button class="food-card__order-btn">ĐẶT MÓN</button>
-                            </div>
-                        </div>
-                        <!-- item 3 -->
-                        <div class="outMenu--item">
-                            <img src="./assets/img/nem-chay.png" alt="Nem chay" class="food-card__image">
-                            <div class="food-card__content">
-                                <h3 class="food-card__title">Nem chay</h3>
-                                <p class="food-card__price">199.000 đ</p>
-                                <button class="food-card__order-btn">ĐẶT MÓN</button>
-                            </div>
-                        </div>
-                        <!-- Item 4 -->
-                        <div class="outMenu--item">
-                            <img src="./assets/img/set_bun_ca.jpg" alt="Bún cá" class="food-card__image">
-                            <div class="food-card__content">
-                                <h3 class="food-card__title">Bún cá</h3>
-                                <p class="food-card__price">199.000 đ</p>
-                                <button class="food-card__order-btn">ĐẶT MÓN</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="outMenu--list" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="500">
-                        <div class="outMenu--item">
-                            <img src="./assets/img/cha-que-chay.png" alt="Chả quế chay" class="food-card__image">
-                            <div class="food-card__content">
-                                <h3 class="food-card__title">Chả quế chay</h3>
-                                <p class="food-card__price">699.000 đ</p>
-                                <button class="food-card__order-btn">ĐẶT MÓN</button>
-                            </div>
-                        </div>
-                        <!-- item 2 -->
-                        <div class="outMenu--item">
-                            <img src="./assets/img/chan-gio-chien-gion-mam-thai.jpeg" alt="Chân giò chiên mắm"
-                                class="food-card__image">
-                            <div class="food-card__content">
-                                <h3 class="food-card__title">Chân giò chiên mắm thái</h3>
-                                <p class="food-card__price">499.000 đ</p>
-                                <button class="food-card__order-btn">ĐẶT MÓN</button>
-                            </div>
-                        </div>
-                        <!-- item 3 -->
-                        <div class="outMenu--item">
-                            <img src="./assets/img/nem-chay.png" alt="Nem chay" class="food-card__image">
-                            <div class="food-card__content">
-                                <h3 class="food-card__title">Nem chay</h3>
-                                <p class="food-card__price">199.000 đ</p>
-                                <button class="food-card__order-btn">ĐẶT MÓN</button>
-                            </div>
-                        </div>
-                        <!-- Item 4 -->
-                        <div class="outMenu--item">
-                            <img src="./assets/img/set_bun_ca.jpg" alt="Bún cá" class="food-card__image">
-                            <div class="food-card__content">
-                                <h3 class="food-card__title">Bún cá</h3>
-                                <p class="food-card__price">199.000 đ</p>
-                                <button class="food-card__order-btn">ĐẶT MÓN</button>
-                            </div>
-                        </div>
+                    <div class="outMenu--list">
+                    
                     </div>
                     <div class="outMenu--actions">
                         <div class="outMenu--actions">
@@ -378,20 +305,14 @@
                 <div class="order-modal" id="orderModal">
                     <button class="order-modal__close" id="orderModalClose" aria-label="Đóng">&times;</button>
                     <div class="order-modal__img-wrap">
-                        <img src="./assets/img/chan-gio-chien-gion-mam-thai.jpeg" alt="Ảnh món ăn"
+                        <img src="" alt="Ảnh món ăn"
                             class="order-modal__img" id="orderModalImg">
                     </div>
                     <div class="order-modal__content">
                         <div class="order-modal__info">
-                            <h2 class="order-modal__title" id="orderModalTitle">Chân giò chiên mắm</h2>
-                            <div class="order-modal__price" id="orderModalPrice">299.000</div>
-                            <div class="order-modal__desc" id="orderModalDesc">Chân giò lợn đen chọn loại ngon, tỉ lệ
-                                nạc mỡ
-                                đều
-                                đặn, bếp xâm bì cẩn thận và ướp thật ngon, chiên vàng giòn nổi bóng, khi ăn chấm mắm
-                                chua
-                                ngọt
-                                cay cay cực kỳ ngon miệng.</div>
+                            <h2 class="order-modal__title" id="orderModalTitle"></h2>
+                            <div class="order-modal__price" id="orderModalPrice"></div>
+                            <div class="order-modal__desc" id="orderModalDesc"></div>
                         </div>
                         <div class="order-modal__qty-row">
                             <span class="order-quantity">Số lượng :</span>
@@ -407,10 +328,10 @@
                         </div>
                         <div class="order-modal__footer">
                             <div class="order-modal__total">Thành tiền:
-                                <span id="orderModalTotal">299.000</span>
+                                <span id="orderModalTotal"></span>
                             </div>
-                            <button class="order-modal__order-btn" id="orderModalOrderBtn">
-                                Đặt hàng ngay <i class="fas fa-shopping-basket"></i>
+                            <button class="order-modal__order-btn" id="orderModalOrderBtn" onclick="handdlAddCard()">
+                                Đặt hàng  <i class="fas fa-shopping-basket"></i>
                             </button>
                         </div>
                     </div>
@@ -568,7 +489,6 @@
                             aria-label="Đóng">&times;</button>
                     </div>
                     <div class="table-grid" id="tableGrid">
-                        <!-- Các bàn sẽ được render ở đây bằng JS -->
                     </div>
                 </div>
             </section>
@@ -576,26 +496,55 @@
             <section id="qrModal" class="modal">
                 <div class="modal-content" style="max-width: 400px;">
                     <div class="tableModal-top">
-                        <h2 class="tableModal--title">Mã QR Bàn</h2>
+                        <h2 class="tableModal--title">Xác nhận đặt bàn</h2>
                         <button class="order-modal__close modal--close-qr" id="qrModalClose"
                             aria-label="Đóng">&times;</button>
                     </div>
-                    <div class="qr-container">
-                        <div id="qrcode"></div>
-                        <p style="margin-top: 20px; font-size: 1.5rem; color: red;">Quét mã QR để đăng nhập và đặt món
-                        </p>
+                    <div class="qr-container" style="text-align: center; padding: 20px;">
+                        <p style="font-size: 1.6rem; margin-bottom: 20px; color: red;">Bạn muốn đặt bàn này?</p>
+                        <div style="display: flex; gap: 10px; justify-content: space-between;">
+                            <button class="btn btn--chonban" onclick="handleDatBan()">Đặt bàn</button>
+                            <button class="btn btn--chonban" onclick="handleChonBan()">Chọn bàn</button>
+                        </div>
                     </div>
                 </div>
             </section>
         </section>
+        <!-- Thông tin người dùng -->
+        <section>
+            <div class="container" id="container--info" style="display: none;">
+                <h2 class="info--title">Thông tin tài khoản của bạn</h2>
+
+                <form id="profile-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fullname">Họ và tên</label>
+                            <input type="text" id="fullname" name="fullname" value="" />
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Hạng</label>
+                            <input type="text" id="rank" name="rank" value="" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="rank">Số điện thoại</label>
+                        <input type="tel" id="phone" name="phone" value="" />
+                    </div>
+
+                    <button type="submit" class="save-btn">Lưu thay đổi</button>
+                </form>
+            </div>
+        </section>
     </main>
     <footer id="footer"></footer>
+    <div id="toast"></div>
     <script>
         load("#footer", "./template/footer.html")
     </script>
     <script src="./assets/js/index.js"></script>
+    <script src="./assets/js/toast.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script>
         AOS.init();
     </script>

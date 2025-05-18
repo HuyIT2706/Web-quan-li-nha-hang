@@ -28,6 +28,8 @@
     <link rel="stylesheet" href="./assets/css/login.css">
     <link rel="stylesheet" href="./assets/css/responsize-header.css">
     <link rel="stylesheet" href="./assets/css/reponsize-index.css">
+    <link rel="stylesheet" href="./assets/css/toast.css">
+
     <!-- Font  -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -132,32 +134,32 @@
         <div class="container">
             <div class="container--login" id="container">
                 <div class="form-container sign-up">
-                    <form>
+                    <form method="POST" action="../BE/register.php">
                         <h2 class="title--signUp">Tạo tài khoản</h2>
-                        <input type="text" placeholder="Họ">
-                        <input type="text" placeholder="Tên">
-                        <input type="tel" placeholder="Số điện thoại">
-                        <button>Đăng Kí</button>
+                        <input type="text" name="lastname" placeholder="Họ" required />
+                        <input type="text" name="firstname" placeholder="Tên" required />
+                        <input type="tel" name="phone" placeholder="Số điện thoại" required />
+                        <button type="submit">Đăng Kí</button>
                     </form>
                 </div>
                 <div class="form-container sign-in">
-                    <form action="./index-login.html">
+                    <form method="POST" action="../BE/login.php">
                         <h2 class="title--signUp">Đăng nhập</h2>
-                        <input type="tel" placeholder="Số điện thoại">
-                        <button>Đăng Nhập</button>
+                        <input type="tel" name="phone" placeholder="Số điện thoại" required>
+                        <button type="submit">Đăng Nhập</button>
                     </form>
                 </div>
                 <div class="toggle-container">
                     <div class="toggle">
                         <div class="toggle-panel toggle-left">
-                            <h2 class="title--signUp" >Chào mừng  quý khách trở lại!</h2>
+                            <h2 class="title--signUp">Chào mừng quý khách trở lại!</h2>
                             <p>Hãy nhập số điện thoại để tích điểm</p>
                             <button class="hidden" id="login">Đăng nhập</button>
                         </div>
                         <div class="toggle-panel toggle-right">
-                            <h2 class="title--signUp" >Xin chào quý khách!</h2>
+                            <h2 class="title--signUp">Xin chào quý khách!</h2>
                             <p>Hãy đăng kí thành viên để nhận nhiều chương trình khuyến mãi của chúng tôi</p>
-                            <button class="hidden" id="register" >Đăng kí</button>
+                            <button class="hidden" id="register">Đăng kí</button>
                         </div>
                     </div>
                 </div>
@@ -165,20 +167,13 @@
         </div>
     </main>
     <footer id="footer"></footer>
+    <div id="toast"></div>
     <script>
         load("#footer", "./template/footer.html")
     </script>
     <script src="./assets/js/login.js"></script>
-    <script>
-        // Get table ID from URL if exists
-        const urlParams = new URLSearchParams(window.location.search);
-        const tableId = urlParams.get('table');
-        
-        if (tableId) {
-            // Store table ID in localStorage for use after login
-            localStorage.setItem('selectedTable', tableId);
-        }
-    </script>
+    <script src="./assets/js/toast.js"></script>
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
