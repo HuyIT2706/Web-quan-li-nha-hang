@@ -1,13 +1,14 @@
-html_content = """<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About Us - Restaurant</title>
 
   <!-- Reset & Base CSS -->
-  <link rel="stylesheet" href="../../assets/css/reset.css" />
-  <link rel="stylesheet" href="../../assets/css/index.css" />
+  <link rel="stylesheet" href="./assets/css/reset.css" />
+  <link rel="stylesheet" href="./assets/css/index.css" />
 
   <!-- Responsive CSS -->
   <link rel="stylesheet" href="../../assets/css/responsive-header.css" />
@@ -16,6 +17,7 @@ html_content = """<!DOCTYPE html>
   <!-- FontAwesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
+
 <body>
   <!-- ===== Header Start ===== -->
   <header class="header">
@@ -30,8 +32,10 @@ html_content = """<!DOCTYPE html>
     <div class="container about-grid">
       <div class="about-text">
         <h2>Where To Find Us</h2>
-        <p>The Patio Time Restaurant is nestled on Tan Chanh Hiep Street, right in the heart of District 12, Ho Chi Minh City.</p>
-        <p>Step inside and you’ll discover more than just food – it’s an experience where comfort meets culinary delight.</p>
+        <p>The Patio Time Restaurant is nestled on Tan Chanh Hiep Street, right in the heart of District 12, Ho Chi Minh
+          City.</p>
+        <p>Step inside and you’ll discover more than just food – it’s an experience where comfort meets culinary
+          delight.</p>
 
         <ul class="about-info">
           <li><i class="fas fa-map-marker-alt"></i> 19T Tân Chánh Hiệp 18, Phường Tân Chánh Hiệp, Quận 12</li>
@@ -56,16 +60,18 @@ html_content = """<!DOCTYPE html>
         <h3>VỀ ONE FOOD</h3>
         <div class="footer-underline"></div>
         <p>
-          One Food là thương hiệu thực phẩm hiện đại, đặt chất lượng và sức khỏe người tiêu dùng lên hàng đầu. Chúng tôi cam kết mang đến trải nghiệm ẩm thực an toàn, tiện lợi và phong phú.
+          One Food là thương hiệu thực phẩm hiện đại, đặt chất lượng và sức khỏe người tiêu dùng lên hàng đầu. Chúng tôi
+          cam kết mang đến trải nghiệm ẩm thực an toàn, tiện lợi và phong phú.
         </p>
         <p>
           Tầm nhìn của chúng tôi là trở thành đơn vị tiên phong trong ngành dịch vụ ẩm thực sạch tại Việt Nam.
         </p>
         <div class="footer-socials">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="icon-circle"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="icon-circle"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="icon-circle"><i class="fab fa-youtube"></i></a>
         </div>
+
       </div>
 
       <div class="footer-col contact">
@@ -94,11 +100,5 @@ html_content = """<!DOCTYPE html>
   </footer>
   <!-- ===== Footer End ===== -->
 </body>
+
 </html>
-"""
-
-# Lưu file HTML ra thư mục /mnt/data để tải về
-output_path = Path("/mnt/data/about-us.html")
-output_path.write_text(html_content, encoding="utf-8")
-
-output_path.name

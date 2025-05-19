@@ -126,468 +126,61 @@
         </div>
     </header>
     <main>
-        <!-- Lọc menu -->
-        <section>
-            <section class="menu-filter" id="filter-menu">
-                <div class="container">
-                    <a href="#menu-section" class="menu-filter__categories">
-                        <div class="menu-filter__category menu-filter__category--active">
-                            <img src="./assets/img/products/combo-vitquay-va-goivit.jpeg" alt="All" />
-                            <span>All</span>
-                        </div>
-                        <div class="menu-filter__category">
-                            <img src="./assets/img/products/lau_thai.jpg" alt="Lẩu" />
-                            <span>Lẩu</span>
-                        </div>
-                        <div class="menu-filter__category">
-                            <img src="./assets/img/products/sup-bao-ngu-hai-sam.jpeg" alt="Súp" />
-                            <span>Súp</span>
-                        </div>
-                        <div class="menu-filter__category">
-                            <img src="./assets/img/products/cha-que-chay.png" alt="Đồ chay" />
-                            <span>Món chay</span>
-                        </div>
-                        <div class="menu-filter__category">
-                            <img src="./assets/img/products/set_ca_tam.jpg" alt="Hải sản" />
-                            <span>Hải sản</span>
-                        </div>
-                        <div class="menu-filter__category">
-                            <img src="./assets/img/products/rau-xao-ngu-sac.png" alt="Rau" />
-                            <span>Rau</span>
-                        </div>
-                        <div class="menu-filter__category">
-                            <img src="./assets/img/products/thit-quay.jpeg" alt="Món nướng" />
-                            <span>Món nướng</span>
-                        </div>
-                        <div class="menu-filter__category">
-                            <img src="./assets/img/products/nuoc-ep-dau-tay.jpg" alt="Nước uống" />
-                            <span>Nước uống</span>
-                        </div>
-                    </a>
-                    <div class="menu-filter__search-row">
-                        <input type="text" class="menu-filter__search" placeholder="Tìm kiếm sản phẩm..." />
-                        <div class="menu-filter__sort-wrap">
-                            <label for="menu-filter__sort">Sắp xếp theo giá:</label>
-                            <select id="menu-filter__sort" class="menu-filter__sort">
-                                <option value="default">Mặc định</option>
-                                <option value="asc">Giá tăng dần</option>
-                                <option value="desc">Giá giảm dần</option>
-                            </select>
-                        </div>
-                    </div>
+
+        <head>
+            <meta charset="UTF-8">
+            <title>Về Chúng Tôi - One Food</title>
+            <link rel="stylesheet" href="chungtoi.css">
+        </head>
+
+        <body>
+            <div class="page">
+                <section class="info">
+                    <p class="info__description">
+                        The Patio Time Restaurant is ...
+                    </p>
+                    <ul class="info__list">
+                        <li class="info__item">
+                            <i class="info__icon fa fa-map-marker"></i>
+                            197 Tân Chánh Hiệp 18, Quận 12
+                        </li>
+                        <li class="info__item">
+                            <i class="info__icon fa fa-envelope"></i>
+                            thanhtutc8@gmail.com
+                        </li>
+                        <li class="info__item">
+                            <i class="info__icon fa fa-phone"></i>
+                            0123 456 789 | 0987 654 321
+                        </li>
+                    </ul>
+                    <a href="#" class="info__map-link">View in Google Maps</a>
+                </section>
+
+                <div class="image">
+                    <img src="restaurant.jpg" alt="Nhà hàng" class="image__photo image__photo--responsive">
                 </div>
-            </section>
-            <div class="container">
-                <div class="hero--bottom" id="hero--bottom_menu" data-aos="fade-up" data-aos-duration="1000"
-                    style="display: none;">
-                    <img src="./assets/img/img-bg.png" alt="" class="hero--bottom-img img--pc">
-                    <img src="./assets/img/img-bg-mb.png" alt="" class="hero--bottom-img img-mobile">
-                    <div class="hero--list">
-                        <div class="card-text">
-                            <h3>ĐỒ TƯƠI TRONG NGÀY</h3>
-                            <p>Cho tất cả món</p>
-                        </div>
-                        <div class="card-text">
-                            <h3>SẢN PHẨM AN TOÀN</h3>
-                            <p>Cam kết chất lượng</p>
-                        </div>
-                        <div class="card-text">
-                            <h3>HOÀN LẠI TIỀN</h3>
-                            <p>Nếu không hài lòng</p>
-                        </div>
-                    </div>
-                </div>
+
+                <section class="about">
+                    <h2 class="about__title">Về ONE FOOD</h2>
+                    <p class="about__description">One Food là thương hiệu...</p>
+                </section>
+
+                <section class="contact">
+                    <h2 class="contact__title">Liên Hệ Với Chúng Tôi</h2>
+                    <p class="contact__item">
+                        <i class="contact__icon fa fa-map-marker"></i>
+                        197 Tân Chánh Hiệp 18...
+                    </p>
+                    <p class="contact__item">
+                        <i class="contact__icon fa fa-phone"></i>
+                        0123 456 789 | 0987 654 321
+                    </p>
+                    <p class="contact__item">
+                        <i class="contact__icon fa fa-envelope"></i>
+                        contact@onefood.vn
+                    </p>
+                </section>
             </div>
-        </section>
-        <!-- Main index -->
-        <section class="index--main" style="display: block;" id="home--container">
-            <!-- Hero -->
-            <section class="hero" id="hero-top" style="display: block;">
-                <div class="container">
-                    <div class="hero--container">
-                        <div class="hero--right">
-                            <div class="slider-container">
-                                <div class="slider">
-                                    <div class="slide">
-                                        <img src="./assets/img/banner-1.png" alt="Slide 1">
-                                    </div>
-                                    <div class="slide">
-                                        <img src="./assets/img/banner-2.png" alt="Slide 2">
-                                    </div>
-                                    <div class="slide">
-                                        <img src="./assets/img/banner-4.png" alt="Slide 3">
-                                    </div>
-                                    <div class="slide">
-                                        <img src="./assets/img/banner-5.png" alt="Slide 4">
-                                    </div>
-                                </div>
-                                <div class="slider-dots">
-                                    <span class="dot active"></span>
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hero--bottom" data-aos="fade-up" data-aos-duration="1000">
-                        <img src="./assets/img/img-bg.png" alt="" class="hero--bottom-img img--pc">
-                        <img src="./assets/img/img-bg-mb.png" alt="" class="hero--bottom-img img-mobile">
-                        <div class="hero--list">
-                            <div class="card-text">
-                                <h3>ĐỒ TƯƠI TRONG NGÀY</h3>
-                                <p>Cho tất cả món</p>
-                            </div>
-                            <div class="card-text">
-                                <h3>SẢN PHẨM AN TOÀN</h3>
-                                <p>Cam kết chất lượng</p>
-                            </div>
-                            <div class="card-text">
-                                <h3>HOÀN LẠI TIỀN</h3>
-                                <p>Nếu không hài lòng</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Out Menu -->
-            <section class="outMenu">
-                <div class="container">
-                    <div class="outMenu--container">
-                        <div class="outMenu--top" id="menu-section">
-                            <h2 class="outMenu--top_title">Khám phá thực đơn của chúng tôi</h2>
-                        </div>
-                    </div>
-                    <div class="outMenu--list" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1000">
-                        <div class="outMenu--item">
-                            <img src="./assets/img/cha-que-chay.png" alt="Chả quế chay" class="food-card__image">
-                            <div class="food-card__content">
-                                <h3 class="food-card__title">Chả quế chay</h3>
-                                <p class="food-card__price">699.000 đ</p>
-                                <button class="food-card__order-btn">ĐẶT MÓN</button>
-                            </div>
-                        </div>
-                        <!-- item 2 -->
-                        <div class="outMenu--item">
-                            <img src="./assets/img/chan-gio-chien-gion-mam-thai.jpeg" alt="Chân giò chiên mắm"
-                                class="food-card__image">
-                            <div class="food-card__content">
-                                <h3 class="food-card__title">Chân giò chiên mắm thái</h3>
-                                <p class="food-card__price">499.000 đ</p>
-                                <button class="food-card__order-btn">ĐẶT MÓN</button>
-                            </div>
-                        </div>
-                        <!-- item 3 -->
-                        <div class="outMenu--item">
-                            <img src="./assets/img/nem-chay.png" alt="Nem chay" class="food-card__image">
-                            <div class="food-card__content">
-                                <h3 class="food-card__title">Nem chay</h3>
-                                <p class="food-card__price">199.000 đ</p>
-                                <button class="food-card__order-btn">ĐẶT MÓN</button>
-                            </div>
-                        </div>
-                        <!-- Item 4 -->
-                        <div class="outMenu--item">
-                            <img src="./assets/img/set_bun_ca.jpg" alt="Bún cá" class="food-card__image">
-                            <div class="food-card__content">
-                                <h3 class="food-card__title">Bún cá</h3>
-                                <p class="food-card__price">199.000 đ</p>
-                                <button class="food-card__order-btn">ĐẶT MÓN</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="outMenu--list" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="500">
-                        <div class="outMenu--item">
-                            <img src="./assets/img/cha-que-chay.png" alt="Chả quế chay" class="food-card__image">
-                            <div class="food-card__content">
-                                <h3 class="food-card__title">Chả quế chay</h3>
-                                <p class="food-card__price">699.000 đ</p>
-                                <button class="food-card__order-btn">ĐẶT MÓN</button>
-                            </div>
-                        </div>
-                        <!-- item 2 -->
-                        <div class="outMenu--item">
-                            <img src="./assets/img/chan-gio-chien-gion-mam-thai.jpeg" alt="Chân giò chiên mắm"
-                                class="food-card__image">
-                            <div class="food-card__content">
-                                <h3 class="food-card__title">Chân giò chiên mắm thái</h3>
-                                <p class="food-card__price">499.000 đ</p>
-                                <button class="food-card__order-btn">ĐẶT MÓN</button>
-                            </div>
-                        </div>
-                        <!-- item 3 -->
-                        <div class="outMenu--item">
-                            <img src="./assets/img/nem-chay.png" alt="Nem chay" class="food-card__image">
-                            <div class="food-card__content">
-                                <h3 class="food-card__title">Nem chay</h3>
-                                <p class="food-card__price">199.000 đ</p>
-                                <button class="food-card__order-btn">ĐẶT MÓN</button>
-                            </div>
-                        </div>
-                        <!-- Item 4 -->
-                        <div class="outMenu--item">
-                            <img src="./assets/img/set_bun_ca.jpg" alt="Bún cá" class="food-card__image">
-                            <div class="food-card__content">
-                                <h3 class="food-card__title">Bún cá</h3>
-                                <p class="food-card__price">199.000 đ</p>
-                                <button class="food-card__order-btn">ĐẶT MÓN</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="outMenu--actions">
-                        <div class="outMenu--actions">
-                            <div class="list--action_page">
-                                <div class="action_page--item">1</div>
-                                <div class="action_page--item">2</div>
-                                <div class="action_page--item">3</div>
-                                <div class="action_page--item">4</div>
-                                <div class="action_page--item">5</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- Đăng kí nhận tin -->
-            <section class="subride" data-aos="zoom-in-down">
-                <div class="container">
-                    <div class="subride--container">
-                        <div class="hero--bottom">
-                            <img src="./assets/img/img-bg.png" alt="" class="hero--bottom-img img--pc">
-                            <img src="./assets/img/img-bg-mb.png" alt="" class="hero--bottom-img img-mobile">
-                            <div class="hero--list subride--info">
-                                <div class="newsletter-content">
-                                    <div class="left-info">
-                                        <h2 class="newsletter-title">Đăng ký nhận tin</h2>
-                                        <p class="newsletter-description">Nhận thông tin mới nhất từ chúng tôi</p>
-                                    </div>
-                                    <div class="newsletter-form">
-                                        <input type="email" class="newsletter-input"
-                                            placeholder="Enter your email address" required>
-                                        <button class="newsletter-btn">→</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- Container Chi tiet -->
-            <section class="container--chitet" id="container-product">
-                <div class="order-modal__overlay" id="orderModalOverlay"></div>
-                <div class="order-modal" id="orderModal">
-                    <button class="order-modal__close" id="orderModalClose" aria-label="Đóng">&times;</button>
-                    <div class="order-modal__img-wrap">
-                        <img src="./assets/img/chan-gio-chien-gion-mam-thai.jpeg" alt="Ảnh món ăn"
-                            class="order-modal__img" id="orderModalImg">
-                    </div>
-                    <div class="order-modal__content">
-                        <div class="order-modal__info">
-                            <h2 class="order-modal__title" id="orderModalTitle">Chân giò chiên mắm</h2>
-                            <div class="order-modal__price" id="orderModalPrice">299.000</div>
-                            <div class="order-modal__desc" id="orderModalDesc">Chân giò lợn đen chọn loại ngon, tỉ lệ
-                                nạc mỡ
-                                đều
-                                đặn, bếp xâm bì cẩn thận và ướp thật ngon, chiên vàng giòn nổi bóng, khi ăn chấm mắm
-                                chua
-                                ngọt
-                                cay cay cực kỳ ngon miệng.</div>
-                        </div>
-                        <div class="order-modal__qty-row">
-                            <span class="order-quantity">Số lượng :</span>
-                            <div class="order-modal__qty">
-                                <button class="order-modal__qty-btn" id="orderModalMinus">-</button>
-                                <input type="number" id="orderModalQty" value="1" min="1">
-                                <button class="order-modal__qty-btn" id="orderModalPlus">+</button>
-                            </div>
-                        </div>
-                        <div class="order-modal__note-row">
-                            <p for="orderModalNote" class="order-quantity">Ghi chú : </p>
-                            <textarea id="orderModalNote" placeholder="Nhập thông tin cần lưu ý..."></textarea>
-                        </div>
-                        <div class="order-modal__footer">
-                            <div class="order-modal__total">Thành tiền:
-                                <span id="orderModalTotal">299.000</span>
-                            </div>
-                            <button class="order-modal__order-btn" id="orderModalOrderBtn">
-                                Đặt hàng ngay <i class="fas fa-shopping-basket"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-        </section>
-        <!-- Cart product -->
-        <section>
-            <section id="cartModalDark" style="display: none;">
-                <div class="container cart-dark-container">
-                    <table class="cart-dark-table">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>Món</th>
-                                <th>Đơn giá</th>
-                                <th>Số lượng</th>
-                                <th>Tổng tiền</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <button class="cart-dark-remove">
-                                        <img src="./assets/icons/Delete.svg" alt="">
-                                    </button>
-                                </td>
-                                <td class="cart-dark-food" data-label="Món">
-                                    <img src="./assets/img/nem-chay.png" alt="Crispy chicken breasts">
-                                    <span>Nem chay</span>
-                                </td>
-                                <td data-label="Đơn giá">199.000</td>
-                                <td data-label="Số lượng">
-                                    <div class="cart-dark-qty">
-                                        <button>-</button>
-                                        <input type="number" value="1" min="1">
-                                        <button>+</button>
-                                    </div>
-                                </td>
-                                <td data-label="Tổng tiền">199.000</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <button class="cart-dark-remove">
-                                        <img src="./assets/icons/Delete.svg" alt="">
-                                    </button>
-                                </td>
-                                <td class="cart-dark-food" data-label="Món">
-                                    <img src="./assets/img/set_bun_ca.jpg" alt="Bún cá">
-                                    <span>Bún cá</span>
-                                </td>
-                                <td data-label="Đơn giá">59.000</td>
-                                <td data-label="Số lượng">
-                                    <div class="cart-dark-qty">
-                                        <button>-</button>
-                                        <input type="number" value="1" min="1">
-                                        <button>+</button>
-                                    </div>
-                                </td>
-                                <td data-label="Tổng tiền">59.000</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="container">
-                    <div class="totalproduct--main">
-                        <div class="totalproduct--top">
-                            <p class="totalproduct--title">Total</p>
-                        </div>
-                        <div class="totalproduct--main_container">
-                            <div class="totalproduct--main-info">
-                                <p class="totalprodut--main_title">Số sản phẩm: </p>
-                                <span class="totalproduct--main-amout">9</span>
-                            </div>
-                            <div class="totalproduct--main-info">
-                                <p class="totalprodut--main_title">Phí vận chuyển: </p>
-                                <span class="totalproduct--main-amout">Miễn phí</span>
-                            </div>
-                            <div class="totalproduct--main-info">
-                                <p class="totalprodut--main_title">Tổng cộng: </p>
-                                <span class="totalproduct--main-amout">2.070.000 VND</span>
-                            </div>
-                        </div>
-                        <div class="totalproduct--actions">
-                            <a href="#filter-menu" class="btn btn--shopping" onclick="hadndleQuayLai()">Quay lại</a>
-                            <a href="#order-detail" class="btn btn--shopping" onclick="hadndleDatMua()">Đặt hàng</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </section>
-        <!-- Chi tiết đơn hàng -->
-        <section>
-            <section class="container order-detail-section " id="order-detail">
-                <h2>Chi tiết đơn hàng:</h2>
-                <div class="order-status">Đơn hàng số: <b>75</b> - Trạng thái: <span>Đã tiếp nhận</span></div>
-                <div class="order-detail-flex">
-                    <div class="order-detail-table-wrap">
-                        <table class="order-detail-table">
-                            <thead>
-                                <tr>
-                                    <th>Tên sản phẩm</th>
-                                    <th>Số lượng</th>
-                                    <th>Giá</th>
-                                    <th>Tổng tiền</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Nem chay</td>
-                                    <td>1</td>
-                                    <td>199.000 VND</td>
-                                    <td>199.000 VND</td>
-                                </tr>
-                                <tr>
-                                    <td>Bún cá</td>
-                                    <td>1</td>
-                                    <td>99.000 VND</td>
-                                    <td>99.000 VND</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="order-detail-summary">
-                        <h3 class="order-detail-summary__top">Total</h3>
-                        <div class="order-method">Bàn: 1</div>
-                        <div class="order-total">Tổng tiền: <span>298.000 VND</span></div>
-                        <div class="order-promo">Áp khuyến mãi: </div>
-                        <input type="text" placeholder="Mã khuyến mại">
-                        <div class="order-final">
-                            Thành tiền: <span>270.000 VND</span>
-                        </div>
-                        <div class="order-method">Chọn phương thức thanh toán:</div>
-                        <select>
-                            <option>Thẻ ngân hàng</option>
-                            <option>Tiền mặt</option>
-                        </select>
-                        <div class="order-detail--actions">
-                            <a href="#filter-menu" class="btn btn-submit_order" onclick="handleDatThemMon()">Đặt thêm
-                                món</a>
-                            <button class="btn btn-submit_order">Thanh toán</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </section>
-        <!-- Sơ đồ bàn -->
-        <section>
-            <section id="tableModal" class="modal">
-                <div class="modal-content">
-                    <div class="tableModal-top">
-                        <h2 class="tableModal--title">Sơ đồ nhà hàng</h2>
-                        <button class="order-modal__close modal--close-chonban" id="orderModalClose"
-                            aria-label="Đóng">&times;</button>
-                    </div>
-                    <div class="table-grid" id="tableGrid">
-                        <!-- Các bàn sẽ được render ở đây bằng JS -->
-                    </div>
-                </div>
-            </section>
-            <!-- QR Code Modal -->
-            <section id="qrModal" class="modal">
-                <div class="modal-content" style="max-width: 400px;">
-                    <div class="tableModal-top">
-                        <h2 class="tableModal--title">Mã QR Bàn</h2>
-                        <button class="order-modal__close modal--close-qr" id="qrModalClose"
-                            aria-label="Đóng">&times;</button>
-                    </div>
-                    <div class="qr-container">
-                        <div id="qrcode"></div>
-                        <p style="margin-top: 20px; font-size: 1.5rem; color: red;">Quét mã QR để đăng nhập và đặt món
-                        </p>
-                    </div>
-                </div>
-            </section>
-        </section>
     </main>
     <footer id="footer"></footer>
     <script>

@@ -6,6 +6,42 @@ html {
 	font-size: 62.5%;
 	scroll-behavior: smooth;
 }
+.page {
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.info__list {
+  list-style: none;
+  padding: 0;
+}
+
+.info__item {
+  margin-bottom: 8px;
+}
+
+.image__photo {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+  margin: 20px 0;
+}
+
+.about__title,
+.contact__title {
+  font-size: 26px;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.about__description,
+.contact__item,
+.info__description {
+  font-size: 18px;
+  line-height: 1.6;
+}
 
 body {
 	font-family: "Plus Jakarta Sans", serif;
@@ -717,7 +753,7 @@ a {
 	font-size: 1.6rem;
 	font-family: Plus Jakarta Sans;
 	margin-top: 10px;
-	background: none;
+	background-color: #120101;
 	resize: none;
 }
 
@@ -1024,32 +1060,44 @@ a {
 /* index.css */
 
 
-/* Footer Styles */
-
 .footer {
-  background-color: #f8f8f8;
-  padding: 40px 20px 20px;
-  font-family: Arial, sans-serif;
-  color: #333;
+  background-color: #000;
+  color: #fff;
+  padding-top: 40px;
+  font-size: 18px;
 }
 
+/* Container chia 2 cột cân đều */
 .footer-container {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
-  gap: 30px;
+  align-items: flex-start;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 40px 40px;
+  gap: 60px;
+  flex-wrap: wrap;
 }
 
+/* Mỗi cột chiếm 50% không gian */
 .footer-col {
-  flex: 1 1 250px;
+  flex: 1;
+  min-width: 300px;
+}
+
+/* Đảm bảo canh trái hợp lý */
+.footer-col.about {
+  text-align: left;
+}
+
+.footer-col.contact {
+  text-align: left; /* DÙNG left cho đồng bộ & dễ đọc */
 }
 
 .footer-col h3 {
-  font-size: 1.6rem;
-  margin-bottom: 10px;
+  font-size: 1.8rem;
   text-transform: uppercase;
+  margin-bottom: 10px;
 }
 
 .footer-underline {
@@ -1059,26 +1107,14 @@ a {
   margin-bottom: 15px;
 }
 
-.footer p {
+/* Văn bản trong footer */
+.footer p,
+.footer-col ul li {
   font-size: 1.4rem;
   line-height: 1.6;
 }
 
-.footer-socials {
-  margin-top: 10px;
-}
-
-.footer-socials a {
-  margin-right: 10px;
-  font-size: 1.6rem;
-  color: #333;
-  transition: color 0.3s ease;
-}
-
-.footer-socials a:hover {
-  color: #e67e22;
-}
-
+/* Danh sách liên hệ */
 .footer-col ul {
   list-style: none;
   padding: 0;
@@ -1086,27 +1122,51 @@ a {
 }
 
 .footer-col ul li {
-  margin-bottom: 10px;
-  font-size: 1.4rem;
   display: flex;
   align-items: flex-start;
   gap: 10px;
+  margin-bottom: 12px;
 }
 
+/* Icon */
 .footer-icon {
-  color: #e67e22;
   font-size: 1.4rem;
+  color: #e67e22;
 }
 
+/* Icon mạng xã hội */
+.footer-socials {
+  margin-top: 15px;
+}
+
+.icon-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  font-size: 20px;
+  color: #fff;
+  margin-right: 10px;
+  transition: all 0.3s;
+}
+
+.icon-circle:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+/* Dòng cuối */
 .footer--bottom {
   text-align: center;
   padding-top: 20px;
   font-size: 1.2rem;
   color: #777;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #444;
   margin-top: 30px;
 }
-
 
 
 /* Responsive */
