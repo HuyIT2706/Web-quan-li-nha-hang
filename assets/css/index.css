@@ -1161,6 +1161,32 @@ a {
 .container--info:focus-within .account-dropdown {
     display: block;
 }
+
+/* main */
+
+
+.order-card {
+    border: 1px solid #ddd;
+    padding: 16px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+    background: #fff;
+}
+.order-card__image {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+}
+.order-card__info {
+    display: flex;
+    flex-direction: column;
+}
+.order-card__footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
 /* Footer */
 .footer-container {
 	display: grid;
