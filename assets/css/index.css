@@ -44,9 +44,11 @@ html {
 }
 
 body {
-	font-family: "Plus Jakarta Sans", serif;
-	background: var(--color-dark);
-}
+      font-family: "Plus Jakarta Sans", sans-serif;
+      background: var(--color-dark);
+      color: white;
+    }
+
 
 /* Root */
 :root {
