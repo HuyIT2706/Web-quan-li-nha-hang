@@ -1064,7 +1064,7 @@ a {
   background-color: #000;
   color: #fff;
   padding-top: 40px;
-  font-size: 18px;
+  font-size: 22px; /* tăng từ 20px */
 }
 
 /* Container chia 2 cột cân đều */
@@ -1086,32 +1086,29 @@ a {
 }
 
 /* Đảm bảo canh trái hợp lý */
-.footer-col.about {
+.footer-col.about,
+.footer-col.contact {
   text-align: left;
 }
 
-.footer-col.contact {
-  text-align: left; /* DÙNG left cho đồng bộ & dễ đọc */
-}
-
 .footer-col h3 {
-  font-size: 1.8rem;
+  font-size: 2.6rem; /* tăng từ 2.2rem */
   text-transform: uppercase;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .footer-underline {
   width: 50px;
-  height: 3px;
+  height: 4px;
   background: #e67e22;
-  margin-bottom: 15px;
+  margin-bottom: 18px;
 }
 
 /* Văn bản trong footer */
 .footer p,
 .footer-col ul li {
-  font-size: 1.4rem;
-  line-height: 1.6;
+  font-size: 1.8rem; /* tăng từ 1.6rem */
+  line-height: 1.9;
 }
 
 /* Danh sách liên hệ */
@@ -1124,32 +1121,32 @@ a {
 .footer-col ul li {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  margin-bottom: 12px;
+  gap: 12px;
+  margin-bottom: 16px; /* tăng khoảng cách */
 }
 
 /* Icon */
 .footer-icon {
-  font-size: 1.4rem;
+  font-size: 1.8rem; /* tăng từ 1.6rem */
   color: #e67e22;
 }
 
 /* Icon mạng xã hội */
 .footer-socials {
-  margin-top: 15px;
+  margin-top: 20px;
 }
 
 .icon-circle {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
+  width: 52px; /* tăng kích thước */
+  height: 52px;
   border: 2px solid #fff;
   border-radius: 50%;
-  font-size: 20px;
+  font-size: 24px; /* tăng từ 22px */
   color: #fff;
-  margin-right: 10px;
+  margin-right: 14px;
   transition: all 0.3s;
 }
 
@@ -1161,9 +1158,9 @@ a {
 /* Dòng cuối */
 .footer--bottom {
   text-align: center;
-  padding-top: 20px;
-  font-size: 1.2rem;
-  color: #777;
+  padding-top: 28px;
+  font-size: 1.6rem; /* tăng từ 1.4rem */
+  color: #888;
   border-top: 1px solid #444;
   margin-top: 30px;
 }
@@ -1176,7 +1173,7 @@ a {
     }
 }
 .order-detail-summary__top {
-	font-size: 2rem;
+	font-size: 20px;
 	text-align: center;
 	font-weight: 600;
 	margin-bottom: 20px;
@@ -1316,12 +1313,16 @@ a {
 }
 /* Footer */
 .footer-container {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	column-gap: 40px;
-	row-gap: 30px;
-	padding: 40px 0 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px 40px;
+  gap: 60px;
+  flex-wrap: wrap;
 }
+
 
 .footer-col {
 	display: flex;
