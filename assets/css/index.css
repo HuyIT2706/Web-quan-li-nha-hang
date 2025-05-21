@@ -1162,31 +1162,130 @@ a {
     display: block;
 }
 
-/* main */
-
-
-.order-card {
-    border: 1px solid #ddd;
-    padding: 16px;
-    margin: 10px;
-    border-radius: 8px;
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+/* --- Đơn hàng đã mua (getOrders.html) --- */
+.orders-section {
+    margin: 32px auto;
+    max-width: 800px;
     background: #fff;
-}
-.order-card__image {
-    width: 80px;
-    height: 80px;
     border-radius: 8px;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    padding: 24px 18px 32px 18px;
 }
-.order-card__info {
-    display: flex;
-    flex-direction: column;
+.orders-section h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 2px;
 }
-.order-card__footer {
-    display: flex;
-    justify-content: space-between;
+.orders-section p {
+    color: #555;
+    font-size: 15px;
+    margin-bottom: 18px;
+}
+#orders-list {
     margin-top: 10px;
 }
+.order-card {
+    background: #fafbfc;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    margin-bottom: 22px;
+    padding: 16px 12px 12px 12px;
+}
+.order-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+.order-item:last-child {
+    border-bottom: none;
+}
+.order-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid #eee;
+    margin-right: 12px;
+}
+.order-item > div:first-child {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.order-item b {
+    font-size: 16px;
+    font-weight: 600;
+}
+.order-item .fa-pen {
+    font-size: 13px;
+    margin-right: 3px;
+}
+.order-item div {
+    font-size: 14px;
+}
+.order-item .order-note {
+    color: #888;
+    font-size: 13px;
+    margin: 2px 0 0 0;
+}
+.order-item .order-qty {
+    font-size: 13px;
+    color: #444;
+}
+.order-item > div:last-child {
+    color: #d32f2f;
+    font-weight: 500;
+    min-width: 90px;
+    text-align: right;
+}
+.order-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 12px;
+}
+.order-status-badge {
+    background: #ff9800;
+    color: #fff;
+    padding: 4px 14px;
+    border-radius: 16px;
+    font-size: 13px;
+    font-weight: 500;
+    display: inline-block;
+}
+.order-table-badge {
+    margin-left: 10px;
+    background: #f5f5f5;
+    color: #333;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 13px;
+    display: inline-block;
+}
+.order-total {
+    font-weight: 700;
+    font-size: 17px;
+    color: #d32f2f;
+}
+@media (max-width: 600px) {
+    .orders-section {
+        padding: 10px 2vw 18px 2vw;
+    }
+    .order-item img {
+        width: 44px;
+        height: 44px;
+    }
+    .order-item b {
+        font-size: 14px;
+    }
+    .order-total {
+        font-size: 15px;
+    }
+}
+
 /* Footer */
 .footer-container {
 	display: grid;
