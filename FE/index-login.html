@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="57x57" href="./assets/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="./assets/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./assets/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="./assets/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./assets/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="./assets/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="./assets/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="./assets/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="./assets/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="./assets/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./assets/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="./assets/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!-- CSS -->
+    <link rel="stylesheet" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="./assets/css/index.css">
+    <link rel="stylesheet" href="./assets/css/responsize-header.css">
+    <link rel="stylesheet" href="./assets/css/reponsize-index.css">
+    <link rel="stylesheet" href="./assets/css/toast.css">
+
+    <!-- Font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+        rel="stylesheet">
+    <!-- Atisition -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/animate.css" />
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <script src="./assets/js/style.js"></script>
+    <title>One Food</title>
+</head>
+
+<body>
+    <header id="header">
+        <div class="container">
+            <!-- PC -->
+            <div class="header--container pc">
+                <!-- Logo -->
+                <a href="./index.html">
+                    <figure class="header--logo">
+                        <img src="./assets/img/logo.svg" alt="One Food Logo">
+                        <p class="logo--title">ne Food</p>
+                    </figure>
+                </a>
+                <!-- nav -->
+                <nav class="header--nav">
+                    <ul class="nav--ul">
+                        <li><a href="./index.html" class="nav--link">Trang chủ</a></li>
+                        <li><a href="javascript:void(0);" class="nav--link" id="chooseMenuLink">Thực đơn</a></li>
+                        <li><a href="javascript:void(0);" class="nav--link" id="chooseTableLink">Chọn bàn</a></li>
+                        <li><a href="./contact.html" class="nav--link">Về chúng tôi</a></li>
+                    </ul>
+                </nav>
+                <!-- Actions -->
+                <div class="actions">
+                    <div class="header__search" onclick="openCart()">
+                        <div class="btn btn--search">
+                            <svg width=20px xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 576 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                                <path fill="#fafafa"
+                                    d="M0 24C0 10.7 10.7 0 24 0L69.5 0c22 0 41.5 12.8 50.6 32l411 0c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3l-288.5 0 5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5L488 336c13.3 0 24 10.7 24 24s-10.7 24-24 24l-288.3 0c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5L24 48C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="container--info">
+                        <div class="btn btn--signup">
+                            <svg width="15px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                <path fill="#ffffff"
+                                    d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464l349.5 0c-8.9-63.3-63.3-112-129-112l-91.4 0c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304l91.4 0C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7L29.7 512C13.3 512 0 498.7 0 482.3z">
+                                </path>
+                            </svg>
+                        </div>
+                        <!-- info -->
+                        <div class="account-dropdown">
+                            <ul>
+                                <li class="account-dropdown__item">
+                                    <a href="javascript:void(0);" class="nav--info" onclick="handleInfo()"><i
+                                            class="fas fa-user"></i> Tài khoản của tôi</a>
+
+                                </li>
+                                <li class="account-dropdown__item">
+                                    <a href="javascript:void(0);" class="nav--info"> <i class="fas fa-shopping-bag"></i>
+                                        Đơn
+                                        hàng đã mua
+                                    </a>
+                                </li>
+                                <li class="account-dropdown__item">
+                                    <a href="javascript:void(0);" class="nav--info" onclick="logoutAcount()"> <i
+                                            class="fas fa-sign-out-alt"></i> Thoát tài khoản
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- MObile & Tablet -->
+            <div class="header--container mobile-tablet">
+                <!-- nav -->
+                <div>
+                    <label class="container-tab" for="action-nav">
+                        <img src="./assets/icons/icon-tab.svg" alt="">
+                    </label>
+                    <input type="checkbox" name="" id="action-nav" class="action-nav" hidden>
+                    <label for="action-nav" class="overload"></label>
+                    <div class="menu-draw">
+                        <nav class="header--nav">
+                            <ul class="nav--ul nav--ul--mobile">
+                                <label for="action-nav" style="padding: 8px 8px 8px 0px;">
+                                    <img src="./assets/icons/arrow-left.svg" alt="" style="cursor: pointer;">
+                                </label>
+                                <li><a href="./index.html" class="nav--link nav--link-mb ">Trang chủ</a></li>
+                                <li><a href="javascript:void(0);" class="nav--link nav--link-mb"
+                                        id="chooseMenuLinkMobile">Thực đơn</a>
+                                </li>
+                                <li><a href="javascript:void(0);" class="nav--link nav--link-mb"
+                                        id="chooseTableLinkMobile">Chọn
+                                        bàn</a></li>
+                                <li><a href="./contact.html" class="nav--link nav--link-mb">Về chúng tôi</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <!-- Logo -->
+                <a href="./index.html">
+                    <figure class="header--logo">
+                        <img src="./assets/img/logo.svg" alt="One Food Logo">
+                        <p class="logo--title">ne Food</p>
+                    </figure>
+                </a>
+                <!-- Actions -->
+                <div class="actions">
+                    <div class="header__search" onclick="openCart()">
+                        <div class="btn btn--search" aria-label="Tìm kiếm">
+                            <svg width=20px xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 576 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                                <path fill="#fafafa"
+                                    d="M0 24C0 10.7 10.7 0 24 0L69.5 0c22 0 41.5 12.8 50.6 32l411 0c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3l-288.5 0 5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5L488 336c13.3 0 24 10.7 24 24s-10.7 24-24 24l-288.3 0c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5L24 48C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="container--info">
+                        <div class="btn btn--signup">
+                            <svg width="15px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                <path fill="#ffffff"
+                                    d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464l349.5 0c-8.9-63.3-63.3-112-129-112l-91.4 0c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304l91.4 0C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7L29.7 512C13.3 512 0 498.7 0 482.3z">
+                                </path>
+                            </svg>
+                        </div>
+                        <!-- info -->
+                        <div class="account-dropdown">
+                            <ul>
+                                <li class="account-dropdown__item">
+                                    <a href="javascript:void(0);" class="nav--info" onclick="handleInfo()"><i
+                                            class="fas fa-user"></i> Tài khoản của tôi</a>
+
+                                </li>
+                                <li class="account-dropdown__item">
+                                    <a href="javascript:void(0);" class="nav--info"> <i class="fas fa-shopping-bag"></i>
+                                        Đơn
+                                        hàng đã mua
+                                    </a>
+                                </li>
+                                <li class="account-dropdown__item">
+                                    <a href="javascript:void(0);" class="nav--info" onclick="logoutAcount()"> <i
+                                            class="fas fa-sign-out-alt"></i> Thoát tài khoản
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <!-- Lọc menu -->
+        <section>
+            <section class="menu-filter" id="filter-menu">
+                <div class="container">
+                    <a href="#menu-section" class="menu-filter__categories">
+                        <div class="menu-filter__category menu-filter__category--active">
+                            <img src="./assets/img/products/lau-bao-ngu.jpg" alt="All" />
+                            <span>All</span>
+                        </div>
+                        <div class="menu-filter__category">
+                            <img src="./assets/img/products/lau-2-ngan.jpg" alt="Lẩu" />
+                            <span>Lẩu</span>
+                        </div>
+                        <div class="menu-filter__category">
+                            <img src="./assets/img/products/sup-rau-cu.jpg" alt="Súp" />
+                            <span>Súp</span>
+                        </div>
+                        <div class="menu-filter__category">
+                            <img src="./assets/img/products/chay-cha-que.png" alt="Đồ chay" />
+                            <span>Món chay</span>
+                        </div>
+                        <div class="menu-filter__category">
+                            <img src="./assets/img/products/haisai-ca-tam-chien.jpg" alt="Hải sản" />
+                            <span>Hải sản</span>
+                        </div>
+                        <div class="menu-filter__category">
+                            <img src="./assets/img/products/rau-salad-ca-chua.jpg" alt="Rau" />
+                            <span>Rau</span>
+                        </div>
+                        <div class="menu-filter__category">
+                            <img src="./assets/img/products/nuong-ga.png" alt="Món nướng" />
+                            <span>Món nướng</span>
+                        </div>
+                        <div class="menu-filter__category">
+                            <img src="./assets/img/products/nuocuong-pepsi.jpg" alt="Nước uống" />
+                            <span>Nước uống</span>
+                        </div>
+                    </a>
+                    <div class="menu-filter__search-row">
+                        <input type="text" class="menu-filter__search" placeholder="Tìm kiếm sản phẩm..." />
+                        <div class="menu-filter__sort-wrap">
+                            <label for="menu-filter__sort">Sắp xếp theo giá:</label>
+                            <select id="menu-filter__sort" class="menu-filter__sort">
+                                <option value="default">Mặc định</option>
+                                <option value="asc">Giá tăng dần</option>
+                                <option value="desc">Giá giảm dần</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="container">
+                <div class="hero--bottom" id="hero--bottom_menu" data-aos="fade-up" data-aos-duration="1000"
+                    style="display: none;">
+                    <img src="./assets/img/img-bg.png" alt="" class="hero--bottom-img img--pc">
+                    <img src="./assets/img/img-bg-mb.png" alt="" class="hero--bottom-img img-mobile">
+                    <div class="hero--list">
+                        <div class="card-text">
+                            <h3>ĐỒ TƯƠI TRONG NGÀY</h3>
+                            <p>Cho tất cả món</p>
+                        </div>
+                        <div class="card-text">
+                            <h3>SẢN PHẨM AN TOÀN</h3>
+                            <p>Cam kết chất lượng</p>
+                        </div>
+                        <div class="card-text">
+                            <h3>HOÀN LẠI TIỀN</h3>
+                            <p>Nếu không hài lòng</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Main index -->
+        <section class="index--main" style="display: block;" id="home--container">
+            <!-- Hero -->
+            <section class="hero" id="hero-top" style="display: block;">
+                <div class="container">
+                    <div class="hero--container">
+                        <div class="hero--right">
+                            <div class="slider-container">
+                                <div class="slider">
+                                    <div class="slide">
+                                        <img src="./assets/img/banner-1.png" alt="Slide 1">
+                                    </div>
+                                    <div class="slide">
+                                        <img src="./assets/img/banner-2.png" alt="Slide 2">
+                                    </div>
+                                    <div class="slide">
+                                        <img src="./assets/img/banner-4.png" alt="Slide 3">
+                                    </div>
+                                    <div class="slide">
+                                        <img src="./assets/img/banner-5.png" alt="Slide 4">
+                                    </div>
+                                </div>
+                                <div class="slider-dots">
+                                    <span class="dot active"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero--bottom" data-aos="fade-up" data-aos-duration="1000">
+                        <img src="./assets/img/img-bg.png" alt="" class="hero--bottom-img img--pc">
+                        <img src="./assets/img/img-bg-mb.png" alt="" class="hero--bottom-img img-mobile">
+                        <div class="hero--list">
+                            <div class="card-text">
+                                <h3>ĐỒ TƯƠI TRONG NGÀY</h3>
+                                <p>Cho tất cả món</p>
+                            </div>
+                            <div class="card-text">
+                                <h3>SẢN PHẨM AN TOÀN</h3>
+                                <p>Cam kết chất lượng</p>
+                            </div>
+                            <div class="card-text">
+                                <h3>HOÀN LẠI TIỀN</h3>
+                                <p>Nếu không hài lòng</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Out Menu -->
+            <section class="outMenu">
+                <div class="container">
+                    <div class="outMenu--container">
+                        <div class="outMenu--top" id="menu-section">
+                            <h2 class="outMenu--top_title">Khám phá thực đơn của chúng tôi</h2>
+                        </div>
+                    </div>
+                    <div class="outMenu--list"></div>
+                    <div class="outMenu--actions">
+                        <div class="outMenu--actions">
+                            <div class="list--action_page">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Đăng kí nhận tin -->
+            <section class="subride" data-aos="zoom-in-down">
+                <div class="container">
+                    <div class="subride--container">
+                        <div class="hero--bottom">
+                            <img src="./assets/img/img-bg.png" alt="" class="hero--bottom-img img--pc">
+                            <img src="./assets/img/img-bg-mb.png" alt="" class="hero--bottom-img img-mobile">
+                            <div class="hero--list subride--info">
+                                <div class="newsletter-content">
+                                    <div class="left-info">
+                                        <h2 class="newsletter-title">Đăng ký nhận tin</h2>
+                                        <p class="newsletter-description">Nhận thông tin mới nhất từ chúng tôi</p>
+                                    </div>
+                                    <div class="newsletter-form">
+                                        <input type="email" class="newsletter-input"
+                                            placeholder="Enter your email address" required>
+                                        <button class="newsletter-btn">→</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Container Chi tiet -->
+            <!-- <section class="container--chitet" id="container-product">
+                <div class="order-modal__overlay" id="orderModalOverlay"></div>
+                <div class="order-modal" id="orderModal">
+                    <button class="order-modal__close" id="orderModalClose" aria-label="Đóng">&times;</button>
+                    <div class="order-modal__img-wrap">
+                        <img src="./assets/img/chan-gio-chien-gion-mam-thai.jpeg" alt="Ảnh món ăn"
+                            class="order-modal__img" id="orderModalImg">
+                    </div>
+                    <div class="order-modal__content">
+                        <div class="order-modal__info">
+                            <h2 class="order-modal__title" id="orderModalTitle">Chân giò chiên mắm</h2>
+                            <div class="order-modal__price" id="orderModalPrice">299.000</div>
+                            <div class="order-modal__desc" id="orderModalDesc">Chân giò lợn đen chọn loại ngon, tỉ lệ
+                                nạc mỡ
+                                đều
+                                đặn, bếp xâm bì cẩn thận và ướp thật ngon, chiên vàng giòn nổi bóng, khi ăn chấm mắm
+                                chua
+                                ngọt
+                                cay cay cực kỳ ngon miệng.</div>
+                        </div>
+                        <div class="order-modal__qty-row">
+                            <span class="order-quantity">Số lượng :</span>
+                            <div class="order-modal__qty">
+                                <button class="order-modal__qty-btn" id="orderModalMinus">-</button>
+                                <input type="number" id="orderModalQty" value="1" min="1">
+                                <button class="order-modal__qty-btn" id="orderModalPlus">+</button>
+                            </div>
+                        </div>
+                        <div class="order-modal__note-row">
+                            <p for="orderModalNote" class="order-quantity">Ghi chú : </p>
+                            <textarea id="orderModalNote" placeholder="Nhập thông tin cần lưu ý..."></textarea>
+                        </div>
+                        <div class="order-modal__footer">
+                            <div class="order-modal__total">Thành tiền:
+                                <span id="orderModalTotal">299.000</span>
+                            </div>
+                            <button class="order-modal__order-btn" id="orderModalOrderBtn">
+                                Đặt hàng ngay <i class="fas fa-shopping-basket"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section> -->
+
+        </section>
+        <!-- Cart product -->
+        <section>
+            <section id="cartModalDark" style="display: none;">
+                <div class="container cart-dark-container">
+                    <table class="cart-dark-table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Món</th>
+                                <th>Đơn giá</th>
+                                <th>Số lượng</th>
+                                <th>Tổng tiền</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- <tr>
+                                <td>
+                                    <button class="cart-dark-remove">
+                                        <img src="./assets/icons/Delete.svg" alt="">
+                                    </button>
+                                </td>
+                                <td class="cart-dark-food" data-label="Món">
+                                    <img src="./assets/img/nem-chay.png" alt="Crispy chicken breasts">
+                                    <span>Nem chay</span>
+                                </td>
+                                <td data-label="Đơn giá">199.000</td>
+                                <td data-label="Số lượng">
+                                    <div class="cart-dark-qty">
+                                        <button>-</button>
+                                        <input type="number" value="1" min="1">
+                                        <button>+</button>
+                                    </div>
+                                </td>
+                                <td data-label="Tổng tiền">199.000</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button class="cart-dark-remove">
+                                        <img src="./assets/icons/Delete.svg" alt="">
+                                    </button>
+                                </td>
+                                <td class="cart-dark-food" data-label="Món">
+                                    <img src="./assets/img/set_bun_ca.jpg" alt="Bún cá">
+                                    <span>Bún cá</span>
+                                </td>
+                                <td data-label="Đơn giá">59.000</td>
+                                <td data-label="Số lượng">
+                                    <div class="cart-dark-qty">
+                                        <button>-</button>
+                                        <input type="number" value="1" min="1">
+                                        <button>+</button>
+                                    </div>
+                                </td>
+                                <td data-label="Tổng tiền">59.000</td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="container">
+                    <div class="totalproduct--main">
+                        <div class="totalproduct--top">
+                            <p class="totalproduct--title">Total</p>
+                        </div>
+                        <div class="totalproduct--main_container">
+                            <div class="totalproduct--main-info">
+                                <p class="totalprodut--main_title">Số sản phẩm: </p>
+                                <span class="totalproduct--main-amout"></span>
+                            </div>
+                            <div class="totalproduct--main-info">
+                                <p class="totalprodut--main_title">Tổng cộng: </p>
+                                <span class="totalproduct--main-amout"></span>
+                            </div>
+                        </div>
+                        <div class="totalproduct--actions">
+                            <a href="#filter-menu" class="btn btn--shopping" onclick="hadndleQuayLai()">Quay lại</a>
+                            <a href="#title-detail" class="btn btn--shopping" onclick="hadndleDatMua()">Đặt hàng</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+        <!-- Chi tiết đơn hàng -->
+        <section>
+            <section class="container order-detail-section " id="order-detail">
+                <h2 id="title-detail">Chi tiết đơn hàng:</h2>
+                <div class="order-status"></div>
+                <div class="order-detail-flex">
+                    <div class="order-detail-table-wrap">
+                        <table class="order-detail-table">
+                            <thead>
+                                <tr>
+                                    <th>Tên sản phẩm</th>
+                                    <th>Số lượng</th>
+                                    <th>Giá</th>
+                                    <th>Tổng tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="order-detail-summary">
+                        <h3 class="order-detail-summary__top">Total</h3>
+                        <div class="order-method">Bàn: 1</div>
+                        <div class="order-total">Tổng tiền: <span>298.000 VND</span></div>
+                        <div class="order-promo">Áp khuyến mãi: </div>
+                        <input type="text" placeholder="Mã khuyến mại">
+                        <div class="order-final">
+                            Thành tiền: <span>270.000 VND</span>
+                        </div>
+                        <div class="order-method">Chọn phương thức thanh toán:</div>
+                        <select>
+                            <option>Thẻ ngân hàng</option>
+                            <option>Tiền mặt</option>
+                        </select>
+                        <div class="order-detail--actions">
+                            <a href="#filter-menu" class="btn btn-submit_order" onclick="handleDatThemMon()">Đặt thêm
+                                món</a>
+                            <button class="btn btn-submit_order">Thanh toán</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+        <!-- Sơ đồ bàn -->
+        <section>
+            <section id="tableModal" class="modal">
+                <div class="modal-content">
+                    <div class="tableModal-top">
+                        <h2 class="tableModal--title">Sơ đồ nhà hàng</h2>
+                        <button class="order-modal__close modal--close-chonban" id="orderModalClose"
+                            aria-label="Đóng">&times;</button>
+                    </div>
+                    <div class="table-grid" id="tableGrid">
+                    </div>
+                </div>
+            </section>
+        </section>
+        <!-- Thông tin người dùng -->
+        <section>
+            <div class="container" id="container--info" style="display: none;">
+                <h2 class="info--title">Thông tin tài khoản của bạn</h2>
+
+                <form id="profile-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fullname">Họ và tên</label>
+                            <input type="text" id="fullname" name="fullname" value="" />
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Hạng</label>
+                            <input type="text" id="rank" name="rank" value="" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="rank">Số điện thoại</label>
+                        <input type="tel" id="phone" name="phone" value="" />
+                    </div>
+
+                    <button type="submit" class="save-btn">Lưu thay đổi</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer id="footer"></footer>
+    <div id="toast"></div>
+    <div id="modal-root"></div>
+
+    <script>
+        load("#footer", "./template/footer.html")
+    </script>
+    <script src="./assets/js/index.js"></script>
+    <script src="./assets/js/toast.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
+</body>
+
+</html>

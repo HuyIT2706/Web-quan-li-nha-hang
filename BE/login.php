@@ -16,11 +16,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['rank_id'] = $user['rank_id'];
         $_SESSION['user'] = $user;
 
-        echo json_encode([
-            'status' => 'success',
-            'message' => 'Đăng nhập thành công!',
-            'redirect' => '../FE/index-login.html'
-        ]);
+        // Kiểm tra xem có thông tin bàn trong URL không
+        $tableId = $_POST['table'] ?? null;
+        $isReserve = $_POST['reserve'] ?? false;
+
+        if ($tableId) {
+            if ($isReserve) {
+                echo json_encode([
+                    'status' => 'success',
+                    'message' => 'Đăng nhập thành công!',
+                    'user_id' => $user['user_id'],
+                    'redirect' => '../FE/index-login.html?table=' . $tableId . '&reserve=true'
+                ]);
+            } else {
+                $_SESSION['selected_table_id'] = $tableId;
+                echo json_encode([
+                    'status' => 'success',
+                    'message' => 'Đăng nhập thành công!',
+                    'user_id' => $user['user_id'],
+                    'redirect' => '../FE/index-login.html'
+                ]);
+            }
+        } else {
+            echo json_encode([
+                'status' => 'success',
+                'message' => 'Đăng nhập thành công!',
+                'user_id' => $user['user_id'],
+                'redirect' => '../FE/index-login.html'
+            ]);
+        }
     } else {
         echo json_encode([
             'status' => 'error',
