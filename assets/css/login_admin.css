@@ -1,0 +1,83 @@
+/* login_admin */
+.admin-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+}
+
+.login-box {
+    background-color: #f6f6f2;
+    padding: 80px;
+    border-radius: 50px;
+    text-align: center;
+    width: 500px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.login-box h2 {
+    font-size: 38px;
+    font-weight: 800;
+    color: #e7832c;
+    font-family: 'Libre Bodoni', serif;
+    margin-bottom: 28px;
+    text-align: center;
+    letter-spacing: 1.5px;
+    text-shadow: 0 4px 18px rgba(231, 131, 44, 0.10), 0 1px 0 #d38e0e;
+    transition: color 0.2s;
+    background: linear-gradient(90deg, #cac8c4 60%, #d8ba4d 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.login-box label {
+    font-size: 18px;
+    font-weight: 600;
+    color: #574c3f;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    display: block;
+    margin-bottom: 0px;
+    text-align: left;
+}
+
+.login-box input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 15px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.login-box button {
+    background-color: #e7832c;
+    color: white;
+    border: none;
+    padding: 10px 80px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    box-shadow: 0 2px 8px rgba(231, 131, 44, 0.15);
+}
+
+.login-box button:hover {
+    background-color: #be7161;
+    transform: scale(1.05);
+}
+
+.login-box button:active {
+    transform: scale(0.97);
+}
+
+.login-logo {
+    width: 100px;
+    margin-bottom: 10px;
+}
+
+body {
+    background: url('/assets/img/background_admin') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
