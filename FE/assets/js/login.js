@@ -95,3 +95,28 @@ document.querySelector('.sign-in form').addEventListener('submit', async (e) => 
     }
 });
 
+const phoneInputs = document.querySelectorAll('.phone-input');
+const errorMessages = document.querySelectorAll('.sign-in__error');
+const forms = [document.getElementById('signinForm'), document.getElementById('signupForm')];
+phoneInputs.forEach((input, index) => {
+    input.addEventListener('input', function () {
+        const phoneNumber = this.value.replace(/\D/g, '');
+        if (phoneNumber.length !== 10) {
+            errorMessages[index].style.display = 'block';
+            this.style.borderColor = 'red';
+        } else {
+            errorMessages[index].style.display = 'none';
+            this.style.borderColor = '';
+        }
+    });
+});
+forms.forEach((form, index) => {
+    form.addEventListener('submit', function (e) {
+        const phoneNumber = phoneInputs[index].value.replace(/\D/g, '');
+        if (phoneNumber.length !== 10) {
+            e.preventDefault();
+            errorMessages[index].style.display = 'block';
+            phoneInputs[index].style.borderColor = 'red';
+        }
+    });
+});

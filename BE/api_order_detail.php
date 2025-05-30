@@ -9,6 +9,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 $user_id = $_SESSION['user_id'];
 
+// Lấy tất cả đơn hàng pending của user
 $sql = "SELECT order_id, table_id, total_amount, status, order_date
         FROM orders
         WHERE user_id = ? AND status = 'pending'

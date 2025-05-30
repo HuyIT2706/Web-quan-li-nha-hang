@@ -112,10 +112,10 @@ const fetchProductById = async id => {
     return res.json();
 };
 // call api checkin
-const  checkUserAndTable = async () => {
+const checkUserAndTable = async () => {
     const res = await fetch('http://localhost/webnhahang/BE/checkin.php', {
         method: 'GET',
-        credentials: 'include', 
+        credentials: 'include',
     });
     const data = await res.json();
     if (!data.logged_in) {
@@ -127,14 +127,14 @@ const  checkUserAndTable = async () => {
     }
 }
 // call api chi tiet don han
-const  fetchAllPendingOrders = async () =>  {
+const fetchAllPendingOrders = async () => {
     const res = await fetch('http://localhost/webnhahang/BE/api_order_detail.php', {
         credentials: 'include'
     });
     return await res.json();
 }
 // call api cart
-const  fetchCart = async () => {
+const fetchCart = async () => {
     const res = await fetch('http://localhost/webnhahang/BE/api_cart.php', {
         credentials: 'include'
     });
@@ -330,7 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 message: 'Bạn cần đăng nhập để chọn bàn!',
                 type: 'warning'
             });
-            return; 
+            return;
         }
         const currentTableId = localStorage.getItem('table_id');
         if (currentTableId) {
@@ -342,7 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         message: 'Bạn đã chọn bàn và có sản phẩm trong giỏ, không thể chọn lại bàn!',
                         type: 'warning'
                     });
-                    return; 
+                    return;
                 } else {
                     const modal = document.getElementById('tableModal');
                     modal.style.display = 'block';
@@ -460,7 +460,7 @@ const updateTableStatus = async (tableId, status, tableName, actionWord) => {
 
         closeOrderModal();
         fetchAndRenderTables();
-        
+
     } catch (error) {
         console.error('Error:', error);
         toast({
@@ -474,7 +474,7 @@ const updateTableStatus = async (tableId, status, tableName, actionWord) => {
 const handdlAddCard = async (items) => {
     const userId = localStorage.getItem('user_id');
     const tableId = localStorage.getItem('table_id');
-    
+
     if (!userId) {
         toast({
             title: 'Lỗi',
@@ -494,7 +494,7 @@ const handdlAddCard = async (items) => {
     try {
         const currentCart = await fetchCart();
         const existingItem = currentCart.find(item => item.product_id === items[0].product_id);
-        
+
         if (existingItem) {
             const newQuantity = existingItem.quantity + items[0].quantity;
             const response = await fetch('http://localhost/webnhahang/BE/api_cart_update.php', {
@@ -551,7 +551,7 @@ const handdlAddCard = async (items) => {
     }
 };
 
-const  hadndleDatMua = async () => {
+const hadndleDatMua = async () => {
     const data = await fetchAllPendingOrders();
     renderAllPending(data);
     orderDetail.style.display = 'block';
@@ -582,7 +582,7 @@ const renderCart = (cartItems) => {
             <td data-label="Tổng tiền">${(item.price * item.quantity).toLocaleString('vi-VN')}</td>
         </tr>
     `).join('');
-    
+
     const totalQty = cartItems.reduce((sum, i) => sum + Number(i.quantity), 0);
     const totalAmount = cartItems.reduce((sum, i) => sum + Number(i.price) * Number(i.quantity), 0);
     document.querySelector('.totalproduct--main-amout').textContent = totalQty;
@@ -612,7 +612,7 @@ document.querySelector('.cart-dark-table').addEventListener('click', async funct
             credentials: 'include',
             body: 'order_item_id=' + encodeURIComponent(orderItemId)
         });
-        openCart(); 
+        openCart();
     }
 });
 document.querySelector('.cart-dark-table').addEventListener('click', async function (e) {
@@ -631,7 +631,7 @@ document.querySelector('.cart-dark-table').addEventListener('click', async funct
         });
         const data = await res.json();
         if (data.success) {
-            openCart(); 
+            openCart();
         } else {
             alert(data.message || 'Lỗi cập nhật số lượng');
         }
@@ -642,6 +642,9 @@ const renderAllPending = (data) => {
         alert(data.message || 'Không tìm thấy đơn hàng');
         return;
     }
+    const rankName = localStorage.getItem('rank_name');
+    const discount = parseFloat(localStorage.getItem('discount'));
+    // Tìm đơn hàng đầu tiên có sản phẩm
     const firstOrderObj = data.orders.find(orderObj => orderObj.items && orderObj.items.length > 0);
     if (!firstOrderObj) {
         alert('Không có sản phẩm nào trong các đơn hàng pending');
@@ -655,11 +658,9 @@ const renderAllPending = (data) => {
         completed: 'đã hoàn thành'
     };
     const statusVN = statusMap[order.status] || order.status;
-
     document.querySelector('.order-status').innerHTML =
         `Bàn số: <b>${order.table_id}</b> - Trạng thái: <span>${statusVN}</span>`;
-
-        document.querySelectorAll('.order-method')[0].innerHTML = `Bàn: ${order.table_id}`;
+    document.querySelectorAll('.order-method')[0].innerHTML = `Bàn: ${order.table_id}`;
     const tbody = document.querySelector('#order-detail .order-detail-table tbody');
     tbody.innerHTML = allItems.map(item => `
         <tr>
@@ -669,12 +670,72 @@ const renderAllPending = (data) => {
             <td>${Number(item.total).toLocaleString('vi-VN')} VND</td>
         </tr>
     `).join('');
+    const sumAmount = allItems.reduce((sum, item) => sum + Number(item.total), 0);
+    const totalAmount = sumAmount - ((sumAmount * discount) / 100);
+    totalAmountGlobal = Math.round(totalAmount); // Lưu lại để dùng khi thanh toán
 
-    const totalAmount = allItems.reduce((sum, item) => sum + Number(item.total), 0);
-    document.querySelector('#order-detail .order-total span').textContent = `${totalAmount.toLocaleString('vi-VN')} VND`;
+    document.querySelector('#order-detail .order-total span').textContent = `${sumAmount.toLocaleString('vi-VN')} VND`;
+    if (rankName && discount) {
+        const promoInput = document.querySelector('input[placeholder="Mã khuyến mại"]');
+        if (promoInput) {
+            promoInput.value = `Hạng quý khách ${rankName} giảm ${discount}%`;
+            promoInput.readOnly = true;
+        }
+    }
     document.querySelector('.order-final').textContent = `Thành tiền: ${totalAmount.toLocaleString('vi-VN')} VND`;
 }
+const  handleThanhToan = () => {
+    const paymentMethod = document.getElementById('payment-method').value;
+    const finalAmount = document.querySelector('.order-final').textContent.replace(/[^0-9]/g, '');
+    if (paymentMethod === 'vnpay') {
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = '../BE/vnpay.php';
 
+        const amountInput = document.createElement('input');
+        amountInput.type = 'hidden';
+        amountInput.name = 'amount';
+        amountInput.value = finalAmount;
+
+        form.appendChild(amountInput);
+        document.body.appendChild(form);
+        form.submit();
+    } else if (paymentMethod === 'cash') {
+        fetch('../BE/api_thanhtoan.php', {
+            method: 'POST',
+            credentials: 'include',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ amount: finalAmount })
+
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    toast({
+                        title: 'Thanh toán tiền mặt',
+                        message: 'Mời bạn thanh toán tiền tại quầy!',
+                        type: 'warning'
+                    });
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1500);
+                } else {
+                    toast({
+                        title: 'Lỗi',
+                        message: data.message,
+                        type: 'error'
+                    });
+                }
+            })
+            .catch(() => {
+                toast({
+                    title: 'Lỗi',
+                    message: 'Không thể kết nối máy chủ!',
+                    type: 'error'
+                });
+            });
+    }
+}
 const logoutAcount = async () => {
     try {
         const response = await fetch('http://localhost/webnhahang/BE/logout.php', {

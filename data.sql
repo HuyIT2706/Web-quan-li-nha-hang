@@ -36,7 +36,7 @@ CREATE TABLE `order_items` (
   KEY `product_id` (`product_id`),
   CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`),
   CONSTRAINT `order_items_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,6 +45,7 @@ CREATE TABLE `order_items` (
 
 LOCK TABLES `order_items` WRITE;
 /*!40000 ALTER TABLE `order_items` DISABLE KEYS */;
+INSERT INTO `order_items` VALUES (59,37,2,1,350000.00,350000.00),(60,37,11,1,150000.00,150000.00),(61,37,24,1,200000.00,200000.00),(62,37,21,1,120000.00,120000.00),(63,37,25,1,220000.00,220000.00),(64,37,35,1,180000.00,180000.00),(65,37,34,1,140000.00,140000.00),(66,37,40,5,20000.00,100000.00),(67,37,44,2,20000.00,40000.00),(69,39,4,1,380000.00,380000.00),(70,40,8,1,350000.00,350000.00),(71,40,6,1,300000.00,300000.00),(72,40,12,1,90000.00,90000.00),(73,40,40,10,20000.00,200000.00);
 /*!40000 ALTER TABLE `order_items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -67,7 +68,7 @@ CREATE TABLE `orders` (
   KEY `table_id` (`table_id`),
   CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
   CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`table_id`) REFERENCES `tables` (`table_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -76,6 +77,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+INSERT INTO `orders` VALUES (37,5,1,'2025-05-29 06:43:21',1500000.00,'in_progress'),(38,5,1,'2025-05-29 07:12:31',380000.00,'pending'),(39,5,4,'2025-05-29 07:27:32',380000.00,'in_progress'),(40,5,15,'2025-05-29 15:30:51',940000.00,'in_progress');
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -95,7 +97,7 @@ CREATE TABLE `payments` (
   PRIMARY KEY (`payment_id`),
   KEY `order_id` (`order_id`),
   CONSTRAINT `payments_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -104,6 +106,7 @@ CREATE TABLE `payments` (
 
 LOCK TABLES `payments` WRITE;
 /*!40000 ALTER TABLE `payments` DISABLE KEYS */;
+INSERT INTO `payments` VALUES (7,37,'online',1275000.00,'2025-05-29 06:45:21'),(8,39,'online',323000.00,'2025-05-29 07:28:28'),(9,40,'online',799000.00,'2025-05-29 15:31:56');
 /*!40000 ALTER TABLE `payments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -123,7 +126,7 @@ CREATE TABLE `products` (
   `image` varchar(255) DEFAULT NULL,
   `status` enum('available','out_of_stock') DEFAULT 'available',
   PRIMARY KEY (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -170,15 +173,15 @@ DROP TABLE IF EXISTS `staff_accounts`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `staff_accounts` (
   `staff_id` int NOT NULL AUTO_INCREMENT,
-  `username` varchar(100) NOT NULL,
+  `phone` varchar(15) NOT NULL,
   `password` varchar(255) NOT NULL,
   `fullname` varchar(255) DEFAULT NULL,
   `position` varchar(100) DEFAULT NULL,
   `salary` decimal(12,2) DEFAULT NULL,
-  `hire_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `status` enum('active','inactive') DEFAULT 'active',
   PRIMARY KEY (`staff_id`),
-  UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  UNIQUE KEY `phone` (`phone`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -187,6 +190,7 @@ CREATE TABLE `staff_accounts` (
 
 LOCK TABLES `staff_accounts` WRITE;
 /*!40000 ALTER TABLE `staff_accounts` DISABLE KEYS */;
+INSERT INTO `staff_accounts` VALUES (1,'0868698389','123456','Bùi Văn Huy','admin',8000000.00,'active');
 /*!40000 ALTER TABLE `staff_accounts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -211,7 +215,7 @@ CREATE TABLE `tables` (
 
 LOCK TABLES `tables` WRITE;
 /*!40000 ALTER TABLE `tables` DISABLE KEYS */;
-INSERT INTO `tables` VALUES (1,'Bàn 1','available'),(2,'Bàn 2','available'),(3,'Bàn 3','available'),(4,'Bàn 4','available'),(5,'Bàn 5','available'),(6,'Bàn 6','available'),(7,'Bàn 7','available'),(8,'Bàn 8','available'),(9,'Bàn 9','available'),(10,'Bàn 10','available'),(11,'Bàn 11','available'),(12,'Bàn 12','available'),(13,'Bàn 13','available'),(14,'Bàn 14','available'),(15,'Bàn 15','available');
+INSERT INTO `tables` VALUES (1,'Bàn 1','occupied'),(2,'Bàn 2','available'),(3,'Bàn 3','occupied'),(4,'Bàn 4','occupied'),(5,'Bàn 5','available'),(6,'Bàn 6','available'),(7,'Bàn 7','available'),(8,'Bàn 8','available'),(9,'Bàn 9','available'),(10,'Bàn 10','available'),(11,'Bàn 11','available'),(12,'Bàn 12','available'),(13,'Bàn 13','available'),(14,'Bàn 14','available'),(15,'Bàn 15','occupied');
 /*!40000 ALTER TABLE `tables` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -233,7 +237,7 @@ CREATE TABLE `users` (
   UNIQUE KEY `phone` (`phone`),
   KEY `rank_id` (`rank_id`),
   CONSTRAINT `users_ibfk_1` FOREIGN KEY (`rank_id`) REFERENCES `ranks` (`rank_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -242,7 +246,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (5,'Bùi Văn ','Huy','0868698389',1,'2025-05-16 08:04:17'),(6,'Bùi Văn ','Huy','0868698388',1,'2025-05-16 08:07:46'),(7,'Bùi Văn ','Huy','086869838',1,'2025-05-16 13:44:24'),(8,'Bùi Văn ','Huy','0843335539',1,'2025-05-17 13:51:03');
+INSERT INTO `users` VALUES (5,'Bùi Văn ','Huy','0868698389',3,'2025-05-16 08:04:17'),(11,'Lê Thị Tuyết ','Băng ','0987654321',1,'2025-05-24 14:26:21');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -255,4 +259,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-05-21 14:05:48
+-- Dump completed on 2025-05-30 12:25:32
