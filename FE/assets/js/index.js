@@ -93,7 +93,82 @@ const handleInfo = () => {
     orderDetail.style.display = 'none';
     containerInfo.style.display = 'block';
 };
-// =============================Call API========================================
+
+// Navigation links và modal bàn
+document.addEventListener('DOMContentLoaded', () => {
+    const chooseMenuLink = document.getElementById('chooseMenuLink');
+    const chooseMenuLinkMobile = document.getElementById('chooseMenuLinkMobile');
+    const chooseTableLink = document.getElementById('chooseTableLink');
+    const chooseTableLinkMobile = document.getElementById('chooseTableLinkMobile');
+    const modal = document.getElementById('tableModal');
+    const closeChonban = document.querySelector('.modal--close-chonban');
+    const actionNav = document.getElementById('action-nav');
+
+    const handleMenuClick = e => {
+        e.preventDefault();
+        filterMenu.style.display = 'block';
+        heroMenu.style.display = 'block';
+        heroTop.style.display = 'none';
+        orderDetail.style.display = 'none';
+        cartModalDark.style.display = 'none';
+        if (actionNav.checked) actionNav.checked = false;
+    };
+
+    const handleTableClick = async e => {
+        e.preventDefault();
+        const userId = localStorage.getItem('user_id');
+        if (!userId) {
+            toast({
+                title: 'Thông báo',
+                message: 'Bạn cần đăng nhập để chọn bàn!',
+                type: 'warning'
+            });
+            return;
+        }
+
+        const currentTableId = localStorage.getItem('table_id');
+
+        if (currentTableId) {
+            try {
+                const cartItems = await fetchCart();
+
+                if (cartItems.length > 0) {
+                    toast({
+                        title: 'Thông báo',
+                        message: 'Bạn đã chọn bàn và có sản phẩm trong giỏ, không thể chọn lại bàn!',
+                        type: 'warning'
+                    });
+                    return; // Dừng, không mở modal chọn bàn
+                } else {
+                    // Giỏ hàng trống, cho phép chọn lại bàn
+                    const modal = document.getElementById('tableModal');
+                    modal.style.display = 'block';
+                    fetchAndRenderTables();
+                }
+            } catch (error) {
+                console.error('Lỗi kiểm tra giỏ hàng:', error);
+                toast({
+                    title: 'Lỗi',
+                    message: 'Không thể kiểm tra giỏ hàng, vui lòng thử lại!',
+                    type: 'error'
+                });
+            }
+        } else {
+            // Chưa chọn bàn lần nào, mở modal bình thường
+            const modal = document.getElementById('tableModal');
+            modal.style.display = 'block';
+            fetchAndRenderTables();
+        }
+    };
+
+
+    chooseMenuLink.onclick = chooseMenuLinkMobile.onclick = handleMenuClick;
+    chooseTableLink.onclick = chooseTableLinkMobile.onclick = handleTableClick;
+    closeChonban.onclick = () => (modal.style.display = 'none');
+});
+
+
+
 // Fetch sản phẩm
 const fetchProducts = async () => {
     try {
@@ -105,52 +180,7 @@ const fetchProducts = async () => {
         return [];
     }
 };
-// Fetch chi tiết sản phẩm
-const fetchProductById = async id => {
-    const res = await fetch(`http://localhost/webnhahang/BE/api_product.php?id=${id}`);
-    if (!res.ok) throw new Error('Không lấy được sản phẩm');
-    return res.json();
-};
-// call api checkin
-const checkUserAndTable = async () => {
-    const res = await fetch('http://localhost/webnhahang/BE/checkin.php', {
-        method: 'GET',
-        credentials: 'include',
-    });
-    const data = await res.json();
-    if (!data.logged_in) {
-        toast({ title: 'Lỗi', message: 'Bạn chưa đăng nhập', type: 'error' });
-    } else if (!data.table_selected) {
-        toast({ title: 'Lỗi', message: 'Bạn chưa chọn bàn', type: 'error' });
-    } else {
-        toast({ title: 'Thành công', message: 'Bạn đã đăng nhập và chọn bàn', type: 'success' });
-    }
-}
-// call api chi tiet don han
-const fetchAllPendingOrders = async () => {
-    const res = await fetch('http://localhost/webnhahang/BE/api_order_detail.php', {
-        credentials: 'include'
-    });
-    return await res.json();
-}
-// call api cart
-const fetchCart = async () => {
-    const res = await fetch('http://localhost/webnhahang/BE/api_cart.php', {
-        credentials: 'include'
-    });
-    return await res.json();
-}
-// API Bàn
-const fetchAndRenderTables = async () => {
-    try {
-        const res = await fetch('http://localhost/webnhahang/BE/tables.php');
-        const tables = await res.json();
-        renderTables(tables);
-    } catch (error) {
-        console.error('Error loading tables:', error);
-    }
-}
-// =================================Chuc nang ===================
+
 // Render sản phẩm
 const renderProduct = product => `
   <div class="outMenu--item" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1000">
@@ -163,9 +193,15 @@ const renderProduct = product => `
   </div>
 `;
 
+// Fetch chi tiết sản phẩm
+const fetchProductById = async id => {
+    const res = await fetch(`http://localhost/webnhahang/BE/api_product.php?id=${id}`);
+    if (!res.ok) throw new Error('Không lấy được sản phẩm');
+    return res.json();
+};
 
 // Render modal chi tiết sản phẩm
-const renderProductDetail = product => {
+const renderProductDetailModal = product => {
     const modalRoot = document.getElementById('modal-root');
     if (!modalRoot) return;
 
@@ -205,6 +241,7 @@ const renderProductDetail = product => {
       </div>
     </div>
   `;
+
     document.getElementById('orderModalCloseProdcut').onclick = closeOrderModal;
     document.getElementById('orderModalOverlay').onclick = closeOrderModal;
 
@@ -249,7 +286,7 @@ const closeOrderModal = () => {
 window.showProductDetail = async productId => {
     try {
         const product = await fetchProductById(productId);
-        renderProductDetail(product);
+        renderProductDetailModal(product);
     } catch (error) {
         alert('Lỗi khi tải sản phẩm');
         console.error(error);
@@ -295,77 +332,22 @@ window.goToPage = page => {
     renderProductsPage(currentPage);
 };
 
+// API Bàn
+async function fetchAndRenderTables() {
+    try {
+        const res = await fetch('http://localhost/webnhahang/BE/tables.php');
+        const tables = await res.json();
+        renderTables(tables);
+    } catch (error) {
+        console.error('Error loading tables:', error);
+    }
+}
+
 const statusText = {
     available: 'Còn trống',
     occupied: 'Đang sử dụng',
     reserved: 'Đã đặt trước',
 };
-// MOdal bàn 
-document.addEventListener('DOMContentLoaded', () => {
-    const chooseMenuLink = document.getElementById('chooseMenuLink');
-    const chooseMenuLinkMobile = document.getElementById('chooseMenuLinkMobile');
-    const chooseTableLink = document.getElementById('chooseTableLink');
-    const chooseTableLinkMobile = document.getElementById('chooseTableLinkMobile');
-    const modal = document.getElementById('tableModal');
-    const closeChonban = document.querySelector('.modal--close-chonban');
-    const actionNav = document.getElementById('action-nav');
-
-    const handleMenuClick = e => {
-        e.preventDefault();
-        filterMenu.style.display = 'block';
-        heroMenu.style.display = 'block';
-        heroTop.style.display = 'none';
-        orderDetail.style.display = 'none';
-        cartModalDark.style.display = 'none';
-        if (actionNav.checked) actionNav.checked = false;
-    };
-
-    const handleTableClick = async e => {
-        e.preventDefault();
-
-        const userId = localStorage.getItem('user_id');
-        if (!userId) {
-            toast({
-                title: 'Thông báo',
-                message: 'Bạn cần đăng nhập để chọn bàn!',
-                type: 'warning'
-            });
-            return;
-        }
-        const currentTableId = localStorage.getItem('table_id');
-        if (currentTableId) {
-            try {
-                const cartItems = await fetchCart();
-                if (cartItems.length > 0) {
-                    toast({
-                        title: 'Thông báo',
-                        message: 'Bạn đã chọn bàn và có sản phẩm trong giỏ, không thể chọn lại bàn!',
-                        type: 'warning'
-                    });
-                    return;
-                } else {
-                    const modal = document.getElementById('tableModal');
-                    modal.style.display = 'block';
-                    fetchAndRenderTables();
-                }
-            } catch (error) {
-                console.error('Lỗi kiểm tra giỏ hàng:', error);
-                toast({
-                    title: 'Lỗi',
-                    message: 'Không thể kiểm tra giỏ hàng, vui lòng thử lại!',
-                    type: 'error'
-                });
-            }
-        } else {
-            const modal = document.getElementById('tableModal');
-            modal.style.display = 'block';
-            fetchAndRenderTables();
-        }
-    };
-    chooseMenuLink.onclick = chooseMenuLinkMobile.onclick = handleMenuClick;
-    chooseTableLink.onclick = chooseTableLinkMobile.onclick = handleTableClick;
-    closeChonban.onclick = () => (modal.style.display = 'none');
-});
 
 const renderTables = tables => {
     const grid = document.getElementById('tableGrid');
@@ -376,14 +358,14 @@ const renderTables = tables => {
         div.innerHTML = `<div class="nameTable">${table.name}</div><div>${statusText[table.status]}</div>`;
         div.onclick = () => {
             if (table.status === 'available') {
-                showTable(table);
+                showTableConfirmation(table);
             }
         };
         grid.appendChild(div);
     });
 };
 
-const showTable = (table) => {
+const showTableConfirmation = (table) => {
     const modalRoot = document.getElementById('modal-root');
     if (!modalRoot) return;
     modalRoot.innerHTML = `
@@ -399,21 +381,46 @@ const showTable = (table) => {
         </div>
       </div>
     </div>`;
+
+    // Đóng modal
     document.getElementById('orderModalOverlay').onclick = closeOrderModal;
     document.getElementById('orderModalCloseTable').onclick = closeOrderModal;
 
+    // Xử lý khi bấm "Xác nhận" => cập nhật trạng thái bàn = occupied
     document.getElementById('confirmTableBtn').onclick = () => {
         updateTableStatus(table.id, 'occupied', table.name, "chọn");
     };
 
+    // Xử lý khi bấm "Đặt bàn" => cập nhật trạng thái bàn = reserved
     document.getElementById('datBanBtn').onclick = () => {
         updateTableStatus(table.id, 'reserved', table.name, "đặt");
     };
 }
+async function checkUserAndTable() {
+    const res = await fetch('http://localhost/webnhahang/BE/checkin.php', {
+        method: 'GET',
+        credentials: 'include', // gửi cookie session
+    });
+    const data = await res.json();
 
-const updateTableStatus = async (tableId, status, tableName, actionWord) => {
+    if (!data.logged_in) {
+        toast({ title: 'Lỗi', message: 'Bạn chưa đăng nhập', type: 'error' });
+        // chuyển hướng hoặc mở modal login
+    } else if (!data.table_selected) {
+        toast({ title: 'Lỗi', message: 'Bạn chưa chọn bàn', type: 'error' });
+        // chuyển hướng hoặc mở modal chọn bàn
+    } else {
+        toast({ title: 'Thành công', message: 'Bạn đã đăng nhập và chọn bàn', type: 'success' });
+        // tiếp tục xử lý đặt món...
+    }
+}
+
+async function updateTableStatus(tableId, status, tableName, actionWord) {
     try {
+        // Lấy bàn cũ đã chọn trước đó
         const oldTableId = localStorage.getItem('table_id');
+
+        // Nếu bàn cũ tồn tại và khác bàn mới thì reset bàn cũ về 'available'
         if (oldTableId && oldTableId !== tableId.toString()) {
             const resetOldTable = await fetch('http://localhost/webnhahang/BE/update_table.php', {
                 method: 'POST',
@@ -428,6 +435,8 @@ const updateTableStatus = async (tableId, status, tableName, actionWord) => {
                 throw new Error('Không thể reset bàn cũ về trạng thái còn trống');
             }
         }
+
+        // Cập nhật bàn mới
         const res = await fetch('http://localhost/webnhahang/BE/update_table.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -440,6 +449,8 @@ const updateTableStatus = async (tableId, status, tableName, actionWord) => {
         if (!data.success) {
             throw new Error(data.message || 'Cập nhật trạng thái bàn thất bại');
         }
+
+        // Gọi API cập nhật session chọn bàn
         const res2 = await fetch('http://localhost/webnhahang/BE/select_table.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -450,6 +461,8 @@ const updateTableStatus = async (tableId, status, tableName, actionWord) => {
         if (!data2.success) {
             throw new Error(data2.message || 'Không thể cập nhật thông tin bàn');
         }
+
+        // Lưu bàn mới vào localStorage
         localStorage.setItem('table_id', tableId);
 
         toast({
@@ -491,6 +504,7 @@ const handdlAddCard = async (items) => {
         });
         return;
     }
+
     try {
         const currentCart = await fetchCart();
         const existingItem = currentCart.find(item => item.product_id === items[0].product_id);
@@ -518,6 +532,7 @@ const handdlAddCard = async (items) => {
                 });
             }
         } else {
+            // Nếu sản phẩm chưa tồn tại, thêm mới
             const response = await fetch('http://localhost/webnhahang/BE/api_order.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -550,15 +565,13 @@ const handdlAddCard = async (items) => {
         });
     }
 };
-
-const hadndleDatMua = async () => {
-    const data = await fetchAllPendingOrders();
-    renderAllPending(data);
-    orderDetail.style.display = 'block';
-    cartModalDark.style.display = 'none';
+async function fetchCart() {
+    const res = await fetch('http://localhost/webnhahang/BE/api_cart.php', {
+        credentials: 'include'
+    });
+    return await res.json();
 }
-
-const renderCart = (cartItems) => {
+function renderCart(cartItems) {
     const tbody = document.querySelector('.cart-dark-table tbody');
     tbody.innerHTML = cartItems.map(item => `
         <tr>
@@ -582,7 +595,7 @@ const renderCart = (cartItems) => {
             <td data-label="Tổng tiền">${(item.price * item.quantity).toLocaleString('vi-VN')}</td>
         </tr>
     `).join('');
-
+    // Render tổng số lượng và tổng tiền
     const totalQty = cartItems.reduce((sum, i) => sum + Number(i.quantity), 0);
     const totalAmount = cartItems.reduce((sum, i) => sum + Number(i.price) * Number(i.quantity), 0);
     document.querySelector('.totalproduct--main-amout').textContent = totalQty;
@@ -623,6 +636,7 @@ document.querySelector('.cart-dark-table').addEventListener('click', async funct
         let qty = parseInt(input.value);
         if (btn.classList.contains('qty-plus')) qty++;
         if (btn.classList.contains('qty-minus') && qty > 1) qty--;
+        // Gửi API cập nhật
         const res = await fetch('http://localhost/webnhahang/BE/api_cart_update.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -631,17 +645,26 @@ document.querySelector('.cart-dark-table').addEventListener('click', async funct
         });
         const data = await res.json();
         if (data.success) {
-            openCart();
+            openCart(); // Reload lại giỏ hàng
         } else {
             alert(data.message || 'Lỗi cập nhật số lượng');
         }
     }
 });
-const renderAllPending = (data) => {
+async function fetchAllPendingOrders() {
+    const res = await fetch('http://localhost/webnhahang/BE/api_order_detail.php', {
+        credentials: 'include'
+    });
+    return await res.json();
+}
+let totalAmountGlobal = 0;
+
+function renderAllPendingItemsAsOneTable(data) {
     if (!data.success) {
         alert(data.message || 'Không tìm thấy đơn hàng');
         return;
     }
+
     const rankName = localStorage.getItem('rank_name');
     const discount = parseFloat(localStorage.getItem('discount'));
     // Tìm đơn hàng đầu tiên có sản phẩm
@@ -658,9 +681,13 @@ const renderAllPending = (data) => {
         completed: 'đã hoàn thành'
     };
     const statusVN = statusMap[order.status] || order.status;
+
     document.querySelector('.order-status').innerHTML =
         `Bàn số: <b>${order.table_id}</b> - Trạng thái: <span>${statusVN}</span>`;
+
+    // Hiển thị bàn ở phần tóm tắt
     document.querySelectorAll('.order-method')[0].innerHTML = `Bàn: ${order.table_id}`;
+    // Render vào bảng duy nhất
     const tbody = document.querySelector('#order-detail .order-detail-table tbody');
     tbody.innerHTML = allItems.map(item => `
         <tr>
@@ -670,6 +697,8 @@ const renderAllPending = (data) => {
             <td>${Number(item.total).toLocaleString('vi-VN')} VND</td>
         </tr>
     `).join('');
+
+    // Render tổng số lượng, tổng tiền (nếu muốn)
     const sumAmount = allItems.reduce((sum, item) => sum + Number(item.total), 0);
     const totalAmount = sumAmount - ((sumAmount * discount) / 100);
     totalAmountGlobal = Math.round(totalAmount); // Lưu lại để dùng khi thanh toán
@@ -684,7 +713,8 @@ const renderAllPending = (data) => {
     }
     document.querySelector('.order-final').textContent = `Thành tiền: ${totalAmount.toLocaleString('vi-VN')} VND`;
 }
-const  handleThanhToan = () => {
+
+function handleThanhToan() {
     const paymentMethod = document.getElementById('payment-method').value;
     const finalAmount = document.querySelector('.order-final').textContent.replace(/[^0-9]/g, '');
     if (paymentMethod === 'vnpay') {
@@ -736,6 +766,13 @@ const  handleThanhToan = () => {
             });
     }
 }
+async function hadndleDatMua() {
+    const data = await fetchAllPendingOrders();
+    renderAllPendingItemsAsOneTable(data);
+    orderDetail.style.display = 'block';
+    cartModalDark.style.display = 'none';
+}
+
 const logoutAcount = async () => {
     try {
         const response = await fetch('http://localhost/webnhahang/BE/logout.php', {
@@ -745,14 +782,18 @@ const logoutAcount = async () => {
         const data = await response.json();
 
         if (data.success) {
+            // Xóa dữ liệu local storage
             localStorage.removeItem('user_id');
             localStorage.removeItem('table_id');
             localStorage.removeItem('last_order_id');
+            localStorage.removeItem('discount');
+            localStorage.removeItem('rank_name');
             toast({
                 title: 'Thành công',
                 message: 'Đăng xuất thành công!',
                 type: 'success'
             });
+
             setTimeout(() => {
                 window.location.href = './index.html';
             }, 1000);
@@ -771,3 +812,15 @@ const logoutAcount = async () => {
         });
     }
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('payment') === 'success' && urlParams.get('phone')) {
+        const phone = urlParams.get('phone');
+        toast({
+            title: 'Thanh toán thành công',
+            message: `Đơn hàng của bạn đã được thanh toán thành công! SĐT: ${phone}`,
+            type: 'success'
+        });
+    }
+});
