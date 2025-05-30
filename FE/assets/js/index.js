@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 message: 'Bạn cần đăng nhập để chọn bàn!',
                 type: 'warning'
             });
-            return;
+            return; 
         }
 
         const currentTableId = localStorage.getItem('table_id');
@@ -625,7 +625,7 @@ document.querySelector('.cart-dark-table').addEventListener('click', async funct
             credentials: 'include',
             body: 'order_item_id=' + encodeURIComponent(orderItemId)
         });
-        openCart();
+        openCart(); 
     }
 });
 document.querySelector('.cart-dark-table').addEventListener('click', async function (e) {
@@ -657,7 +657,7 @@ async function fetchAllPendingOrders() {
     });
     return await res.json();
 }
-let totalAmountGlobal = 0;
+let totalAmountGlobal = 0; 
 
 function renderAllPendingItemsAsOneTable(data) {
     if (!data.success) {
@@ -721,12 +721,12 @@ function handleThanhToan() {
         const form = document.createElement('form');
         form.method = 'POST';
         form.action = '../BE/vnpay.php';
-
+        
         const amountInput = document.createElement('input');
         amountInput.type = 'hidden';
         amountInput.name = 'amount';
         amountInput.value = finalAmount;
-
+        
         form.appendChild(amountInput);
         document.body.appendChild(form);
         form.submit();
@@ -736,34 +736,34 @@ function handleThanhToan() {
             credentials: 'include',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ amount: finalAmount })
-
+            
         })
-            .then(res => res.json())
-            .then(data => {
-                if (data.success) {
-                    toast({
-                        title: 'Thanh toán tiền mặt',
-                        message: 'Mời bạn thanh toán tiền tại quầy!',
-                        type: 'warning'
-                    });
-                    setTimeout(() => {
-                        window.location.reload();
-                    }, 1500);
-                } else {
-                    toast({
-                        title: 'Lỗi',
-                        message: data.message,
-                        type: 'error'
-                    });
-                }
-            })
-            .catch(() => {
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                toast({
+                    title: 'Thanh toán tiền mặt',
+                    message: 'Mời bạn thanh toán tiền tại quầy!',
+                    type: 'warning'
+                });
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1500);
+            } else {
                 toast({
                     title: 'Lỗi',
-                    message: 'Không thể kết nối máy chủ!',
+                    message: data.message,
                     type: 'error'
                 });
+            }
+        })
+        .catch(() => {
+            toast({
+                title: 'Lỗi',
+                message: 'Không thể kết nối máy chủ!',
+                type: 'error'
             });
+        });
     }
 }
 async function hadndleDatMua() {
@@ -813,7 +813,7 @@ const logoutAcount = async () => {
     }
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('payment') === 'success' && urlParams.get('phone')) {
         const phone = urlParams.get('phone');

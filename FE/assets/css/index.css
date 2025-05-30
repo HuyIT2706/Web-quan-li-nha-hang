@@ -1058,12 +1058,9 @@ a {
 	border: 1px solid #ddd;
 	margin-bottom: 20px;
 	background: #f3f3f3;
-	transition: 0.25s;
-}
-
-.order-detail-summary input[type="text"]:focus {
 	border: 1.5px solid var(--primary-color);
 	outline: none;
+	transition: 0.25s;
 }
 
 .order-detail-summary .order-final {
