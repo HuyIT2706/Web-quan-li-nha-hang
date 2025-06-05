@@ -1,0 +1,114 @@
+/* PC */
+@media screen and (min-width: 992.98px) {
+    .mobile-tablet{
+        display: none;
+    }
+}
+
+/* Talet && mobile */
+@media screen and (max-width: 991.98px) {
+    .pc{
+        display: none;
+    }
+    
+    .container-tab {
+        cursor: pointer;
+        display: block;
+    }
+
+    .menu-draw {
+        position: fixed;
+        top: 0;
+        left: -300px;
+        width: 300px;
+        height: 100vh;
+        background: white;
+        z-index: 1000;
+        transition: left 0.3s ease-in-out;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .action-nav:checked ~ .menu-draw {
+        left: 0;
+    }
+
+    .overload {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        display: none;
+    }
+
+    .action-nav:checked ~ .overload {
+        display: block;
+    }
+
+    .nav--link-mb {
+        color: var(--color-dark);
+        font-size: 2rem;
+        display: block;
+        padding: 10px 0;
+        transition: color 0.2s ease;
+    }
+
+    .nav--link-mb:hover {
+        color: var(--color-primary);
+    }
+
+    .nav--ul {
+        flex-direction: column;
+        align-items: start;
+        padding: 30px;
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    .header__search {
+        position: relative;
+    }
+
+    .search--container {
+        right: -195px;
+        transform: none;
+    }
+}
+
+/* Talet */
+@media screen and (min-width: 768.98px) and (max-width: 991.98px) {
+    .menu-draw {
+        width: 350px;
+        left: -350px;
+    }
+}
+
+/* Moblie */
+@media screen and (max-width: 767.98px) {
+    .btn {
+        min-width: 0px;
+        padding: 10px 8px;
+        font-size: 1.4rem;
+    }
+
+    .arrow-up {
+        height: 20px;
+        right: -40px;
+    }
+
+    .search--container {
+        top: 27px;
+        right: -150px;
+    }
+
+    .btn--apply-filter {
+        min-width: 100%;
+    }
+
+    .menu-draw {
+        width: 280px;
+        left: -280px;
+    }
+}

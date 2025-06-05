@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="57x57" href="./assets/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="./assets/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./assets/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="./assets/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./assets/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="./assets/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="./assets/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="./assets/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="./assets/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="./assets/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./assets/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="./assets/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!-- CSS -->
+    <link rel="stylesheet" href="./assets/css/reset.css">
+
+    <link rel="stylesheet" href="./assets/css/login_admin_1.css">
+    <!-- Font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+        rel="stylesheet">
+    <!-- Atisition -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/animate.css" />
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <script src="./assets/js/style.js"></script>
+    <title>One Food | Đăng nhập </title>
+</head>
+
+<body>
+    <header id="header">
+    </header>
+    <main>
+        <!--login_admin-->
+        <section class="admin-login">
+            <div class="login-box">
+                <img src="./assets/img/logo.svg" alt="One Food Logo" class="login-logo">
+                <h2>Quản lý nhà hàng</h2>
+                <form id="signinForm">
+                    <label for="phone">Số điện thoại</label>
+                    <input type="text" id="phone" name="phone" placeholder="Nhập số điện thoại" required
+                        class="input_login">
+                    <p class="sign-in__error" style="display: none; color: red; font-size: 12px; margin-bottom: 10px;">
+                        Số điện thoại đủ 10 số mời bạn nhập đúng!</p>
+                    <label for="password">Mật khẩu</label>
+                    <input type="password" id="password" name="password" placeholder="Nhập mật khẩu" required class="input_login">
+                    <button type="submit">Đăng nhập</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <script>
+        const phoneInput = document.getElementById('phone');
+        const errorMessage = document.querySelector('.sign-in__error');
+        const form = document.getElementById('signinForm');
+
+        phoneInput.addEventListener('input', function() {
+            const phoneNumber = this.value.replace(/\D/g, '');
+            if (phoneNumber.length !== 10) {
+                errorMessage.style.display = 'block';
+                this.style.borderColor = 'red';
+            } else {
+                errorMessage.style.display = 'none';
+                this.style.borderColor = '';
+            }
+        });
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const phoneNumber = phoneInput.value.replace(/\D/g, '');
+            const password = document.getElementById('password').value;
+
+            if (phoneNumber.length !== 10) {
+                errorMessage.style.display = 'block';
+                phoneInput.style.borderColor = 'red';
+                return;
+            }
+
+            try {
+                const response = await fetch('http://localhost/webnhahang/BE/login-admin.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        phone: phoneNumber,
+                        password: password
+                    })
+                });
+                const data = await response.json();
+                if (data.success) {
+                    localStorage.setItem('adminLoggedIn', 'true');
+                    localStorage.setItem('adminPhone', phoneNumber);
+                    localStorage.setItem('adminPosition', data.position);
+                    window.location.href = 'admin-login.html';
+                } else {
+                    alert('Đăng nhập thất bại: ' + data.message);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Có lỗi xảy ra khi đăng nhập');
+            }
+        });
+    </script>
+</body>
+
+</html>
