@@ -9,6 +9,8 @@ B2: Tải data về máy
    + Chọn import Progress và chọn start Import:
         ![image](https://github.com/user-attachments/assets/27cd32c0-cc8f-4a32-8713-c545c6db3684)
    + Xong tải lại data sẽ thấy data quanlinhahang là thành công.
+
+     
 B3: Vào folder BE tìm đến file database.php sửa theo các thông tin có trên máy bạn.
     + ![image](https://github.com/user-attachments/assets/26d26445-3312-4b6e-afee-bf340651cade)
 
