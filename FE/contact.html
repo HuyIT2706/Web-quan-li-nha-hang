@@ -25,7 +25,6 @@
     <!-- CSS -->
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/index-1.css">
-    <link rel="stylesheet" href="./assets/css/login.css">
     <link rel="stylesheet" href="./assets/css/responsize-header.css">
     <link rel="stylesheet" href="./assets/css/reponsize-index.css">
     <link rel="stylesheet" href="./assets/css/toast.css">
@@ -41,10 +40,8 @@
     <link rel="stylesheet" href="./assets/css/animate.css" />
     <!-- Font Awesome CDN for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
     <script src="./assets/js/style.js"></script>
-    <title>One Food | Login</title>
+    <title>One Food</title>
 </head>
 
 <body>
@@ -53,7 +50,7 @@
             <!-- PC -->
             <div class="header--container pc">
                 <!-- Logo -->
-                <a href="./index.html">
+                <a href="./index-login.html">
                     <figure class="header--logo">
                         <img src="./assets/img/logo.svg" alt="One Food Logo">
                         <p class="logo--title">ne Food</p>
@@ -62,15 +59,15 @@
                 <!-- nav -->
                 <nav class="header--nav">
                     <ul class="nav--ul">
-                        <li><a href="./index.html" class="nav--link">Trang chủ</a></li>
-                        <li><a href="./menu.html" class="nav--link">Thực đơn</a></li>
-                        <li><a href="#tableModal" class="nav--link" id="chooseTableLink">Chọn bàn</a></li>
+                        <li><a href="./index-login.html" class="nav--link">Trang chủ</a></li>
+                        <li><a href="javascript:void(0);" class="nav--link" id="chooseMenuLink">Thực đơn</a></li>
+                        <li><a href="javascript:void(0);" class="nav--link" id="chooseTableLink">Chọn bàn</a></li>
                         <li><a href="./contact.html" class="nav--link">Về chúng tôi</a></li>
                     </ul>
                 </nav>
                 <!-- Actions -->
                 <div class="actions">
-                    <div class="header__search" onclick="handleCart()">
+                    <div class="header__search" onclick="openCart()">
                         <div class="btn btn--search">
                             <svg width=20px xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 576 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
@@ -78,10 +75,37 @@
                                     d="M0 24C0 10.7 10.7 0 24 0L69.5 0c22 0 41.5 12.8 50.6 32l411 0c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3l-288.5 0 5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5L488 336c13.3 0 24 10.7 24 24s-10.7 24-24 24l-288.3 0c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5L24 48C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" />
                             </svg>
                         </div>
-
-
                     </div>
-                    <a href="./login.html" class="btn btn--signup">Đăng nhập</a>
+                    <div class="container--info">
+                        <div class="btn btn--signup">
+                            <svg width="15px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                <path fill="#ffffff"
+                                    d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464l349.5 0c-8.9-63.3-63.3-112-129-112l-91.4 0c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304l91.4 0C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7L29.7 512C13.3 512 0 498.7 0 482.3z">
+                                </path>
+                            </svg>
+                        </div>
+                        <!-- info -->
+                        <div class="account-dropdown">
+                            <ul>
+                                <li class="account-dropdown__item">
+                                    <a href="javascript:void(0);" class="nav--info" onclick="handleInfo()"><i
+                                            class="fas fa-user"></i> Tài khoản của tôi</a>
+
+                                </li>
+                                <li class="account-dropdown__item">
+                                    <a href="javascript:void(0);" class="nav--info" onclick="handleOrders()">
+                                        <i class="fas fa-shopping-bag"></i>
+                                        Đơn hàng đã mua
+                                    </a>
+                                </li>
+                                <li class="account-dropdown__item">
+                                    <a href="javascript:void(0);" class="nav--info" onclick="logoutAcount()"> <i
+                                            class="fas fa-sign-out-alt"></i> Thoát tài khoản
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- MObile & Tablet -->
@@ -99,16 +123,20 @@
                                 <label for="action-nav" style="padding: 8px 8px 8px 0px;">
                                     <img src="./assets/icons/arrow-left.svg" alt="" style="cursor: pointer;">
                                 </label>
-                                <li><a href="./index.html" class="nav--link nav--link-mb ">Trang chủ</a></li>
-                                <li><a href="./menu.html" class="nav--link nav--link-mb">Thực đơn</a></li>
-                                <li><a href="./about.html" class="nav--link nav--link-mb">Chọn bàn</a></li>
+                                <li><a href="./index-login.html" class="nav--link nav--link-mb ">Trang chủ</a></li>
+                                <li><a href="javascript:void(0);" class="nav--link nav--link-mb"
+                                        id="chooseMenuLinkMobile">Thực đơn</a>
+                                </li>
+                                <li><a href="javascript:void(0);" class="nav--link nav--link-mb"
+                                        id="chooseTableLinkMobile">Chọn
+                                        bàn</a></li>
                                 <li><a href="./contact.html" class="nav--link nav--link-mb">Về chúng tôi</a></li>
                             </ul>
                         </nav>
                     </div>
                 </div>
                 <!-- Logo -->
-                <a href="./index.html">
+                <a href="./index-login.html">
                     <figure class="header--logo">
                         <img src="./assets/img/logo.svg" alt="One Food Logo">
                         <p class="logo--title">ne Food</p>
@@ -116,7 +144,7 @@
                 </a>
                 <!-- Actions -->
                 <div class="actions">
-                    <div class="header__search" onclick="handleCart()">
+                    <div class="header__search" onclick="openCart()">
                         <div class="btn btn--search" aria-label="Tìm kiếm">
                             <svg width=20px xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 576 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
@@ -125,61 +153,72 @@
                             </svg>
                         </div>
                     </div>
-                    <a href="./login.html" class="btn btn--signup">Đăng nhập</a>
-                </div>
-            </div>
-        </div>
-    </header>
-    <main>
-        <div class="container">
-            <div class="container--login" id="container">
-                <div class="form-container sign-up">
-                    <form method="POST" action="../BE/register.php" id="signupForm">
-                        <h2 class="title--signUp">Tạo tài khoản</h2>
-                        <input type="text" name="lastname" placeholder="Họ" required />
-                        <input type="text" name="firstname" placeholder="Tên" required />
-                        <input type="tel" name="phone" placeholder="Số điện thoại" required id="signupPhone"
-                            class="phone-input" />
-                        <p class="sign-in__error" style="display: none; color: red; font-size: 12px; margin-top: 5px;">
-                            Số điện thoại đủ 10 số mời quý khách nhập đúng!</p>
-                        <button type="submit">Đăng Kí</button>
-                    </form>
-                </div>
-                <div class="form-container sign-in">
-                    <form method="POST" action="../BE/login.php" id="signinForm">
-                        <h2 class="title--signUp">Đăng nhập</h2>
-                        <input type="tel" name="phone" placeholder="Số điện thoại" required id="signinPhone"
-                            class="phone-input" />
-                        <p class="sign-in__error" style="display: none; color: red; font-size: 12px; margin-top: 5px;">
-                            Số điện thoại đủ 10 số mời quý khách nhập đúng!</p>
-                        <button type="submit">Đăng Nhập</button>
-                    </form>
-                </div>
-                <div class="toggle-container">
-                    <div class="toggle">
-                        <div class="toggle-panel toggle-left">
-                            <h2 class="title--signUp">Chào mừng quý khách trở lại!</h2>
-                            <p>Hãy nhập số điện thoại để tích điểm</p>
-                            <button class="hidden" id="login">Đăng nhập</button>
+                    <div class="container--info">
+                        <div class="btn btn--signup">
+                            <svg width="15px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                <path fill="#ffffff"
+                                    d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464l349.5 0c-8.9-63.3-63.3-112-129-112l-91.4 0c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304l91.4 0C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7L29.7 512C13.3 512 0 498.7 0 482.3z">
+                                </path>
+                            </svg>
                         </div>
-                        <div class="toggle-panel toggle-right">
-                            <h2 class="title--signUp">Xin chào quý khách!</h2>
-                            <p>Hãy đăng kí thành viên để nhận nhiều chương trình khuyến mãi của chúng tôi</p>
-                            <button class="hidden" id="register">Đăng kí</button>
+                        <!-- info -->
+                        <div class="account-dropdown">
+                            <ul>
+                                <li class="account-dropdown__item">
+                                    <a href="javascript:void(0);" class="nav--info" onclick="handleInfo()"><i
+                                            class="fas fa-user"></i> Tài khoản của tôi</a>
+
+                                </li>
+                                <li class="account-dropdown__item">
+                                    <a href="javascript:void(0);" class="nav--info" onclick="handleOrders()">
+                                        <i class="fas fa-shopping-bag"></i>
+                                        Đơn hàng đã mua
+                                    </a>
+                                </li>
+                                <li class="account-dropdown__item">
+                                    <a href="javascript:void(0);" class="nav--info" onclick="logoutAcount()"> <i
+                                            class="fas fa-sign-out-alt"></i> Thoát tài khoản
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </header>
+    <main>
+        <section class="contact">
+            <div class="container">
+                <div class="container--contact">
+                    <div class="footer-col about">
+                        <h3>VỀ CHÚNG TÔI</h3>
+                        <div class="footer-underline"></div>
+                        <p>One Food là thương hiệu được thành lập vào năm 2025 với tiêu chí đặt chất lượng sản phẩm lên
+                            hàng đầu.</p>
+                        <div class="footer-socials">
+                            <a href="#" class="footer-social"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="footer-social"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="footer-social"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="footer-social"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <figure>
+                        <img src="./assets/img/contact.jpg" alt=""  style="width: 300px;">
+                    </figure>
+                </div>
+            </div>
+        </section>
     </main>
     <footer id="footer"></footer>
     <div id="toast"></div>
+    <div id="modal-root"></div>
+
     <script>
         load("#footer", "./template/footer.html")
     </script>
-    <script src="./assets/js/login-1.js"></script>
+    <script src="./assets/js/index-2.js"></script>
     <script src="./assets/js/toast.js"></script>
-
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();

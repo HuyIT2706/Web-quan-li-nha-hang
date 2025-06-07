@@ -22,7 +22,7 @@
     <meta name="theme-color" content="#ffffff">
     <!-- CSS -->
     <link rel="stylesheet" href="./assets/css/reset.css">
-    <link rel="stylesheet" href="./assets/css/admin.css">
+    <link rel="stylesheet" href="./assets/css/admin-1.css">
     <link rel="stylesheet" href="./assets/css/responsize-admin.css">
     <link rel="stylesheet" href="./assets/css/toast.css">
 
@@ -52,7 +52,7 @@
     <div class="container">
         <aside class="sidebar open">
             <!-- Logo -->
-            <a href="./index.html">
+            <a href="./admin-login.html">
                 <figure class="header--logo">
                     <img src="./assets/img/logo.svg" alt="One Food Logo">
                     <p class="logo--title">ne Food</p>
@@ -73,19 +73,19 @@
                         </a>
                     </li>
                     <li class="sidebar-list-item tab-content">
-                        <a href="#" class="sidebar-link">
+                        <a href="javascript:void(0);" class="sidebar-link" onclick="showAccount()">
                             <div class="sidebar-icon"><i class="fa-solid fa-users-line"></i></div>
                             <div class="hidden-sidebar">Nhân viên</div>
                         </a>
                     </li>
                     <li class="sidebar-list-item tab-content">
-                        <a href="#" class="sidebar-link">
+                        <a href="javascript:void(0);" class="sidebar-link" onclick="showOrder()">
                             <div class="sidebar-icon"><i class="fa-solid fa-basket-shopping"></i></div>
                             <div class="hidden-sidebar">Đơn hàng</div>
                         </a>
                     </li>
                     <li class="sidebar-list-item tab-content">
-                        <a href="#" class="sidebar-link">
+                        <a href="javascript:void(0);" class="sidebar-link" onclick="showThongKe()">
                             <div class="sidebar-icon"><i class="fa-solid fa-chart-simple"></i></div>
                             <div class="hidden-sidebar">Thống kê</div>
                         </a>
@@ -103,11 +103,11 @@
                     <li class="sidebar-list-item user-logout">
                         <a href="#" class="sidebar-link">
                             <div class="sidebar-icon"><i class="fa-solid fa-user"></i></i></div>
-                            <div class="hidden-sidebar"> Bùi Văn Huy</div>
+                            <div class="hidden-sidebar" id="thongTinUser"></div>
                         </a>
                     </li>
                     <li class="sidebar-list-item user-logout">
-                        <a href="#" class="sidebar-link" id="logout-acc">
+                        <a href="javascipt: void(0);" class="sidebar-link" onclick="logoutAdmin()">
                             <div class="sidebar-icon"><i class="fa-solid fa-right-from-bracket"></i></div>
                             <div class="hidden-sidebar">Đăng xuất</div>
                         </a>
@@ -122,7 +122,7 @@
                 <div class="cards">
                     <div class="card-single">
                         <div class="box">
-                            <h2 id="amount-user">0</h2>
+                            <h2 id="amount-product">0</h2>
                             <div class="on-box">
                                 <img src="assets/img/admin/s1.png" alt="" style=" width: 200px;">
                                 <h3>Sản phẩm</h3>
@@ -137,7 +137,7 @@
                         <div class="box">
                             <div class="on-box">
                                 <img src="assets/img/admin/s2.png" alt="" style=" width: 200px;">
-                                <h2 id="amount-product">0</h2>
+                                <h2 id="amount-user">0</h2>
                                 <h3>Nhân viên</h3>
                                 <p> Nhân viên là các nhân viên trong hệ thống nhà hàng đang còn làm việc tại nhà hàng. </p>
                             </div>
@@ -198,8 +198,8 @@
                     <div class="admin-control-left">
                         <select name="tinh-trang-user" id="tinh-trang-user" onchange="showUser()">
                             <option value="2">Tất cả</option>
-                            <option value="1">Đang làm</option>
-                            <option value="0">Nghỉ làm</option>
+                            <option value="1">Hoạt động</option>
+                            <option value="0">Bị khóa</option>
                         </select>
                     </div>
                     <div class="admin-control-center">
@@ -239,9 +239,8 @@
                     <div class="admin-control-left">
                         <select name="tinh-trang" id="tinh-trang" onchange="findOrder()">
                             <option value="2">Tất cả</option>
-                            <option value="1">Đã tiếp nhận</option>
-                            <option value="0">Đã chế biến</option>
-                            <option value="3">Đã phục vụ</option>
+                            <option value="1">Đang xử lý</option>
+                            <option value="3">Đã xử lý</option>
                         </select>
                     </div>
                     <div class="admin-control-center">
@@ -277,7 +276,7 @@
             <div class="section">
                 <div class="admin-control">
                     <div class="admin-control-left">
-                        <select name="the-loai-tk" id="the-loai-tk" onchange="thongKe()">
+                        <select name="the-loai-tk" id="the-loai-tk" onchange="filterThongKe()">
                             <option>Tất cả</option>
                             <option>Lẩu</option>
                             <option>Súp</option>
@@ -292,11 +291,11 @@
                         <form action="" class="form-search">
                             <span class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></span>
                             <input id="form-search-tk" type="text" class="form-search-input"
-                                placeholder="Tìm kiếm tên món..." oninput="thongKe()">
+                                placeholder="Tìm kiếm tên món..." oninput="searchThongKe()">
                         </form>
                     </div>
                     <div class="admin-control-right">
-                        <button class="btn-reset-order" onclick="thongKe(0)"><i
+                        <button class="btn-reset-order" onclick="resetThongKe()"><i
                                 class="fa-solid fa-arrow-rotate-right"></i></button>
                     </div>
                 </div>
@@ -393,7 +392,7 @@
     </div>
     <div class="modal detail-order-product">
         <div class="modal-container">
-            <button class="modal-close"><i class="fa-regular fa-xmark"></i></button>
+            <button class="modal-close"><i class="fa-solid fa-xmark"></i></button>
             <div class="table">
                 <table width="100%">
                     <thead>
@@ -450,7 +449,7 @@
     </div>
     </div>
     <div id="toast"></div>
-    <script src="./assets/js/admin-1.js"></script>
+    <script src="./assets/js/admin-3.js"></script>
     <script src="./assets/js/toast.js"></script>
 
 </body>
