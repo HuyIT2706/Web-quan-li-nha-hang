@@ -300,7 +300,11 @@
     grid-template-columns: 1fr;
     gap: 2rem;
 }
-
+.sign-in__eror{
+    color: red;
+    margin: 0;
+    font-size: 12px;
+}
 @media (min-width: 768px) {
     .grid {
         grid-template-columns: repeat(4, 1fr);

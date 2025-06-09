@@ -15,6 +15,8 @@ if (!$order_item_id) {
     echo json_encode(['success' => false, 'message' => 'Thiếu dữ liệu']);
     exit;
 }
+
+// Kiểm tra quyền sở hữu
 $sql = "SELECT oi.order_item_id
         FROM order_items oi
         JOIN orders o ON oi.order_id = o.order_id
@@ -29,6 +31,7 @@ if ($result->num_rows === 0) {
 }
 $stmt->close();
 
+// Xóa
 $stmt = $conn->prepare("DELETE FROM order_items WHERE order_item_id = ?");
 $stmt->bind_param("i", $order_item_id);
 $stmt->execute();

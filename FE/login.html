@@ -134,18 +134,24 @@
         <div class="container">
             <div class="container--login" id="container">
                 <div class="form-container sign-up">
-                    <form method="POST" action="../BE/register.php">
+                    <form method="POST" action="../BE/register.php" id="signupForm">
                         <h2 class="title--signUp">Tạo tài khoản</h2>
                         <input type="text" name="lastname" placeholder="Họ" required />
                         <input type="text" name="firstname" placeholder="Tên" required />
-                        <input type="tel" name="phone" placeholder="Số điện thoại" required />
+                        <input type="tel" name="phone" placeholder="Số điện thoại" required id="signupPhone"
+                            class="phone-input" />
+                        <p class="sign-in__error" style="display: none; color: red; font-size: 12px; margin-top: 5px;">
+                            Số điện thoại đủ 10 số mời quý khách nhập đúng!</p>
                         <button type="submit">Đăng Kí</button>
                     </form>
                 </div>
                 <div class="form-container sign-in">
-                    <form method="POST" action="../BE/login.php">
+                    <form method="POST" action="../BE/login.php" id="signinForm">
                         <h2 class="title--signUp">Đăng nhập</h2>
-                        <input type="tel" name="phone" placeholder="Số điện thoại" required>
+                        <input type="tel" name="phone" placeholder="Số điện thoại" required id="signinPhone"
+                            class="phone-input" />
+                        <p class="sign-in__error" style="display: none; color: red; font-size: 12px; margin-top: 5px;">
+                            Số điện thoại đủ 10 số mời quý khách nhập đúng!</p>
                         <button type="submit">Đăng Nhập</button>
                     </form>
                 </div>
@@ -171,7 +177,7 @@
     <script>
         load("#footer", "./template/footer.html")
     </script>
-    <script src="./assets/js/login.js"></script>
+    <script src="./assets/js/login-1.js"></script>
     <script src="./assets/js/toast.js"></script>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

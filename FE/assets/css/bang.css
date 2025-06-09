@@ -1,0 +1,47 @@
+/* === Tuyết Băng: Bắt đầu style bảng nhân viên === */
+#show-user input {
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  width: 100%;
+  outline: none;
+  padding: 6px 8px;
+  transition: all 0.2s ease;
+}
+
+/* Khi focus vào input thì hiện khung chỉnh sửa */
+#show-user input:focus {
+  border: 1px solid #998a4e;
+  background-color: #c9e09a;
+  border-radius: 4px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Checkbox đẹp hơn */
+#show-user input[type="checkbox"] {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+/* Nút Lưu */
+#show-user button {
+  background-color: #45a049;
+  color: blue;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#show-user button:hover {
+  background-color: brown;
+}
+/* === Tuyết Băng: Kết thúc style bảng nhân viên === */
+#show-user tr:hover {
+  background-color: mistyrose;
+  transition: background-color 0.2s ease-in-out;
+  cursor: pointer;
+}

@@ -112,7 +112,7 @@
         <!-- PC -->
         <div class="header--container pc">
           <!-- Logo -->
-          <a href="./index.html">
+          <a href="./index-login.html">
             <figure class="header--logo">
               <img src="./assets/img/logo.svg" alt="One Food Logo" />
               <p class="logo--title">ne Food</p>
@@ -121,7 +121,9 @@
           <!-- nav -->
           <nav class="header--nav">
             <ul class="nav--ul">
-              <li><a href="./index.html" class="nav--link">Trang chủ</a></li>
+              <li>
+                <a href="./index-login.html" class="nav--link">Trang chủ</a>
+              </li>
               <li>
                 <a
                   href="javascript:void(0);"
@@ -230,7 +232,7 @@
                     />
                   </label>
                   <li>
-                    <a href="./index.html" class="nav--link nav--link-mb"
+                    <a href="./index-login.html" class="nav--link nav--link-mb"
                       >Trang chủ</a
                     >
                   </li>
@@ -260,7 +262,7 @@
             </div>
           </div>
           <!-- Logo -->
-          <a href="./index.html">
+          <a href="./index-login.html">
             <figure class="header--logo">
               <img src="./assets/img/logo.svg" alt="One Food Logo" />
               <p class="logo--title">ne Food</p>
@@ -709,17 +711,15 @@
             </div>
             <div class="order-detail-summary">
               <h3 class="order-detail-summary__top">Total</h3>
-              <div class="order-method">Bàn: 1</div>
-              <div class="order-total">Tổng tiền: <span>298.000 VND</span></div>
-              <div class="order-promo">Áp khuyến mãi:</div>
-              <input type="text" placeholder="Mã khuyến mại" />
-              <div class="order-final">
-                Thành tiền: <span>270.000 VND</span>
-              </div>
+              <div class="order-method"></div>
+              <div class="order-total">Tổng tiền: <span></span></div>
+              <div class="order-promo">Khuyến mãi:</div>
+              <input type="text" placeholder="Mã khuyến mại" required />
+              <div class="order-final"></div>
               <div class="order-method">Chọn phương thức thanh toán:</div>
-              <select>
-                <option>Thẻ ngân hàng</option>
-                <option>Tiền mặt</option>
+              <select id="payment-method">
+                <option value="vnpay">Ngân hàng</option>
+                <option value="cash">Tiền mặt</option>
               </select>
               <div class="order-detail--actions">
                 <a
@@ -728,7 +728,12 @@
                   onclick="handleDatThemMon()"
                   >Đặt thêm món</a
                 >
-                <button class="btn btn-submit_order">Thanh toán</button>
+                <button
+                  class="btn btn-submit_order"
+                  onclick="handleThanhToan()"
+                >
+                  Thanh toán
+                </button>
               </div>
             </div>
           </div>
@@ -784,7 +789,7 @@
     <script>
       load("#footer", "./template/footer.html");
     </script>
-    <script src="./assets/js/index.js"></script>
+    <script src="./assets/js/index-1.js"></script>
     <script src="./assets/js/toast.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>

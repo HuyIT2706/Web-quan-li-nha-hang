@@ -15,9 +15,9 @@ login.addEventListener('click', () => {
 // Đăng kí 
 document.querySelector('.sign-up form').addEventListener('submit', async (e) => {
     e.preventDefault();
-    
+
     const formData = new FormData(e.target);
-    
+
     try {
         // Lấy response trả về từ register.php
         const response = await fetch('../BE/register.php', {
@@ -61,9 +61,9 @@ document.querySelector('.sign-in form').addEventListener('submit', async (e) => 
             method: 'POST',
             body: formData
         });
-        
-        const { status, message, redirect, user_id } = await response.json();
-        
+
+        const { status, message, redirect, user_id, rank_name, discount } = await response.json();
+
         if (status === 'success') {
             toast({
                 title: 'Thành công',
@@ -73,6 +73,8 @@ document.querySelector('.sign-in form').addEventListener('submit', async (e) => 
             });
             if (user_id !== undefined && user_id !== null) {
                 localStorage.setItem('user_id', user_id);
+                localStorage.setItem('rank_name', rank_name);
+                localStorage.setItem('discount', discount);
             }
             setTimeout(() => {
                 window.location.href = redirect;
@@ -94,7 +96,6 @@ document.querySelector('.sign-in form').addEventListener('submit', async (e) => 
         });
     }
 });
-
 const phoneInputs = document.querySelectorAll('.phone-input');
 const errorMessages = document.querySelectorAll('.sign-in__error');
 const forms = [document.getElementById('signinForm'), document.getElementById('signupForm')];

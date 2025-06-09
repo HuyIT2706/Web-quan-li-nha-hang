@@ -8,6 +8,8 @@ if (!isset($data['table_id'])) {
     echo json_encode(['success' => false, 'message' => 'Thiếu mã bàn']);
     exit;
 }
+
+// Không chặn việc chọn lại bàn nữa:
 $_SESSION['selected_table_id'] = $data['table_id'];
 
 echo json_encode(['success' => true]);

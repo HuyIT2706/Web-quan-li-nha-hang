@@ -3,10 +3,12 @@ require_once __DIR__ . '/database.php';
 session_start();
 header('Content-Type: application/json; charset=utf-8');
 
+// Cho phép CORS (nếu FE - BE khác domain)
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
 
+// Nếu request OPTIONS (preflight) thì kết thúc luôn
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
     exit;
@@ -29,6 +31,7 @@ if (!isset($_SESSION['selected_table_id'])) {
 $user_id = $_SESSION['user_id'];
 $table_id = $_SESSION['selected_table_id'];
 
+// Đọc body JSON
 $input = json_decode(file_get_contents('php://input'), true);
 if (!$input || !isset($input['items']) || !is_array($input['items']) || count($input['items']) == 0) {
     http_response_code(400);
@@ -40,7 +43,7 @@ $items = $input['items'];
 
 $conn->begin_transaction();
 try {
-
+    // Tìm đơn hàng pending
     $sqlFindOrder = "SELECT order_id FROM orders WHERE user_id = ? AND table_id = ? AND status = 'pending' LIMIT 1";
     $stmtFind = $conn->prepare($sqlFindOrder);
     $stmtFind->bind_param('ii', $user_id, $table_id);
@@ -57,11 +60,13 @@ try {
         $order_id = $conn->insert_id;
     }
 
+    // Thêm hoặc cập nhật món
     foreach ($items as $item) {
         $product_id = intval($item['product_id']);
         $quantity = intval($item['quantity']);
         if ($quantity < 1) $quantity = 1;
 
+        // Lấy giá sản phẩm
         $stmtPrice = $conn->prepare("SELECT price FROM products WHERE product_id = ?");
         $stmtPrice->bind_param('i', $product_id);
         $stmtPrice->execute();
@@ -74,12 +79,14 @@ try {
         }
         $price = $product['price'];
 
+        // Kiểm tra món đã có trong order_items chưa
         $stmtSelect = $conn->prepare("SELECT order_item_id, quantity FROM order_items WHERE order_id = ? AND product_id = ?");
         $stmtSelect->bind_param('ii', $order_id, $product_id);
         $stmtSelect->execute();
         $resSelect = $stmtSelect->get_result();
 
         if ($rowItem = $resSelect->fetch_assoc()) {
+            // Cộng dồn số lượng
             $new_qty = $rowItem['quantity'] + $quantity;
             $total = $new_qty * $price;
             $stmtUpdate = $conn->prepare("UPDATE order_items SET quantity = ?, total = ? WHERE order_item_id = ?");
@@ -95,6 +102,8 @@ try {
         }
         $stmtSelect->close();
     }
+
+    // Cập nhật tổng tiền đơn hàng
     $stmtUpdateTotal = $conn->prepare("UPDATE orders SET total_amount = (SELECT SUM(total) FROM order_items WHERE order_id = ?) WHERE order_id = ?");
     $stmtUpdateTotal->bind_param('ii', $order_id, $order_id);
     $stmtUpdateTotal->execute();

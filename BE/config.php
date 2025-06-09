@@ -1,10 +1,10 @@
 <?php
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 // Database configuration
-$host = 'localhost';
+$host = 'localhost:3307';
 $dbname = 'quanlinhahang';
 $username = 'root';
-$password = '27062005';
+$password = 'bangbang';
 
 try {
     $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
