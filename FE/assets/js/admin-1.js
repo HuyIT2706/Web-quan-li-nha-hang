@@ -551,7 +551,7 @@ function showUserArr(arr) {
       let tinhtrang =
         account.status == 0
           ? `<span class="status-no-complete">Bị khóa</span>`
-          : `<span class="status-complete">Hoạt động</span>`;
+          : `<span class="status-active">Hoạt động</span>`;
       accountHtml += ` <tr>
             <td>${index + 1}</td>
             <td>${account.fullname}</td>
@@ -569,75 +569,156 @@ function showUserArr(arr) {
   }
   document.getElementById("show-user").innerHTML = accountHtml;
 }
-// Tuyết Băng: START hiển thị và chỉnh sửa nhân viên
+// Tuyết Băng: START hiển thị và chỉnh sửa nhân viên (sửa dùng modal)
+let allStaffData = [];
+let filteredStaffData = [];
+
 async function loadStaffList() {
   const res = await fetch("../BE/staff.php");
   const json = await res.json();
-  if (json.status !== "ok") return alert("Không tải được nhân viên");
+  if (json.status !== "ok") {
+    toast({ type: "error", message: "Không tải được danh sách nhân viên!" });
+    return;
+  }
+  allStaffData = json.data;
+  filterAndSearchStaff();
+}
 
+function filterAndSearchStaff() {
+  const statusFilter = document.getElementById("tinh-trang-user")?.value || "2";
+  const searchTerm =
+    document.getElementById("form-search-user")?.value.toLowerCase().trim() ||
+    "";
+
+  filteredStaffData = allStaffData.filter((staff) => {
+    let matchesStatus =
+      statusFilter === "2" ||
+      (statusFilter === "1" && staff.status === "active") ||
+      (statusFilter === "0" && staff.status === "inactive");
+
+    const matchesSearch = staff.fullname.toLowerCase().includes(searchTerm);
+    return matchesStatus && matchesSearch;
+  });
+
+  displayStaffList(filteredStaffData);
+}
+
+function displayStaffList(staffsToDisplay) {
   const tbody = document.getElementById("show-user");
   tbody.innerHTML = "";
+
+  if (staffsToDisplay.length === 0) {
+    tbody.innerHTML =
+      '<tr><td colspan="6">Không có nhân viên nào phù hợp với điều kiện tìm kiếm.</td></tr>';
+    return;
+  }
+
   let stt = 1;
-  json.data.forEach((staff) => {
-    const statusChecked = staff.status === "active" ? "checked" : "";
+  staffsToDisplay.forEach((staff) => {
+    const statusClass =
+      staff.status === "active" ? "status-active" : "status-inactive";
+    const statusText = staff.status === "active" ? "Hoạt động" : "Bị khóa";
+
     const tr = document.createElement("tr");
     tr.innerHTML = `
       <td>${stt++}</td>
-      <td><input value="${staff.fullname}" data-id="${
-      staff.staff_id
-    }" data-field="fullname"></td>
-      <td><input value="${staff.phone}" data-id="${
-      staff.staff_id
-    }" data-field="phone"></td>
-      <td><input value="${staff.position}" data-id="${
-      staff.staff_id
-    }" data-field="position"></td>
-      <td>
-        <input type="checkbox" data-id="${
+      <td>${staff.fullname}</td>
+      <td>${staff.phone}</td>
+      <td>${staff.position}</td>
+      <td><span class="${statusClass}">${statusText}</span></td>
+      <td class="control">
+       <button class="btn-edit-staff" style="border-radius:15px;" onclick='openEditStaffModal(${JSON.stringify(
+         staff
+       )})'>
+          <i class="fa-regular fa-pen-to-square"></i>
+          
+        </button>
+        <button class="btn-delete-staff" style="border-radius:15px;" onclick='deleteStaff(${
           staff.staff_id
-        }" data-field="status" ${statusChecked}>
-      </td>
-      <td>
-        <button onclick="saveStaff(${staff.staff_id})">Lưu</button>
+        })'>
+          <i class="fa-regular fa-trash-can"></i>
+        </button>
       </td>
     `;
     tbody.appendChild(tr);
   });
 }
 
-async function saveStaff(staff_id) {
-  const inputs = document.querySelectorAll(`input[data-id="${staff_id}"]`);
-  const payload = { staff_id };
-  inputs.forEach((i) => {
-    if (i.type === "checkbox") {
-      payload[i.dataset.field] = i.checked ? "active" : "inactive";
-    } else {
-      payload[i.dataset.field] = i.value;
-    }
-  });
+function openEditStaffModal(staff) {
+  const modal = document.querySelector(".modal.signup");
+  modal.classList.add("open");
 
-  console.log("Dữ liệu gửi đi:", payload); // <== Ghi lại để kiểm tra
+  // Chuyển sang chế độ chỉnh sửa
+  document
+    .querySelectorAll(".edit-account-e")
+    .forEach((e) => (e.style.display = "block"));
+  document
+    .querySelectorAll(".add-account-e")
+    .forEach((e) => (e.style.display = "none"));
 
-  const res = await fetch("../BE/update_staff.php", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
-  });
+  // Gán dữ liệu
+  document.getElementById("fullname").value = staff.fullname;
+  document.getElementById("phone").value = staff.phone;
+  document.getElementById("password").value = staff.position;
+  document.getElementById("user-status").checked = staff.status === "active";
 
-  const resText = await res.text();
-  console.log("Phản hồi từ server:", resText); // <== Xem phản hồi thực tế
-
-  try {
-    const json = JSON.parse(resText);
-    if (json.status === "ok") {
-      alert("Cập nhật thành công!");
-    } else {
-      alert("Lỗi cập nhật: " + json.message);
-    }
-  } catch (e) {
-    console.error("Phản hồi KHÔNG phải JSON:", resText);
-    alert("Server trả về phản hồi lỗi hoặc HTML. Kiểm tra console.");
-  }
+  // Gán ID
+  document
+    .getElementById("btn-update-account")
+    .setAttribute("data-id", staff.staff_id);
 }
-document.addEventListener("DOMContentLoaded", loadStaffList);
-// Tuyết Băng: END hiển thị và chỉnh sửa nhân viên
+
+document
+  .getElementById("btn-update-account")
+  .addEventListener("click", async function (e) {
+    e.preventDefault();
+    const staff_id = this.getAttribute("data-id");
+
+    const payload = {
+      staff_id,
+      fullname: document.getElementById("fullname").value.trim(),
+      phone: document.getElementById("phone").value.trim(),
+      position: document.getElementById("password").value.trim(),
+      status: document.getElementById("user-status").checked
+        ? "active"
+        : "inactive",
+    };
+
+    const res = await fetch("../BE/update_staff.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+
+    const resText = await res.text();
+    try {
+      const json = JSON.parse(resText);
+      if (json.status === "ok") {
+        toast({ type: "success", message: "Cập nhật thành công!" });
+        document.querySelector(".modal.signup").classList.remove("open");
+        loadStaffList();
+      } else {
+        toast({ type: "error", message: "Lỗi cập nhật: " + json.message });
+      }
+    } catch (err) {
+      toast({ type: "error", message: "Lỗi không xác định từ server" });
+    }
+  });
+
+document.addEventListener("DOMContentLoaded", async () => {
+  loadStaffList();
+
+  const staffStatusFilter = document.getElementById("tinh-trang-user");
+  staffStatusFilter?.addEventListener("change", filterAndSearchStaff);
+
+  const staffSearchInput = document.getElementById("form-search-user");
+  staffSearchInput?.addEventListener("input", filterAndSearchStaff);
+
+  const staffClearSearchButton = document.querySelector(".btn-reset-order");
+  staffClearSearchButton?.addEventListener("click", () => {
+    staffSearchInput.value = "";
+    staffStatusFilter.value = "2";
+    filterAndSearchStaff();
+  });
+});
+// Tuyết Băng: END hiển thị và chỉnh sửa nhân viên (dùng modal)

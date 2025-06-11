@@ -24,24 +24,79 @@
   cursor: pointer;
 }
 
-/* Nút Lưu */
+#show-user .status-active {
+  background-color: #28a745; /* Màu xanh lá */
+  color: white; /* Chữ trắng */
+  padding: 5px 10px; /* Khoảng cách trong */
+  border-radius: 5px; /* Bo tròn khung */
+  font-weight: bold;
+  display: inline-block; /* Giúp bo khung gọn theo nội dung */
+}
+
+#show-user .status-inactive {
+  background-color: #dc3545; /* Nền đỏ */
+  color: white; /* Chữ trắng */
+  padding: 5px 10px; /* Khoảng cách trong */
+  border-radius: 5px; /* Bo tròn góc */
+  font-weight: bold;
+  display: inline-block; /* Đảm bảo khung theo chữ */
+}
+
+/* Style chung cho các nút hành động trong bảng */
 #show-user button {
-  background-color: #45a049;
-  color: blue;
   border: none;
-  padding: 6px 12px;
+  padding: 6px 10px;
   border-radius: 4px;
   font-size: 14px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, color 0.3s;
+  margin: 0 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 45px;
 }
 
-#show-user button:hover {
-  background-color: brown;
+/* Style nút chỉnh sửa */
+#show-user .btn-edit {
+  border-radius: 5%; /* Hình tròn */
+  width: 45px;
+  height: 50px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(0, 0, 0);
+  font-size: 15px;
 }
+
+#show-user .btn-edit-staff:hover {
+  background-color: #cfcfcf;
+}
+/* Màu cho nút xóa */
+#show-user .btn-delete-staff {
+  background-color: #b5292f; /* Đỏ */
+  width: 40px;
+  height: 25px;
+  color: white;
+}
+#show-user .btn-delete-staff:hover {
+  background-color: #b5292f;
+}
+
+/* Màu cho nút hủy */
+#show-user .btn-cancel-staff {
+  background-color: #6c757d; /* Xám */
+}
+#show-user .btn-cancel-staff:hover {
+  background-color: #545b62;
+}
+
 /* === Tuyết Băng: Kết thúc style bảng nhân viên === */
+
+/* Các style khác của bạn */
 #show-user tr:hover {
   background-color: mistyrose;
-  transition: background-color 0.2s ease-in-out;
-  cursor: pointer;
+  transition: background-color 0.1s;
 }
