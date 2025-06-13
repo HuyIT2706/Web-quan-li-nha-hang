@@ -20,7 +20,7 @@ $sql = "SELECT
         FROM order_items oi
         JOIN orders o ON oi.order_id = o.order_id
         JOIN products p ON oi.product_id = p.product_id
-        WHERE o.user_id = $user_id AND o.status = 'in_progress'
+        WHERE o.user_id = $user_id
         ORDER BY o.order_id DESC";
 $result = $conn->query($sql);
 
