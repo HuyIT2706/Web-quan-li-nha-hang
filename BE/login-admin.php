@@ -1,5 +1,6 @@
 <?php
 header('Content-Type: application/json');
+session_start(); // Thêm dòng này
 include('database.php');
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -20,6 +21,7 @@ $result = $conn->query($sql);
 
 if ($result && $result->num_rows === 1) {
     $row = $result->fetch_assoc();
+    $_SESSION['admin'] =  $row['staff_id']; // Thêm dòng này để set session admin
     echo json_encode([
         "success" => true,
         "message" => "Đăng nhập thành công!",
@@ -29,4 +31,4 @@ if ($result && $result->num_rows === 1) {
     echo json_encode(["success" => false, "message" => "Thông tin đăng nhập không đúng hoặc bạn không có quyền truy cập!"]);
 }
 
-$conn->close(); 
+$conn->close();

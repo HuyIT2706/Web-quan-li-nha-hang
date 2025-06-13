@@ -1340,3 +1340,48 @@ label a {
     font-size: 80px;
     margin-top: 30px;
 }
+/* ----------------------------------TUYẾT---------------------------------- */
+/* 
+.modal.detail-order .modal-container {
+  max-width: 500px;
+  min-width: 320px;
+  width: 95vw;
+  padding: 32px 24px 24px 24px;
+  box-sizing: border-box;
+  overflow-y: auto important;
+  max-height: 90vh;
+  margin: 0 auto;
+}
+
+.modal-content.modal-detail-order {
+  display: block;
+  width: 100%;
+}
+
+.modal-detail-order p {
+  margin: 8px 0;
+  font-size: 1rem;
+  word-break: break-word;
+}
+
+.order-detail-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+  margin-bottom: 8px;
+  background: #fafafa;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.order-detail-table th, .order-detail-table td {
+  border: 1px solid #eee;
+  padding: 8px 10px;
+  text-align: left;
+  font-size: 1rem;
+}
+
+.order-detail-table th {
+  background: #f7f7f7;
+  color: #333;
+} */

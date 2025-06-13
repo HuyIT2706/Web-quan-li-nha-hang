@@ -333,7 +333,7 @@ function showOrder(arr) {
     document.getElementById("showOrder").innerHTML = orderHtml;
 }
 
-let orders = localStorage.getItem("order") ? JSON.parse(localStorage.getItem("order")) : [];
+let orders = localStorage.getItem("orders") ? JSON.parse(localStorage.getItem("orders")) : [];
 window.onload = showOrder(orders);
 
 
@@ -519,6 +519,177 @@ function showUserArr(arr) {
     }
     document.getElementById('show-user').innerHTML = accountHtml;
 }
+// Đơn Hàng - Tuyết 
+// ========== ĐƠN HÀNG ==========
 
+// Lọc và tìm kiếm đơn hàng
+document.getElementById("tinh-trang").addEventListener("change", findOrder);
+document.getElementById("form-search-order").addEventListener("input", findOrder);
 
+// Render danh sách đơn hàng
+function findOrder() {
+    const status = document.getElementById("tinh-trang").value;
+    const keyword = document.getElementById("form-search-order").value.trim();
 
+    fetch(`../BE/admin_orders.php?status=${status}&keyword=${encodeURIComponent(keyword)}`)
+        .then(res => res.json())
+        .then(data => {
+            const tbody = document.getElementById("showOrder");
+            tbody.innerHTML = "";
+
+            if (!data || data.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6">Không có đơn hàng nào</td></tr>`;
+                return;
+            }
+
+            data.forEach(orders => {
+                let statusHTML = convertStatus(orders.status);
+                const row = `
+                    <tr>
+                        <td>${orders.order_id}</td>
+                        <td>${orders.customer_name}</td>
+                        <td>${orders.order_date}</td>
+                        <td>${vnd(orders.total_amount)}</td>
+                        <td>${statusHTML}</td>
+                        <td>
+                            <button class="btn-detail" onclick="viewDetail('${orders.order_id}')">
+                                <i class="fa-regular fa-eye"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+                tbody.innerHTML += row;
+            });
+        });
+}
+
+// Chuyển đổi trạng thái sang text
+function convertStatus(status) {
+    switch (status) {
+        case "pending":
+            return `<span class="status-pending">Chờ xác nhận</span>`;
+        case "in_progress":
+            return `<span class="status-processing">Đang xử lý</span>`;
+        case "completed":
+            return `<span class="status-done">Đã xử lý</span>`;
+        default:
+            return `<span class="status-unknown">Không xác định</span>`;
+    }
+}
+
+// Xem chi tiết đơn hàng
+function viewDetail(orderId) {
+    fetch(`../BE/get_orders.php?order_id=${orderId}`)
+        .then(res => res.json())
+        .then(orders => {
+            if (orders.error) {
+                alert(orders.error);
+                return;
+            }
+            if (!orders.items) {
+                alert("Không có dữ liệu chi tiết đơn hàng!");
+                return;
+            }
+
+            // Xử lý nút trạng thái
+            let btnText = "Chờ xác nhận";
+            let btnDisabled = "";
+            if (orders.status === "in_progress") {
+                btnText = "Đang xử lý";
+            } else if (orders.status === "completed") {
+                btnText = "Đã xử lý";
+                btnDisabled = "disabled";
+            }
+
+            let html = `
+                <div class="modal-container">
+                    <h3>Chi tiết đơn hàng #${orders.order_id}</h3>
+                    <div class="modal-content modal-detail-order">
+                        <p><b>Khách hàng:</b> ${orders.customer_name}</p>
+                        <p><b>Ngày đặt:</b> ${orders.order_date}</p>
+                        <p><b>Tổng tiền:</b> ${vnd(orders.total_amount)}</p>
+                        <p><b>Trạng thái:</b> <span id="order-status-text">${convertStatus(orders.status)}</span></p>
+                        <p><b>Danh sách món:</b></p>
+                        <ul>
+                            ${orders.items.map(item => `
+                                <li>${item.product_name} x${item.quantity} - ${vnd(item.price)}</li>
+                            `).join("")}
+                        </ul>
+                        <div class="modal-detail-bottom" style="margin-top:16px;">
+                            <button id="btn-mark-done" class="btn-status" ${btnDisabled}>
+                                ${btnText}
+                            </button>
+                        </div>
+                        <button class="modal-close" onclick="closeOrderModal()">Đóng</button>
+                    </div>
+                </div>
+            `;
+            let modal = document.querySelector(".modal.detail-order");
+            modal.innerHTML = html;
+            modal.classList.add("open");
+
+            // Xử lý sự kiện chuyển trạng thái
+            if (orders.status === "pending") {
+                document.getElementById("btn-mark-done").onclick = function () {
+                    if (confirm("Chuyển đơn sang Đang xử lý?")) {
+                        fetch("../BE/admin_orders.php", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                            body: `order_id=${orders.order_id}&status=in_progress`
+                        })
+                        .then(res => res.json())
+                        .then(result => {
+                            if (result.result === "success") {
+                                document.getElementById("order-status-text").innerHTML = convertStatus("in_progress");
+                                this.innerText = "Đang xử lý";
+                                orders.status = "in_progress";
+                                findOrder();
+                            } else {
+                                alert("Cập nhật thất bại.");
+                            }
+                        });
+                    }
+                }
+            } else if (orders.status === "in_progress") {
+                document.getElementById("btn-mark-done").onclick = function () {
+                    if (confirm("Chuyển đơn sang Đã xử lý?")) {
+                        fetch("../BE/admin_orders.php", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                            body: `order_id=${orders.order_id}&status=completed`
+                        })
+                        .then(res => res.json())
+                        .then(result => {
+                            if (result.result === "success") {
+                                document.getElementById("order-status-text").innerHTML = convertStatus("completed");
+                                this.innerText = "Đã xử lý";
+                                this.disabled = true;
+                                findOrder();
+                            } else {
+                                alert("Cập nhật thất bại.");
+                            }
+                        });
+                    }
+                }
+            } else {
+                document.getElementById("btn-mark-done").disabled = true;
+            }
+        });
+}
+
+// Đóng modal chi tiết đơn hàng
+function closeOrderModal() {
+    document.querySelector(".modal.detail-order").classList.remove("open");
+}
+
+// Làm mới bộ lọc
+function cancelSearchOrder() {
+    document.getElementById("tinh-trang").value = "all";
+    document.getElementById("form-search-order").value = "";
+    findOrder();
+}
+
+// Khởi tạo
+document.addEventListener("DOMContentLoaded", () => {
+    findOrder();
+});
