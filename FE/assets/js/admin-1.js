@@ -722,3 +722,26 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 });
 // Tuyết Băng: END hiển thị và chỉnh sửa nhân viên (dùng modal)
+document.addEventListener("DOMContentLoaded", function () {
+  const position = localStorage.getItem("adminPosition");
+
+  // Nếu không phải admin, ẩn tab "Nhân viên"
+  if (position !== "admin") {
+    const sidebarItems = document.querySelectorAll(
+      ".sidebar-list-item.tab-content"
+    );
+    const sections = document.querySelectorAll(".section");
+
+    // Giả sử "Nhân viên" là tab thứ 2 (tính từ 0) => index 2
+    sidebarItems[2].style.display = "none"; // Ẩn mục menu
+    sections[2].style.display = "none"; // Ẩn nội dung tab tương ứng
+  }
+
+  // Nếu không phải admin, chặn truy cập toàn trang
+  if (
+    position !== "admin" &&
+    window.location.pathname.includes("admin-login.html")
+  ) {
+    console.warn("Đang dùng quyền không phải admin.");
+  }
+});

@@ -15,7 +15,7 @@ if (empty($phone) || empty($user_password)) {
 }
 
 // Truy vấn kiểm tra thông tin đăng nhập
-$sql = "SELECT * FROM staff_accounts WHERE phone = '$phone' AND password = '$user_password' AND position = 'admin' AND status = 'active' LIMIT 1";
+$sql = "SELECT * FROM staff_accounts WHERE phone = '$phone' AND password = '$user_password'  AND status = 'active' LIMIT 1";
 $result = $conn->query($sql);
 
 if ($result && $result->num_rows === 1) {
