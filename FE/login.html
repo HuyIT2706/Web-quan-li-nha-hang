@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="57x57" href="./assets/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="./assets/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./assets/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="./assets/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./assets/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="./assets/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="./assets/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="./assets/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="./assets/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="./assets/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./assets/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="./assets/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!-- CSS -->
+    <link rel="stylesheet" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="./assets/css/index.css">
+    <link rel="stylesheet" href="./assets/css/login.css">
+    <link rel="stylesheet" href="./assets/css/responsize-header.css">
+    <link rel="stylesheet" href="./assets/css/reponsize-index.css">
+    <link rel="stylesheet" href="./assets/css/toast.css">
+
+    <!-- Font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+        rel="stylesheet">
+    <!-- Atisition -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/animate.css" />
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="./assets/js/style.js"></script>
+    <title>One Food | Login</title>
+</head>
+
+<body>
+    <header id="header">
+        <div class="container">
+            <!-- PC -->
+            <div class="header--container pc">
+                <!-- Logo -->
+                <a href="./index.html">
+                    <figure class="header--logo">
+                        <img src="./assets/img/logo.svg" alt="One Food Logo">
+                        <p class="logo--title">ne Food</p>
+                    </figure>
+                </a>
+                <!-- nav -->
+                <nav class="header--nav">
+                    <ul class="nav--ul">
+                        <li><a href="./index.html" class="nav--link">Trang chủ</a></li>
+                        <li><a href="./menu.html" class="nav--link">Thực đơn</a></li>
+                        <li><a href="#tableModal" class="nav--link" id="chooseTableLink">Chọn bàn</a></li>
+                        <li><a href="./contact.html" class="nav--link">Về chúng tôi</a></li>
+                    </ul>
+                </nav>
+                <!-- Actions -->
+                <div class="actions">
+                    <div class="header__search" onclick="handleCart()">
+                        <div class="btn btn--search">
+                            <svg width=20px xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 576 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                                <path fill="#fafafa"
+                                    d="M0 24C0 10.7 10.7 0 24 0L69.5 0c22 0 41.5 12.8 50.6 32l411 0c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3l-288.5 0 5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5L488 336c13.3 0 24 10.7 24 24s-10.7 24-24 24l-288.3 0c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5L24 48C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" />
+                            </svg>
+                        </div>
+
+
+                    </div>
+                    <a href="./login.html" class="btn btn--signup">Đăng nhập</a>
+                </div>
+            </div>
+            <!-- MObile & Tablet -->
+            <div class="header--container mobile-tablet">
+                <!-- nav -->
+                <div>
+                    <label class="container-tab" for="action-nav">
+                        <img src="./assets/icons/icon-tab.svg" alt="">
+                    </label>
+                    <input type="checkbox" name="" id="action-nav" class="action-nav" hidden>
+                    <label for="action-nav" class="overload"></label>
+                    <div class="menu-draw">
+                        <nav class="header--nav">
+                            <ul class="nav--ul nav--ul--mobile">
+                                <label for="action-nav" style="padding: 8px 8px 8px 0px;">
+                                    <img src="./assets/icons/arrow-left.svg" alt="" style="cursor: pointer;">
+                                </label>
+                                <li><a href="./index.html" class="nav--link nav--link-mb ">Trang chủ</a></li>
+                                <li><a href="./menu.html" class="nav--link nav--link-mb">Thực đơn</a></li>
+                                <li><a href="./about.html" class="nav--link nav--link-mb">Chọn bàn</a></li>
+                                <li><a href="./contact.html" class="nav--link nav--link-mb">Về chúng tôi</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <!-- Logo -->
+                <a href="./index.html">
+                    <figure class="header--logo">
+                        <img src="./assets/img/logo.svg" alt="One Food Logo">
+                        <p class="logo--title">ne Food</p>
+                    </figure>
+                </a>
+                <!-- Actions -->
+                <div class="actions">
+                    <div class="header__search" onclick="handleCart()">
+                        <div class="btn btn--search" aria-label="Tìm kiếm">
+                            <svg width=20px xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 576 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                                <path fill="#fafafa"
+                                    d="M0 24C0 10.7 10.7 0 24 0L69.5 0c22 0 41.5 12.8 50.6 32l411 0c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3l-288.5 0 5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5L488 336c13.3 0 24 10.7 24 24s-10.7 24-24 24l-288.3 0c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5L24 48C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <a href="./login.html" class="btn btn--signup">Đăng nhập</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="container--login" id="container">
+                <div class="form-container sign-up">
+                    <form method="POST" action="../BE/register.php" id="signupForm">
+                        <h2 class="title--signUp">Tạo tài khoản</h2>
+                        <input type="text" name="lastname" placeholder="Họ" required />
+                        <input type="text" name="firstname" placeholder="Tên" required />
+                        <input type="tel" name="phone" placeholder="Số điện thoại" required id="signupPhone"
+                            class="phone-input" />
+                        <p class="sign-in__error" style="display: none; color: red; font-size: 12px; margin-top: 5px;">
+                            Số điện thoại đủ 10 số mời quý khách nhập đúng!</p>
+                        <button type="submit">Đăng Kí</button>
+                    </form>
+                </div>
+                <div class="form-container sign-in">
+                    <form method="POST" action="../BE/login.php" id="signinForm">
+                        <h2 class="title--signUp">Đăng nhập</h2>
+                        <input type="tel" name="phone" placeholder="Số điện thoại" required id="signinPhone"
+                            class="phone-input" />
+                        <p class="sign-in__error" style="display: none; color: red; font-size: 12px; margin-top: 5px;">
+                            Số điện thoại đủ 10 số mời quý khách nhập đúng!</p>
+                        <button type="submit">Đăng Nhập</button>
+                    </form>
+                </div>
+                <div class="toggle-container">
+                    <div class="toggle">
+                        <div class="toggle-panel toggle-left">
+                            <h2 class="title--signUp">Chào mừng quý khách trở lại!</h2>
+                            <p>Hãy nhập số điện thoại để tích điểm</p>
+                            <button class="hidden" id="login">Đăng nhập</button>
+                        </div>
+                        <div class="toggle-panel toggle-right">
+                            <h2 class="title--signUp">Xin chào quý khách!</h2>
+                            <p>Hãy đăng kí thành viên để nhận nhiều chương trình khuyến mãi của chúng tôi</p>
+                            <button class="hidden" id="register">Đăng kí</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer id="footer"></footer>
+    <div id="toast"></div>
+    <script>
+        load("#footer", "./template/footer.html")
+    </script>
+    <script src="./assets/js/login-1.js"></script>
+    <script src="./assets/js/toast.js"></script>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
+</body>
+
+</html>
