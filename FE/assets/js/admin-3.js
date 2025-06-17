@@ -488,7 +488,7 @@ function findOrder() {
                     let date = formatDate(item.thoigiandat);
                     orderHtml += `
                         <tr>
-                            <td>${ "DH " + item.id}</td>
+                            <td>${"DH " + item.id}</td>
                             <td>${item.khachhang}</td>
                             <td>${date}</td>
                             <td>${vnd(item.tongtien)}</td>
@@ -598,7 +598,7 @@ async function showProductOrderDetail(productId) {
     try {
         const response = await fetch(`../BE/api_get_statistics.php?product_id=${productId}`);
         const data = await response.json();
-        
+
         let html = '';
         data.forEach(item => {
             html += `
@@ -712,7 +712,7 @@ function addAccount() {
         })
             .then(res => res.json())
             .then(result => {
-                toast({ type: result.success ? "success" : "error", message: result.message });
+                toast({ title: "Thông báo", type: result.success ? "success" : "error", message: result.message });
                 if (result.success) {
                     showUserArr();
                     document.querySelector(".signup").classList.remove("open");
@@ -770,7 +770,7 @@ function updateAccount(staff_id) {
     })
         .then(res => res.json())
         .then(result => {
-            toast({ type: result.success ? "success" : "error", message: result.message });
+            toast({ title: "Thông báo", type: result.success ? "success" : "error", message: result.message });
             if (result.success) {
                 showUserArr();
                 document.querySelector(".signup").classList.remove("open");
@@ -853,15 +853,15 @@ function cancelSearchUser() {
 }
 function logoutAdmin() {
     localStorage.removeItem('adminPosition');
-    localStorage.removeItem('adminPhone'); 
-    localStorage.removeItem('adminLoggedIn'); 
+    localStorage.removeItem('adminPhone');
+    localStorage.removeItem('adminLoggedIn');
     toast({
         type: "success",
         message: "Đăng xuất thành công!"
     });
-    setTimeout(function() {
+    setTimeout(function () {
         window.location.href = '/webnhahang/FE/admin.html';
-    }, 1000); 
+    }, 1000);
 }
 
 // =============================== DASHBOARD ==================================
@@ -882,14 +882,14 @@ async function updateTotalRevenue() {
     const data = await res.json();
     let total = 0;
     data.forEach(order => {
-        if(order.trangthai === 'in_progress' || order.trangthai === 'completed') {
+        if (order.trangthai === 'in_progress' || order.trangthai === 'completed') {
             total += parseFloat(order.tongtien);
         }
     });
     document.getElementById('doanh-thu').textContent = vnd(total);
 }
 
-window.onload = function() {
+window.onload = function () {
     updateProductCount();
     updateUserCount();
     updateTotalRevenue();
