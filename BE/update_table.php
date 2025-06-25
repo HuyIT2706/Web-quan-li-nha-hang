@@ -25,6 +25,22 @@ if (!in_array($status, $allowed_status)) {
     exit;
 }
 
+// Loi: Không thể reset bàn cũ về trạng thái còn trống - Tuyet
+$stmt_check = $conn->prepare("SELECT status FROM tables WHERE table_id = ?");
+$stmt_check->bind_param("i", $table_id);
+$stmt_check->execute();
+$stmt_check->bind_result($current_status);
+if ($stmt_check->fetch()) {
+    if ($current_status === $status) {
+
+        echo json_encode(['success' => true, 'message' => 'Trạng thái đã đúng']);
+        $stmt_check->close();
+        $conn->close();
+        exit;
+    }
+}
+$stmt_check->close();
+
 $stmt = $conn->prepare("UPDATE tables SET status = ? WHERE table_id = ?");
 $stmt->bind_param("si", $status, $table_id);
 
@@ -32,11 +48,11 @@ if ($stmt->execute()) {
     if ($stmt->affected_rows > 0) {
         echo json_encode(['success' => true, 'message' => 'Cập nhật trạng thái bàn thành công']);
     } else {
-        echo json_encode(['success' => false, 'message' => 'Không tìm thấy bàn hoặc trạng thái không thay đổi']);
+        echo json_encode(['success' => false, 'message' => 'Không tìm thấy bàn']);
     }
 } else {
     echo json_encode(['success' => false, 'message' => 'Lỗi cập nhật dữ liệu']);
 }
-
+// Đóng 
 $stmt->close();
 $conn->close();
